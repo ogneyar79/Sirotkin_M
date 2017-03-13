@@ -1,10 +1,10 @@
  
 /**
-* //TODO package for calculator task(задание калькулятор)
+* //TODO package for calculator task(задание калькулятор).
 *
-* @author Maksim Sirotkin (mailto:maksimus.s@mail.ru)
-* @version $Id$
-* @since 0.1
+* @author Maksim Sirotkin (mailto:maksimus.s@mail.ru).
+* @version $Id$.
+* @since 0.1.
 */
 package ru.job4j;
 
@@ -20,8 +20,9 @@ public class Calculate {
 	/**
 	* метод main, приводит в движение весь основной код
 	* метод main(где main - имя метода,public, все имеют к нем доступ)
-	* void - говорит о том что ничего возвращаться не будет
-	* данному методу можно передовать массив строк, под названием args
+	* void - говорит о том что ничего возвращаться не будет.
+	* @param args.
+	* данному методу можно передовать массив строк, под названием args.
 	*/
 	
 	
