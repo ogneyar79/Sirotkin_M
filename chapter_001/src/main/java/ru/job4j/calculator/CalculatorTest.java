@@ -5,12 +5,17 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-/**
-** @author Sirotkin
-*  @since  01.03.2017
-*/
+   /**
+     * We test calculator.
+     * @author Sirotkin
+     *  @since  08.04.2017
+     */
 
 public class CalculatorTest {
+	
+	/**
+      * Chek compound addition.
+      */
     @Test
     public void whenAddOnePlusOneThenTwo() {
         Calculator calc = new Calculator();
@@ -20,6 +25,9 @@ public class CalculatorTest {
         assertThat(result, is(expected));
     }
 
+	/**
+      * Chek compound subtraction.
+      */
 	@Test
 	public void whenSubstructOneSubTwo() {
 	    calc.sub(2D,1D);
@@ -28,6 +36,9 @@ public class CalculatorTest {
 	    assertThat(result, is(expected));
 	}
 
+	/**
+      * Chek compound division.
+      */
 	@Test
 	public void whenDivisionOneDivTwo () {
 		calc.div(2D,1D);
@@ -36,6 +47,9 @@ public class CalculatorTest {
 	    assertThat(result, is(expected));
 	}
 
+	/**
+      * Chek compound multiplication.
+      */
 	@Test
 	public void whenMultiplicationOneMultipleTwo () {
 		calc.multiple(1D,1D);
