@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
      */
 
 public class CalculatorTest {
-	
+
 	/**
       * Chek compound addition.
       */
@@ -30,8 +30,8 @@ public class CalculatorTest {
       */
 	@Test
 	public void whenSubstructOneSubTwo() {
-	    calc.sub(2D,1D);
-	    double result = calc.getResult();
+	    calc.sub(2D, 1D);
+		double result = calc.getResult();
 	    double expected = 1D;
 	    assertThat(result, is(expected));
 	}
@@ -40,8 +40,8 @@ public class CalculatorTest {
       * Chek compound division.
       */
 	@Test
-	public void whenDivisionOneDivTwo () {
-		calc.div(2D,1D);
+	public void whenDivisionOneDivTwo() {
+		calc.div(2D, 1D);
 	    double result = calc.getResult();
 	    double expected = 2D;
 	    assertThat(result, is(expected));
@@ -51,8 +51,8 @@ public class CalculatorTest {
       * Chek compound multiplication.
       */
 	@Test
-	public void whenMultiplicationOneMultipleTwo () {
-		calc.multiple(1D,1D);
+	public void whenMultiplicationOneMultipleTwo() {
+		calc.multiple(1D, 1D);
 	    double result = calc.getResult();
 	    assertThat(result, is(expected));
 	}

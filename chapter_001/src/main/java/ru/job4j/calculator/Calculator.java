@@ -47,9 +47,10 @@ public class Calculator {
 	}
 
 	/**
-	  * method for getting result from arithmetic expression.
-	  * @return.
-	  *\
+	 * method for getting result from arithmetic expression.
+	 * @return result.
+	 *
+     */
     public double getResult() {
         return this.result;
     }
