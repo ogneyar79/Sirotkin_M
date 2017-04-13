@@ -10,16 +10,16 @@ import static org.junit.Assert.assertThat;
      * @author Sirotkin
      *  @since  12.04.2017
      */
-	 
+
 	 public class MaxTest {
-		 
+
 	 /**
        * Chek max value.
        */
      @Test
-	 public void whenFirstmoreSecond(){
-		 Max maximum = new Max;
-		 maximum.max(2D,4D);
+	 public void whenFirstmoreSecond() {
+		 Max maximum = new Max();
+     	 maximum.max(2D, 4D);
 		 int expected = 4D;
          assertThat(max, is(expected));
 	 }
