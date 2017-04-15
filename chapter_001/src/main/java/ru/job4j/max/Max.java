@@ -5,11 +5,7 @@ package ru.job4j.max;
 * @author Sirotkin.
 */
 public class Max {
-	/**
-     *@ param value Value
-     */
-	private int max;
-
+	
 	/**
 	  * method for max.
       * @param first get int value
@@ -17,12 +13,14 @@ public class Max {
 	  * @return max.
 	  */
 	  public int max(int first, int second) {
-            if (first > second) {
-     		    max = first;
-            } else if (first == second) {
-     		    max = first;
-		    } else {
-         		max = second;
+		  
+	/**
+     *@ param value Value
+     */
+	private int max;
+		   
+		   max = first > second ? first : second ;
+            
 		}
 		return this.max;
     }
