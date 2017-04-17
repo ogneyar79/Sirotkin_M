@@ -20,7 +20,7 @@ public class Max {
 	     private int max;
 
 	   max = first > second ? first : second;
-     	   return this.max;
+     	   return max;
     }
 
 }
