@@ -17,7 +17,7 @@ public class Max {
 	/**
      *@ param value Value
      */
-	     private int max;
+          int max;
 
 	   max = first > second ? first : second;
      	   return max;
