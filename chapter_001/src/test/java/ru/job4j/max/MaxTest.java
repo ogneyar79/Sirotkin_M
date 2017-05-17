@@ -20,7 +20,7 @@ import static org.junit.Assert.assertThat;
 	 public void whenFirstmoreSecond() {
 		 Max maximum = new Max();
      	 maximum.max(2D, 4D);
-		 int expected = 4D;
+		 double expected = 4D;
          assertThat(max, is(expected));
 	 }
 	 	 }

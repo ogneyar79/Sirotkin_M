@@ -7,17 +7,20 @@ package ru.job4j.condition;
 public class Point {
 
 	/**
-     *@ param a value for our function
-     *@ param b value for out function
+     *x value for our function.
      */
-	   int a;
-	   int b;
+	  private int x;
+
+	/**
+	  *y value for out function.
+	 */
+	  private int y;
 
      /**
-	  * method for geting arguments.
-      *@param x int value
-	  *@param y int value
-	  */
+	   * method for geting arguments.
+       *@param x int value
+	   *@param y int value
+	   */
     public  Point(int x, int y) {
       this.x = x;
       this.y = y;
@@ -25,7 +28,7 @@ public class Point {
 
      /**
       * method for geting argument x for class Point.
-      * @param  get int value
+      * @ getX get int value
 	  * @return this.x
 	  */
     public int getX() {
@@ -34,7 +37,7 @@ public class Point {
 
      /**
 	  * method for geting argument y for class Point.
-	  * @param get int value
+	  * @ getY get int value
 	  * @return this.y
 	  */
     public int getY() {
@@ -48,11 +51,6 @@ public class Point {
 	   * @return true or false
        */
     public boolean is(int a, int b) {
-     	if (y == a * x + b) {
-			return true;
-		} else {
-          return false;
-		}
-  }
-
+     	return y == a * x + b;
 }
+ }

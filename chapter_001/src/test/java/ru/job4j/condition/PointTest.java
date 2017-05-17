@@ -17,11 +17,9 @@ public class PointTest {
       */
     @Test
 	public void whenOurPointLayOnOurFunction() {
-		Point ourPoint = new Point();
-		  ourPoint.getX(1D);
-		  ourPoint.getX(1D);
-		  ourPoint.boolean is(1D, 1D);
-		  double expected = false;
+	Point ourPoint = new Point(1, 1);
+		 boolean result = ourPoint.is(1, 1);
+		  boolean expected = false;
 	      assertThat(result, is(expected));
     }
 }
