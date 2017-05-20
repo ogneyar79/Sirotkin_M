@@ -33,7 +33,7 @@ public class Triangle {
     this.c = c;
   }
   
-  Triangle a1B2c2 = new Triangle(a1,b2,c3);
+  
   
   
     /**
@@ -47,7 +47,7 @@ public class Triangle {
      */
        double s;
 		   
-    If 0.5[(a1.x-c3.x)(b2.y-c3.y)-(b2.x-c3.x)(a1.y-c3.y)]!==0;
-	return S=0.5[(a1.x-c3.x)(b2.y-c3.y)-(b2.x-c3.x)(a1.y-c3.y)];
+    If 0.5 Math.abs((a1.x-c3.x)(b2.y-c3.y)-(b2.x-c3.x)(a1.y-c3.y))!==0;
+	return S=0.5 Math.abs ((a1.x-c3.x)(b2.y-c3.y)-(b2.x-c3.x)(a1.y-c3.y));
   }
 }

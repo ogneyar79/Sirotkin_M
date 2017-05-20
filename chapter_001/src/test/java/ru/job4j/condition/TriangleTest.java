@@ -19,6 +19,7 @@ public class TriangleTest {
       */
 	@Test
 	public void forCalculationTriangleArea() {
+	Triangle a1B2c2 = new Triangle(a1,b2,c3);
 	Point a1=new Point(0D,0D);
 	Point b2=new Point(2D,2D);
 	Point c3=new Point(3D,3D);
