@@ -33,9 +33,7 @@ public class Triangle {
     this.c = c;
   }
   
-  
-  
-  
+    
     /**
 	  * method for calculating area of a triangle.
       * @return S value
@@ -45,9 +43,12 @@ public class Triangle {
     /**
      *s value for area of a triangle.
      */
-       double s;
+       double s=1;
 		   
-    If 0.5 Math.abs((a1.x-c3.x)(b2.y-c3.y)-(b2.x-c3.x)(a1.y-c3.y))!==0;
-	return S=0.5 Math.abs ((a1.x-c3.x)(b2.y-c3.y)-(b2.x-c3.x)(a1.y-c3.y));
+  if(0.5*Math.abs((a.getX()-c.getX())*(b.getY()-c.getY())-(b.getX()-c.getX())*(a.getY()-c.getY()))!=0){
+  s=0.5*Math.abs ((a.getX()-c.getX())*(b.getY()-c.getY())-(b.getX()-c.getX())*(a.getY()-c.getY()));
+
+  }
+      return s;
   }
 }
