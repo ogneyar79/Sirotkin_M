@@ -19,14 +19,16 @@ public class TriangleTest {
       */
 	@Test
 	public void forCalculationTriangleArea() {
-	Triangle a1B2c2 = new Triangle( );
-	Point a1=new Point(0,0);
+		Point a1=new Point(0,0);
+		Point b2=new Point(2,2);
+		Point c3=new Point(3,3);
+	Triangle a1B2c2 = new Triangle(a1,b2,c3 );
 		a1.getX();
 		a1.getY();
-	Point b2=new Point(2,2);
+
 	b2.getX();
 	b2.getY();
-	Point c3=new Point(3,3);
+
 	c3.getX();
 	c3.getY();
 	a1B2c2.area();
