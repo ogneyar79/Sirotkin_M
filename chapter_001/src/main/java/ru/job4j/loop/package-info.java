@@ -2,6 +2,7 @@
  * //TODO add comments.
  *
  * @author Sirotkin Maksim (maksimus.s@mail.ru)
- * @since 12.04.2017
+ * @version $Id$
+ * @since 30.08.2017
  */
-package ru.job4j.max;
+package ru.job4j.loop;
