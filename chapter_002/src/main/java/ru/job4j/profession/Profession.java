@@ -24,19 +24,32 @@ public class Profession {
    int salary;
 
     /**
-     * speciality value of field for class Profession(minimum salary).
+     * baseSal value of field for class Profession(minimum salary).
      */
     int baseSal;
 
-int hours;
+    /**
+     * hours value of field for class Profession ( quantity hours that persons work).
+     */
+    int hours = 100;
 
-
+    /**
+     * method for setting arguments.
+     *@param name  value for name
+     *@param speciality value for speciality
+     *@param  baseSal value for  baseSal
+     */
 public Profession (String name, String speciality, int baseSal){
 
     this.name = name;
     this.speciality = speciality;
     this.baseSal = baseSal;
 }
+
+    /**
+     * method for setting and getting salary.
+     * @return salary
+     */
     public int paySal() {
         return salary;
 

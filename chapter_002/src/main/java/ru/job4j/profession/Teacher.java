@@ -41,10 +41,18 @@ public class Teacher extends Profession {
     }
 
     @Override
+    /**
+     * method for setting and getting salary.
+     * @return salary
+     */
     public int paySal() {
-        this.salary = baseSal*expireence;
+        this.salary = this.baseSal*expireence;
         return salary;
 
     }
+
+    /**
+     * salary value of field for class Teacher).
+     */
     private int salary=paySal();
 }
