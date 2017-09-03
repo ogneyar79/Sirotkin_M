@@ -15,6 +15,9 @@ public class Doctor extends Profession {
      */
     int numbersPatient;
 
+    /**
+     *ivanEx field for class Doctor from class Experience.
+     */
     Experience ivanEx;
 
     /**
@@ -23,11 +26,12 @@ public class Doctor extends Profession {
      *@param speciality value for speciality
      *@param  baseSal value for  baseSal
      */
-    public  Doctor (String name, String speciality, int baseSal, new Experience( getNumber(), String nameEx, int stage, int levelExperience))
+    public  Doctor (String name, String speciality, double baseSal, Experience ivanEx)
     {
 
-        super(name, speciality, baseSal);
-        Experience ivanEx = new Experience(int number, String nameEx, int stage, int levelExperience);  // Как сдедать чтобы предать в конструктор объект иди конструктор другого класса?
+        super(name, speciality);
+        this.baseSal = baseSal;
+         this.ivanEx = ivanEx;  // Как сдедать чтобы предать в конструктор объект иди конструктор другого класса?
             }
 
 
@@ -36,9 +40,9 @@ public class Doctor extends Profession {
          * method for setting and getting salary.
          * @return salary
          */
-        public int paySal(Experience ivanEx) {
+        public double paySal(Experience ivanEx) {
 
-        salary = this.baseSal*ivanEx.getLevelExperience() * this.numbersPatient * this.hours;
+        salary = this.baseSal*(int)ivanEx.getLevelExperience() * this.numbersPatient * this.hours;
         return salary;
 
     }
