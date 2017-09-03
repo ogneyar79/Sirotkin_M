@@ -55,7 +55,14 @@ public Profession (String name, String speciality, int baseSal){
 
     }
 
+    /**
+     * method for getting name.
+     * @return name
+     */
+    public String getName() {
 
+        return this.name;
+    }
 
 
 
