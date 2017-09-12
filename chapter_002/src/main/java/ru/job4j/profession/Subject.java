@@ -4,7 +4,7 @@ package ru.job4j.profession;
 /**
  * Created by maksi on 27.08.2017.
  */
-public class Subject {
+/*public class Subject {
 
 
 
@@ -12,29 +12,29 @@ public class Subject {
     /**
      * quantity value of field for class Subject( set quantity element our array).
      */
-    int quantity = 3;
+  /*  int quantity = 3;
 
     /**
      * number value of field for class Subject ( every elements array have number).
      */
-    int number;
+    /*int number;
 
     /**
      * calledSubject value of field for class Subject(subject that teaching).
      */
-    private String calledSubject = " Math ";
+   /* private String calledSubject = " Math ";
 
     /**
      * name value of field for class Subject(Teacher's name).
      */
-    String name;
+    /*String name;
 
     /**
      * method for setting arguments.
      *@param calledSubject  value
      *@param number  value
      */
-    public Subject(String calledSubject, int number) {
+    /*public Subject(String calledSubject, int number) {
         this.calledSubject = calledSubject;
         this.number = number;
     }
@@ -45,7 +45,7 @@ public class Subject {
      *@param number  value
      * @param name value
      */
-    public Subject(String calledSubject, int number, String name) {
+    /*public Subject(String calledSubject, int number, String name) {
         this.calledSubject = calledSubject;
         this.number = number;
         this.name = name;
@@ -54,7 +54,7 @@ public class Subject {
     /**
      * method for setting arguments.
      */
-    public Subject() {
+    /*public Subject() {
 
     }
       Subject math_1=new Subject("Math",0,"Ivanov Vasiliy");
@@ -74,7 +74,7 @@ public class Subject {
      * method for getting names's subject.
      * @return answered
      */
-    public String getCalledSubj(String name) {
+    /*public String getCalledSubj(String name) {
         String answered = " ";
         for (Subject SuLisst : SuLissts) {
             if (this.name == name) {
@@ -89,4 +89,4 @@ else {
         }
         return answered;
     }
-}
+}*/

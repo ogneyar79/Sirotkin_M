@@ -2,7 +2,7 @@ package ru.job4j.profession;
         /**
          * Created by maksi on 27.08.2017.
          */
-public class Engineer2 extends Profession {
+/*public class Engineer2 extends Profession {
 
 
     /**
@@ -11,7 +11,7 @@ public class Engineer2 extends Profession {
      *@param speciality value for speciality
      *@param  baseSal value for  baseSal
      */
-    public  Engineer2 (String name, String speciality, int baseSal, int experience){
+  /*  public  Engineer2 (String name, String speciality, int baseSal, int experience){
 
                 super(name, speciality, baseSal);
                 this.experience=experience;
@@ -24,7 +24,7 @@ public class Engineer2 extends Profession {
              * method for setting and getting salary.
              * @return salary
              */
-            public int paySal() {
+    /*        public int paySal() {
                 this.salary = this.baseSal * experience;
                 return salary;
 
@@ -33,10 +33,10 @@ public class Engineer2 extends Profession {
             /**
              * method that show what engineer to do now.
              */
-            public void engeenerWork (Engineer pbPetrov, Project bridge) {
+      /*      public void engeenerWork (Engineer pbPetrov, Project bridge) {
 
                 System.out.println("Engineer" + " " +this.getName() + " " + "are making" + bridge.getProjectName());
 
             }
 
-        }
+        }*/

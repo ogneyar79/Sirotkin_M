@@ -2,9 +2,9 @@ package ru.job4j.profession;
 /**
  * Created by maksi on 03.09.2017.
  */
-public class Patient2 {
+/*public class Patient2 {
 
-    public Patient (int elNumero, String namePatient, String problem) {
+ /*   public Patient (int elNumero, String namePatient, String problem) {
 
         this.elNumero = elNumero;
         this.namePatient = namePatient;
@@ -23,4 +23,4 @@ public class Patient2 {
         return problem;
     }
 
-}
+}*/

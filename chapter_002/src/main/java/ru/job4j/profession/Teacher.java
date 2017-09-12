@@ -3,12 +3,12 @@ package ru.job4j.profession;
 /**
  * Created by maksi on 27.08.2017.
  */
-public class Teacher extends Profession {
+/*public class Teacher extends Profession {
 
     /**
       *expireence value of field for class Teacher.
       */
-    private int expireence;
+  /*  private int expireence;
 
     /**
      * method for setting arguments.
@@ -17,7 +17,7 @@ public class Teacher extends Profession {
      *@param  baseSal value for  baseSal
      *@param  expireence value for  expireence
      */
-    public Teacher (String name, String speciality, int baseSal, int expireence){
+    /*public Teacher (String name, String speciality, int baseSal, int expireence){
         super(name, speciality, baseSal);
         this.expireence = expireence;
     }
@@ -25,12 +25,12 @@ public class Teacher extends Profession {
     /**
       * myCalledForm value of field for class Teacher(form by Teacer to teach).
       */
-    private String myCalledForm;
+    /*private String myCalledForm;
 
     /**
      * calledSubj value of field for class Teacher(subject that teaching).
      */
-    private String calledSubj;
+    /*private String calledSubj;
 
 
     private  void teachCl (String name, InformForTeacher.Form a_4, Subject sub) {
@@ -45,7 +45,7 @@ public class Teacher extends Profession {
      * method for setting and getting salary.
      * @return salary
      */
-    public int paySal() {
+    /*public int paySal() {
         this.salary = this.baseSal*expireence;
         return salary;
 
@@ -54,6 +54,6 @@ public class Teacher extends Profession {
     /**
      * salary value of field for class Teacher).
      */
-    private int salary=paySal();
+    /*private int salary=paySal();
 
-}
+}*/

@@ -6,15 +6,15 @@ import static org.hamcrest.core.Is.is;
 
 import static org.junit.Assert.assertThat;
 
-
-
-
 /**
- * We test different method for class Tracker.
+ * We test different method for testing class Tracker.
  *  @author Sirotkin
  *  @since  10.09.2017
  */
 public class TrackerTest {
+
+
+
 
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
