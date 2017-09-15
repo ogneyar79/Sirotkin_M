@@ -44,4 +44,22 @@ public class Item {
     public void setId(String id) {
         this.id = id;
     }
+
+    public Item inputName () {
+        Item item = new
+                Item( );
+          item.name = name;
+        return item;
+
+    }
+
+    public Item inputDescription() {
+        this.description = description;
+        return this;
+    }
+    public Item inputCreate() {
+        this.create = create;
+        return this;
+    }
+
 }
