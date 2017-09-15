@@ -45,7 +45,7 @@ public class Item {
         this.id = id;
     }
 
-    public Item inputName () {
+    public Item inputName (String name) {
         Item item = new
                 Item( );
           item.name = name;
@@ -53,7 +53,7 @@ public class Item {
 
     }
 
-    public Item inputDescription() {
+    public Item inputDescription(String description) {
         this.description = description;
         return this;
     }
