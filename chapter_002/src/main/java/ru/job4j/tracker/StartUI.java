@@ -11,75 +11,179 @@ import java.util.Scanner;
  */
 public class StartUI {
 
-
+    /**
+     *@ param field input IInput userChoice.
+     *
+     */
 private IInput input;
+
+
+private Tracker tracker;
 
     /**
      *@ param field String userChoice.
      * for comparing with constants
      */
- String userChoice;
-
-String s;
+  private String userChoice;
 
 
-Scanner scanner;
+    /**
+     *@ param field String s.
+     * for comparing with constants
+     */
+     private String s;
 
+    /**
+     *for getting S.
+     * @return s
+     */
+    public String getS() {
+        return s;
+    }
+
+
+
+    /**
+     *@ param field Scanner scanner.
+     *
+     */
+ private Scanner scanner;
+
+    /**
+     *for getting scanner.
+     * @return scanner
+     */
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+
+    /**
+     *@ param field String ADITEM.
+     * constant for comparing
+     */
     private static final String ADDITEM = "0";
 
+    /**
+     *@ param field String SHOWALL.
+     * constant for comparing
+     */
     private static final String SHOWALL = "1";
 
+    /**
+     *@ param field String EDIT.
+     * constant for comparing
+     */
     private static final String EDIT = "2";
 
+    /**
+     *@ param field String DELETE.
+     * constant for comparing
+     */
     private static final String DELETE = "3";
 
+    /**
+     *@ param field String FINDID.
+     * constant for comparing
+     */
     private static final String FINDID = "4";
 
+    /**
+     *@ param field String FINDNAME.
+     * constant for comparing
+     */
     private static final String FINDNAME = "5";
 
+    /**
+     *@ param field String EXIT.
+     * constant for comparing
+     */
     private static final String EXIT = "6";
 
-    private static final String Yes = "0";
-    private static final String No = "1";
+    /**
+     *@ param field String YES.
+     * constant for comparing and exit
+     */
+    private static final String YES = "0";
+
+    /**
+     *@ param field String NO.
+     * constant for comparing and exit
+     */
+    private static final String NO = "1";
+
+
+    private static final String BREAKKK = "7";
 
     /**
      *@ param field ConsoleInput consoleInput object.
      * have list menu as array
      */
-ConsoleInput consoleInput = new ConsoleInput(new String [] {"0. Add new Item", "1. Show all items", "2. Edit item ", "3.Delete item", "4. Find item by Id",
+private ConsoleInput consoleInput = new ConsoleInput(new String[] {"0. Add new Item", "1. Show all items", "2. Edit item ", "3.Delete item", "4. Find item by Id",
         "5. Find items by name", "6. Exit Program", "Select"});
 
 
-public StartUI (IInput input){
-     this.scanner = consoleInput.getScanner();
+    /**
+     * method for creaction SrartUI object.
+     * @param  input IInput
+     *
+     */
+public StartUI(IInput input) {
+      this.scanner = consoleInput.getScanner();
     this.input = input;
 }
+
+
+
+
+public StartUI(IInput input, Tracker tracker) {
+    this.scanner = consoleInput.getScanner();
+       this.input = input;
+       this.tracker = tracker;
+
+}
+
+    /**
+     *for getting userChoice.
+     * @return userChoice
+     */
+    public String getUserChoice() {
+        return userChoice;
+    }
+
+    /**
+     *for getting consoleinput.
+     * @return consoleInput
+     */
+    public ConsoleInput getConsoleInput() {
+        return consoleInput;
+    }
 
     /**
      * method for menu work and cooperation with orders.
      *
      */
-public void init () {
+public void init() {
 
     while (true) {
 
-        String s;
-
+        String name;
         Tracker tracker = new Tracker();
-        userChoice = this.consoleInput.ask("LLL ");
+        userChoice = this.input.ask(" что делать?");
         if (ADDITEM.equals(userChoice)) {
             System.out.print("Прошу Вас уазать ваше имя");
-            String name;
-            name = scanner.nextLine();
+
+            name = this.input.ask(" ");
             Item item = new Item().inputName(name);
             System.out.println("Прошу Вас указать описание заявки ");
             String description;
 
-            description = scanner.nextLine();
+            description = this.input.ask(" ");
 
             item.inputDescription(description);
 
             tracker.add(item);
+            break;
 
 
         } else if (SHOWALL.equals(userChoice)) {
@@ -90,12 +194,13 @@ public void init () {
             System.out.println("Прошу Вас указать id заявки, которую хотите отредактивровать");
             scanner.nextLine();
             tracker.findById(scanner.nextLine());
-
+               if (tracker.findById(scanner.nextLine())==null) {
+                   System.out.println("Прошу Вас ввести корректный id заявки");
+               }
             id = tracker.findById(scanner.nextLine()).getId();
             Item item = new Item();
             item.setId(id);
             System.out.print("Прошу Вас уазать name заявки как вы хотитие отредактировать");
-            String name;
             name = scanner.nextLine();
             item.inputName(name);
 
@@ -134,35 +239,41 @@ public void init () {
 
         } else if (EXIT.equals(userChoice)) {
 
-            ConsoleInput consoleInput2 = new ConsoleInput(new String[]{"0. Да", "1. Нет"});
-            consoleInput2.ask("Вы уверенны, что хотите выйти из программы? Наберите 0 или 1");
-            scanner.nextLine();
-            if (No.equals(userChoice)) {
+            ConsoleInput input2 = new ConsoleInput(new String[]{"0. Да", "1. Нет"});
+            userChoice = input2.ask("Вы уверенны, что хотите выйти из программы? Наберите 0 или 1");
+
+            if (NO.equals(userChoice)) {
                 new StartUI(new ConsoleInput(new String[]{"0. Add new Item", "1. Show all items", "2. Edit item ", "3.Delete item", "4. Find item by Id",
                         "5. Find items by name", "6. Exit Program", "Select"})).init();
-            } else {
+            } else if (YES.equals(userChoice)) {
                        break;
             }
 
+        }
 
-        } else {
-            new StartUI(new ConsoleInput(new String[]{"0. Add new Item", "1. Show all items", "2. Edit item ", "3.Delete item", "4. Find item by Id",
-                    "5. Find items by name", "6. Exit Program", "Select"})).init();
+        if (BREAKKK.equals(userChoice)) {
+            break;
+        }
         }
     }
 
-}
 
 
 
-public static void main (String[]args) {
+    /**
+     * method for enter at program.
+     * @param args []String
+     */
+public static void main(String[]args) {
 
-     new StartUI( new ConsoleInput(new String [] {"0. Add new Item", "1. Show all items", "2. Edit item ", "3.Delete item", "4. Find item by Id",
+     new StartUI(new ConsoleInput(new String[] {"0. Add new Item", "1. Show all items", "2. Edit item ", "3.Delete item", "4. Find item by Id",
             "5. Find items by name", "6. Exit Program", "Select"})).init();
 
 
 
 }
+
+
 }
 
 
