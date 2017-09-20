@@ -15,7 +15,7 @@ public class ConsoleInput implements IInput {
     /**
      *@ param value String [] answers.
      */
-    private String [] answers;
+    private String[] answers;
 
     /**
      *@ param value int position.
@@ -27,26 +27,29 @@ public class ConsoleInput implements IInput {
      *@ param field Scanner.
      * for realisation read entering text
      */
-
     private Scanner scanner = new Scanner(System.in);
+
+
 
     /**
      *@ param field String question.
      * for hand text to method
      */
-     String question;
+    private String question;
 
     /**
      * method for input and ofput text.
+     *
      * @param  question String
      * @return String s
      */
-   public String ask (String question) {
+   public String ask(String question) {
        String s;
           this.question = question;
          System.out.println(this.question);
          for (int position = 0; position < answers.length; position++) {
-         System.out.println(this.answers[position]);}
+         System.out.println(this.answers[position]);
+         }
              s = scanner.nextLine();
 
 
@@ -56,17 +59,29 @@ public class ConsoleInput implements IInput {
     /**
      * method for creaction ConsoleInput object.
      * @param  answers [] String
-     * @return String answers
+     *
      */
-    public ConsoleInput (String [] answers){
+    public ConsoleInput(String[] answers) {
 
         this.answers = answers;
-
     }
 
-
+    /**
+     * method for get scanner.
+     *
+     * @return scanner
+     */
     public Scanner getScanner() {
         return scanner;
+    }
+
+    /**
+     * method for get question.
+     *
+     * @return question
+     */
+    public String getQuestion() {
+        return question;
     }
 
 }

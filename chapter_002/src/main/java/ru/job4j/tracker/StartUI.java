@@ -49,6 +49,8 @@ private Tracker tracker;
      */
  private Scanner scanner;
 
+    String[] answers;
+
     /**
      *for getting scanner.
      * @return scanner
@@ -164,16 +166,15 @@ public StartUI(IInput input, Tracker tracker) {
      *
      */
 public void init() {
-
-    while (true) {
+    userChoice = this.input.ask(" что делать?");
+    while (!userChoice.equals( EXIT)) {
 
         String name;
-        Tracker tracker = new Tracker();
-        userChoice = this.input.ask(" что делать?");
+
         if (ADDITEM.equals(userChoice)) {
             System.out.print("Прошу Вас уазать ваше имя");
 
-            name = this.input.ask(" ");
+            name = input.ask(" ");
             Item item = new Item().inputName(name);
             System.out.println("Прошу Вас указать описание заявки ");
             String description;
@@ -192,39 +193,42 @@ public void init() {
         } else if (EDIT.equals(userChoice)) {
             String id;
             System.out.println("Прошу Вас указать id заявки, которую хотите отредактивровать");
-            scanner.nextLine();
-            tracker.findById(scanner.nextLine());
-               if (tracker.findById(scanner.nextLine())==null) {
+            id = this.input.ask(" что делать?");
+            tracker.findById(id);
+               if (tracker.findById(id)==null) {
                    System.out.println("Прошу Вас ввести корректный id заявки");
                }
-            id = tracker.findById(scanner.nextLine()).getId();
+            id = tracker.findById(id).getId();
             Item item = new Item();
             item.setId(id);
             System.out.print("Прошу Вас уазать name заявки как вы хотитие отредактировать");
-            name = scanner.nextLine();
+            name = this.input.ask(" что делать?");
             item.inputName(name);
 
             System.out.println("Прошу Вас указать описание заявки, то что хотите отредактировать ");
             String description;
 
-            description = scanner.nextLine();
+            description =this.input.ask(" что делать?") ;
 
             item.inputDescription(description);
 
             tracker.update(item);
+              System.out.println("вы хотите выйти или продолжить? Продолжить любое число, выйти введите 6 ");
+            userChoice = this.input.ask(" что делать?");
 
         } else if (DELETE.equals(userChoice)) {
 
             System.out.println("Прошу Вас id заявки, которую хотите удалить ");
-            scanner.nextLine();
-            tracker.findById(scanner.nextLine());
             String id;
-            id = tracker.findById(scanner.nextLine()).getId();
+            id = this.input.ask(" что делать?");
+            tracker.findById(id);
+
+            id = tracker.findById(id).getId();
             Item item = new Item();
             item.setId(id);
-
-            id = tracker.findById(scanner.nextLine()).getId();
             tracker.delete(item);
+            System.out.println("вы хотите выйти или продолжить? Продолжить любое число, выйти введите 6 ");
+            userChoice = this.input.ask(" что делать?");
 
         } else if (FINDID.equals(userChoice)) {
             System.out.println("Прошу Вас id заявки, которую хотите найти ");
@@ -234,28 +238,21 @@ public void init() {
 
         } else if (FINDNAME.equals(userChoice)) {
             System.out.println("Прошу Вас указать ключь(name) заявки, которую хотите найти ");
-            scanner.nextLine();
-            tracker.findByName(scanner.nextLine());
+            name = this.input.ask(" что делать?");
+            tracker.findByName(name);
+            System.out.println("вы хотите выйти или продолжить? Продолжить любое число, выйти введите 6 ");
+            userChoice = this.input.ask(" что делать?");
+        }
 
-        } else if (EXIT.equals(userChoice)) {
 
-            ConsoleInput input2 = new ConsoleInput(new String[]{"0. Да", "1. Нет"});
-            userChoice = input2.ask("Вы уверенны, что хотите выйти из программы? Наберите 0 или 1");
 
-            if (NO.equals(userChoice)) {
-                new StartUI(new ConsoleInput(new String[]{"0. Add new Item", "1. Show all items", "2. Edit item ", "3.Delete item", "4. Find item by Id",
-                        "5. Find items by name", "6. Exit Program", "Select"})).init();
-            } else if (YES.equals(userChoice)) {
-                       break;
-            }
+
 
         }
 
-        if (BREAKKK.equals(userChoice)) {
-            break;
+
         }
-        }
-    }
+
 
 
 

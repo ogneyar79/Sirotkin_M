@@ -18,6 +18,10 @@ public class StubInput implements IInput {
      */
     private String[] answers;
 
+    public String[] getAnswers() {
+        return answers;
+    }
+
     /**
      *@ param value position int.
      */
@@ -39,6 +43,11 @@ public class StubInput implements IInput {
         this.answers = answers;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    private String name;
     /**
      *@ param field Scanner.
      * for realisation read entering text
@@ -57,9 +66,6 @@ public class StubInput implements IInput {
         System.out.println(this.question);
 
         System.out.println(" DDDD");
-        for (int position = 0; position <= answers.length; ) {
-
-        }
 
        return answers[position++];
     }

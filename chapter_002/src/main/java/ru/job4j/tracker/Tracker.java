@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
-import java.util.*;
+import java.util.Random;
+
 
  import  java.util.Arrays;
 
@@ -14,13 +15,22 @@ import java.util.*;
 
 public class Tracker {
 
+   /**
+    * method for getting items.
+    * @return items[]
+    */
+    public Item[] getItems() {
+        return items;
+    }
+
     /**
      *@ param value Item [].
      */
+      private Item[] items = new Item[100];
 
-    public Item [] items = new Item[100];
-
-
+    /**
+     *@ param RN Random.
+     */
 private static final Random RN = new Random();
 
     /**
@@ -29,27 +39,27 @@ private static final Random RN = new Random();
 private int position = 0;
 
     /**
-     * method for add Item item at Item [] and here set Id.
-     * @param  item
+     * method for add Item item at Item[] and here set Id.
+     * @param  item Item
      * @return item
      */
-    public Item add (Item item){
+    public Item add(Item item) {
 
      item.setId(String.valueOf(this.generateId()));
-    this.items[position]=item;
+    this.items[position] = item;
     position++;
     return item;
 }
 
     /**
      * method for find item via id.
-     * @param id
+     * @param id String
      * @return the item
      */
-    protected Item findById (String id) {
+    protected Item findById(String id) {
     Item result = null;
     for (Item item : items) {
-        if ( item != null && item.getId().equals(id)) {
+        if (item != null && item.getId().equals(id)) {
             result = item;
             break;
         }
@@ -59,7 +69,7 @@ private int position = 0;
 
     /**
      * method for creating Id.
-     *
+     * @return valueOf
      */
     String generateId() {
     return String.valueOf(System.currentTimeMillis() + RN.nextInt(100));
@@ -67,11 +77,11 @@ private int position = 0;
 
     /**
      * method for get copy array from items without [i] = Null.
-     * @return []
+     * @return result[]
      */
-    public Item [] getAll() {
+    public Item[] getAll() {
     int count = 0;
-    Item [] result = new Item[position];
+    Item[] result = new Item[position];
     for (int index = 0; index != position; index++) {
 
 
@@ -84,10 +94,9 @@ private int position = 0;
     return result;
 }
 
-
     /**
      * metod for changing our array [].
-     * @param item
+     * @param item Item
      */
     public void update(Item item) {
     String id;
@@ -102,7 +111,7 @@ private int position = 0;
 
     /**
      * method for deleted our items[i] = null and move to end list, and changed position.
-     * @param item
+     * @param item Item
      */
     public void delete(Item item) {
       String id;
@@ -115,7 +124,7 @@ private int position = 0;
 
       }
 
-      for (int i = 0; i != position; i++ ) {
+      for (int i = 0; i != position; i++) {
           if (this.items[i] == null) {
               this.items[i] = this.items[position - 1];
               this.items[position - 1] = null;
@@ -129,20 +138,20 @@ private int position = 0;
     /**
      * metod for find our items[i], using name.
      * @param key String
-     * @return
+     * @return result Arraays.copyOf
      */
     Item[] findByName(String key) {
 
-        Item [] result = new Item[position];
+        Item[] result = new Item[position];
          int count = 0;
-        for (int index = 0; index !=position; index++) {
-            if (  this.items[index].getName().equals(key)) {
-                result[count] =this.items[index];
+        for (int index = 0; index != position; index++) {
+            if (this.items[index].getName().equals(key)) {
+                result[count] = this.items[index];
                 count++;
 
             }
         }
-             result = Arrays.copyOf(result,count);
+   result = Arrays.copyOf(result, count);
         return result;
 
     }
