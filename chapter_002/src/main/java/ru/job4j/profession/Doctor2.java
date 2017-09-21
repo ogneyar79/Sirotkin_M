@@ -5,7 +5,7 @@ package ru.job4j.profession;
 /**
  * Created by maksi on 31.08.2017.
  */
-public class Doctor2 extends Profession {
+/*public class Doctor2 extends Profession {
 
     public  Doctor2 (String name, String speciality, int baseSal, new Experience( getNumber(), String nameEx, int stage, int levelExperience))
     {
@@ -20,7 +20,7 @@ public class Doctor2 extends Profession {
      * method for setting and getting salary.
      * @return salary
      */
-    public int paySal(Experience ivanEx) {
+  /*  public int paySal(Experience ivanEx) {
 
         salary = this.baseSal*ivanEx.getLevelExperience() * this.numbersPatient * this.hours;
         return salary;
@@ -29,9 +29,9 @@ public class Doctor2 extends Profession {
     /**
      * method that show which person doctor to heal now.
      */
-    public void cure(Patient n14){
+    /*public void cure(Patient n14){
         System.out.println("Doctor" + " " + this.getName() + " " + " cure" + n14.getNamePatient());
 
     }
-}
+}*/
 

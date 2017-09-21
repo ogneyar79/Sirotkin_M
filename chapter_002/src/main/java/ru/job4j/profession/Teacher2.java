@@ -3,7 +3,7 @@ package ru.job4j.profession;
 /**
  * Created by maksi on 27.08.2017.
  */
-public class Teacher2 extends Profession2 {
+/*public class Teacher2 extends Profession2 {
 
     /**
      * method for setting arguments.
@@ -12,7 +12,7 @@ public class Teacher2 extends Profession2 {
      *@param  baseSal value for  baseSal
      *@param  expireence value for  expireence
      */
-    public Teacher (String name, String speciality, int baseSal, int expireence){
+   /* public Teacher (String name, String speciality, int baseSal, int expireence){
         super(name, speciality, baseSal);
         this.expireence = expireence;
     }
@@ -29,7 +29,7 @@ public class Teacher2 extends Profession2 {
      * method for setting and getting salary.
      * @return salary
      */
-    public int paySal() {
+    /*public int paySal() {
         this.salary = this.baseSal*expireence;
         return salary;
 
@@ -38,5 +38,5 @@ public class Teacher2 extends Profession2 {
     /**
      * salary value of field for class Teacher).
      */
-    private int salary=paySal();
-}
+    /*private int salary=paySal();
+}*/

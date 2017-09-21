@@ -1,6 +1,6 @@
 package ru.job4j.profession;
 
-public class Profession2 {
+/*public class Profession2 {
 
     /**
      * method for setting arguments.
@@ -8,7 +8,7 @@ public class Profession2 {
      *@param speciality value for speciality
      *@param  baseSal value for  baseSal
      */
-    public Profession2 (String name, String speciality, int baseSal){
+    /*public Profession2 (String name, String speciality, int baseSal){
 
         this.name = name;
         this.speciality = speciality;
@@ -19,7 +19,7 @@ public class Profession2 {
      * method for setting and getting salary.
      * @return salary
      */
-    public int paySal() {
+  /*  public int paySal() {
         return salary;
 
     }
@@ -28,7 +28,7 @@ public class Profession2 {
      * method for getting name.
      * @return name
      */
-    public String getName() {
+   /* public String getName() {
 
         return this.name;
     }
@@ -38,5 +38,6 @@ public class Profession2 {
 
 }
 
-}
+}*/
+
 

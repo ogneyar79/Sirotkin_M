@@ -1,17 +1,17 @@
-package ru.job4j.profession;
+/*package ru.job4j.profession;
 
 /**
  * Класс Project (project for engineer).
  *
  * @author Sirotkin.
  */
-public class Project2 {
+/*public class Project2 {
 
 
     /**
      * method for getting arguments.
      */
-    public String getProjectName(){
+   /* public String getProjectName(){
         return this.projectName;
     }
 
@@ -23,4 +23,4 @@ public class Project2 {
     }
     Project bridge = new Project("bridge");
 
-}
+}*/

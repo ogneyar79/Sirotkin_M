@@ -1,0 +1,17 @@
+
+public class RefTask {
+   public static void main(String[] args) {
+      Integer value = 1;
+      RefTask.change(value);
+      System.out.println(value);
+   }
+
+   public static void change(Integer that) {
+      that++;
+   }
+}
+
+. Ответьте на вопрос: что будет выведено в консоль и почему?
+
+На консоль будет выведенно 1. так как здесь был испльзованн класс обертка. и в результате создался Новый объект типа Intenger 
+и второй момент в теле метода не было обращения через точку к объекту.

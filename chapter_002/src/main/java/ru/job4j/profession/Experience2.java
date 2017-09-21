@@ -2,7 +2,7 @@ package ru.job4j.profession;
 /**
  * Created by maksi on 03.09.2017.
  */
-public class Experience2 {
+/*public class Experience2 {
 
 
     public Experience2(int number, String nameEx, int stage, int levelExperience) {
@@ -30,4 +30,4 @@ public class Experience2 {
         return levelExperience;
     }
 
-}
+}*/

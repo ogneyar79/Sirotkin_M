@@ -18,7 +18,11 @@
 
 		           <modules>
            <module>chapter_001</module>
+<<<<<<< HEAD
            <module>chapter_002</module>
+=======
+		   <module>chapter_002</module>
+>>>>>>> 293d7ba668d28ef1bba460d0f049e7e7cc7b4be2
                    </modules>
 
 		  

@@ -1,0 +1,25 @@
+public class ChangeState {
+public static class Claim {
+public String name;
+}
+
+public static void main(String[] args) {
+Claim claim = new Claim();
+claim.name = "bug";
+processClaim(claim);
+System.out.println(claim.name);
+}
+
+private static void processClaim(Claim value) {
+value.name = "task";
+}
+}
+
+Сколько объектов класс Сlaim создано?
+
+Что будет выведенно на консоль?
+
+ Объектов создан 1;
+ На консоль было выведненно task
+  
+Так как у нас был создан толкьо один объет типа Claim ключевое слово new, т.е переменная value ссылается на один и тотже объет что и переменная claim, и в свою очередь поле name у них одно. соответсвенно изменение значения поля name повлияет и на Claim name.

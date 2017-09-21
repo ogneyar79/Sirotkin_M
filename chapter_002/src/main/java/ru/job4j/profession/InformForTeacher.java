@@ -3,7 +3,7 @@ package ru.job4j.profession;
 /**
  * Created by maksi on 27.08.2017.
  */
-public   class InformForTeacher {
+/*public   class InformForTeacher {
 
 
     String[] array = {"a_4", "b-5"};
@@ -14,7 +14,7 @@ public   class InformForTeacher {
          * method for setting arguments.
          *@param calledForm  value for form'sname
 	     */
-        public Form(String calledForm){
+    /*    public Form(String calledForm){
             this.calledForm=calledForm;
 
         }
@@ -31,8 +31,8 @@ public   class InformForTeacher {
          * method for getting arguments(calledForm).
          *@return this.calledForm
          */
-        public String getCalledForm() {
+      /*  public String getCalledForm() {
             return this.calledForm;
         }
     }
-}
+}*/
