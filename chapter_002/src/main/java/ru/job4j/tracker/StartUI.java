@@ -36,6 +36,7 @@ private Tracker tracker;
     /**
      *for getting S.
      * @return s
+     *
      */
     public String getS() {
         return s;
@@ -166,105 +167,24 @@ public StartUI(IInput input, Tracker tracker) {
      *
      */
 public void init() {
-    userChoice = this.input.ask(" что делать?");
-    while (!userChoice.equals( EXIT)) {
+    Tracker tracker = new Tracker();
+      MenuTracker menu = new MenuTracker(this.input, tracker);
+      menu.fillActionInit();
+        do {
 
-        String name;
-
-        if (ADDITEM.equals(userChoice)) {
-            System.out.print("Прошу Вас уазать ваше имя");
-
-            name = input.ask(" ");
-            Item item = new Item().inputName(name);
-            System.out.println("Прошу Вас указать описание заявки ");
-            String description;
-
-            description = this.input.ask(" ");
-
-            item.inputDescription(description);
-
-            tracker.add(item);
-            break;
-
-
-        } else if (SHOWALL.equals(userChoice)) {
-            tracker.getAll();
-
-        } else if (EDIT.equals(userChoice)) {
-            String id;
-            System.out.println("Прошу Вас указать id заявки, которую хотите отредактивровать");
-            id = this.input.ask(" что делать?");
-            tracker.findById(id);
-               if (tracker.findById(id)==null) {
-                   System.out.println("Прошу Вас ввести корректный id заявки");
-               }
-            id = tracker.findById(id).getId();
-            Item item = new Item();
-            item.setId(id);
-            System.out.print("Прошу Вас уазать name заявки как вы хотитие отредактировать");
-            name = this.input.ask(" что делать?");
-            item.inputName(name);
-
-            System.out.println("Прошу Вас указать описание заявки, то что хотите отредактировать ");
-            String description;
-
-            description =this.input.ask(" что делать?") ;
-
-            item.inputDescription(description);
-
-            tracker.update(item);
-              System.out.println("вы хотите выйти или продолжить? Продолжить любое число, выйти введите 6 ");
-            userChoice = this.input.ask(" что делать?");
-
-        } else if (DELETE.equals(userChoice)) {
-
-            System.out.println("Прошу Вас id заявки, которую хотите удалить ");
-            String id;
-            id = this.input.ask(" что делать?");
-            tracker.findById(id);
-
-            id = tracker.findById(id).getId();
-            Item item = new Item();
-            item.setId(id);
-            tracker.delete(item);
-            System.out.println("вы хотите выйти или продолжить? Продолжить любое число, выйти введите 6 ");
-            userChoice = this.input.ask(" что делать?");
-
-        } else if (FINDID.equals(userChoice)) {
-            System.out.println("Прошу Вас id заявки, которую хотите найти ");
-            scanner.nextLine();
-            tracker.findById(scanner.nextLine());                                     // Куда девать эту заявку далее?
-
-
-        } else if (FINDNAME.equals(userChoice)) {
-            System.out.println("Прошу Вас указать ключь(name) заявки, которую хотите найти ");
-            name = this.input.ask(" что делать?");
-            tracker.findByName(name);
-            System.out.println("вы хотите выйти или продолжить? Продолжить любое число, выйти введите 6 ");
-            userChoice = this.input.ask(" что делать?");
+             menu.show();
+             int key = Integer.valueOf(this.input.ask("Select:"));
+             menu.select(key);
+        } while (!"Y".equals(this.input.ask("Exit?, Y")));
         }
-
-
-
-
-
-        }
-
-
-        }
-
-
-
-
 
     /**
      * method for enter at program.
      * @param args []String
      */
 public static void main(String[]args) {
-
-     new StartUI(new ConsoleInput(new String[] {"0. Add new Item", "1. Show all items", "2. Edit item ", "3.Delete item", "4. Find item by Id",
-            "5. Find items by name", "6. Exit Program", "Select"})).init();
+          IInput input = new ConsoleInput(new String[]{"Zero"});
+     new StartUI(input).init();
 
 
 

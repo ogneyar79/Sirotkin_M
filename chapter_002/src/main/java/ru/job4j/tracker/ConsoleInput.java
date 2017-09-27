@@ -44,14 +44,10 @@ public class ConsoleInput implements IInput {
      * @return String s
      */
    public String ask(String question) {
-       String s;
+         String s;
           this.question = question;
          System.out.println(this.question);
-         for (int position = 0; position < answers.length; position++) {
-         System.out.println(this.answers[position]);
-         }
-             s = scanner.nextLine();
-
+           s = scanner.nextLine();
 
                  return s;
     }
