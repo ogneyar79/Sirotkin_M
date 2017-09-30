@@ -19,5 +19,8 @@ public interface IInput {
     String ask(String question);
 
 
+    int ask(String question, int[] range);
+
+
 }
 

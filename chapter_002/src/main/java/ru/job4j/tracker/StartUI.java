@@ -125,7 +125,6 @@ private Tracker tracker;
 private ConsoleInput consoleInput = new ConsoleInput(new String[] {"0. Add new Item", "1. Show all items", "2. Edit item ", "3.Delete item", "4. Find item by Id",
         "5. Find items by name", "6. Exit Program", "Select"});
 
-
     /**
      * method for creaction SrartUI object.
      * @param  input IInput
@@ -136,14 +135,10 @@ public StartUI(IInput input) {
     this.input = input;
 }
 
-
-
-
 public StartUI(IInput input, Tracker tracker) {
     this.scanner = consoleInput.getScanner();
        this.input = input;
        this.tracker = tracker;
-
 }
 
     /**
@@ -162,19 +157,32 @@ public StartUI(IInput input, Tracker tracker) {
         return consoleInput;
     }
 
+
+
+    int[] range;
+
     /**
      * method for menu work and cooperation with orders.
      *
      */
 public void init() {
     Tracker tracker = new Tracker();
+
       MenuTracker menu = new MenuTracker(this.input, tracker);
+       range = new int[menu.getAktions().length];
+      range[0] = 0;
+      range[1] = 1;
+      range[2] = 2;
+      range[3] = 3;
+      range[4] = 4;
+      range[5] = 5;
+      range[6] = 6;
+
       menu.fillActionInit();
         do {
-
+              System.out.println(range.length);
              menu.show();
-             int key = Integer.valueOf(this.input.ask("Select:"));
-             menu.select(key);
+            menu.select(input.ask("Select:", range));
         } while (!"Y".equals(this.input.ask("Exit?, Y")));
         }
 
@@ -183,13 +191,11 @@ public void init() {
      * @param args []String
      */
 public static void main(String[]args) {
-          IInput input = new ConsoleInput(new String[]{"Zero"});
+
+          IInput input = new ValidateInput();
      new StartUI(input).init();
 
-
-
 }
-
 
 }
 

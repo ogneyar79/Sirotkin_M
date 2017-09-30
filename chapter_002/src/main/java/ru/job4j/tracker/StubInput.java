@@ -71,7 +71,10 @@ public class StubInput implements IInput {
     }
 
 
-
+       public int ask(String question, int[] range) {
+        //throw new unsupportedOperationException("Unsupported Operation");
+           return -1;
+       }
 /**
  * method for get scanner.
  *

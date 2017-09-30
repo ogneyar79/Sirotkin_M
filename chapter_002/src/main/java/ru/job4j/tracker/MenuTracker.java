@@ -36,7 +36,11 @@ public class MenuTracker {
 
     private Tracker tracker;
 
-     private IUserAktion[] aktions = new IUserAktion[7];
+    private IUserAktion[] aktions = new IUserAktion[7];
+
+    public IUserAktion[] getAktions() {
+        return aktions;
+    }
 
     public MenuTracker(IInput input, Tracker tracker) {
         this.input = input;
@@ -59,7 +63,10 @@ public class MenuTracker {
             public void select (int key) {
                this.aktions[key].execute(input,tracker);
             }
-            public void show() {
+
+
+
+    public void show() {
                 for (int i = 0; i < aktions.length; i++) {
                     if (aktions[i] != null) System.out.println(this.aktions[i].info());
                 }
