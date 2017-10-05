@@ -8,12 +8,6 @@ abstract class BaseAction implements IUserAktion {
 
     }
 
-
-    public String info() {
-        return String.format("%s. %s", this.key(), " Copy");
-
-    }
-
     abstract void start();
 
     public class CopyBaseAction extends BaseAction {
@@ -22,6 +16,9 @@ abstract class BaseAction implements IUserAktion {
         public CopyBaseAction(String name, int key) {
             super(name, key);
         }
+
+        public String info() { return String.format("%s. %s", this.key(), " "); }
+
        public void start() {
 
        }
@@ -37,6 +34,13 @@ abstract class BaseAction implements IUserAktion {
 public static void main(String[] args) {
 
     BaseAction b = new BaseAction("7", 7) {
+     @Override
+    public String info() {
+
+             return String.format("%s. %s", this.key(), " ");
+
+     }
+
         @Override
         void start() {
 
