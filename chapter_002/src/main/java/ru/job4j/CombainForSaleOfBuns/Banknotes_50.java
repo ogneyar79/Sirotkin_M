@@ -1,85 +1,88 @@
 package ru.job4j.CombainForSaleOfBuns;
 
-public class Coins_1 implements ICoins {
+      /**
+        * класс Banknotes_50 conteiner for keeping bankonote by nominal 50.
+        *
+        * @author Sirotkin.
+        *
+        */
+public class Banknotes_50 implements ICoins {
 
     /**
      * @ param field for name string.
      */
-    private final String name = "Coin_1";
-
-
-
-    private final int nominal = 1;
-
-    String yourChange;
+    private final String name = "cash_50";
 
     /**
-     * @ param field int for pay maney back.
-     */
-    private int change;
-
-    private int quantity;
-
-    /**
-     * @ param int field for max monets.
-     */
-    private final int maxQuantity = 500;
-
-    /**
-     * @ param int for max sum coins.
-     */
-    private final int maxCash = 500;
-
-
-
-    /**
-     * @ param int for quantity monets.
+     * @ param int for quantity banknotes.
      */
     private int balanceMonets;
 
     /**
-     * @ param int for cout cash 1_coins.
+     * @ param int that show sum money.
      */
-    private int cashBalance = balanceMonets * 1;
+    private int cashBalance;
 
+
+    private final int maxQuantity = 100;
 
     /**
-     * @ param int that show remaining place for monets.
+     * @ param int that show max sum money.
      */
+    private final int maxCash = 5000;
+
+      /**
+     * @ param int that How one bankonotes is.
+     */
+   private final int nominal = 50;
+
     private int difference = maxQuantity - balanceMonets;
 
     private int differenceCashBalance = maxCash - cashBalance;
 
 
+    @Override
 
+    public int getMaxQuantity() {
+        return maxQuantity;
+    }
+
+
+
+    private int change;
+
+    /**
+     * @ param int that show.
+     */
+    private int quantity;
 
     /**
      * method for creaction Coinx_10 object.
      * @param  balanceMonets int
      *
      */
-    public Coins_1(int balanceMonets, int change) {
+    public Banknotes_50(int balanceMonets, int change) {
         this.balanceMonets = balanceMonets;
-        this.cashBalance = balanceMonets * 1;
-        this.change = change;
+        this.cashBalance = balanceMonets * 50;
+       this.change = change;
     }
+
 
 
     public String getName() {
         return name;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    @Override
     public int getCashBalance() {
         return cashBalance;
     }
 
-    public int getMaxQuantity() {
-        return maxQuantity;
+    public int getMaxCash() {
+        return maxCash;
+    }
+
+    public int getDifferenceCashBalance() {
+        return differenceCashBalance;
     }
 
     public int getBalanceMonets() {
@@ -90,30 +93,17 @@ public class Coins_1 implements ICoins {
         return difference;
     }
 
-    @Override
-    public int getMaxCash() {
-        return maxCash;
+    public int getNominal() {
+        return nominal;
     }
 
-    @Override
-    public int getDifferenceCashBalance() {
-        return differenceCashBalance;
-    }
-
-    @Override
     public int getChange() {
         return change;
     }
 
-    public int getNominal() { return nominal; }
-
-    public void giveChange() {
-        System.out.println(" Your change =" + " " + change);
-    }
-
     /**
-     * method for download coins to stock.
-     *@return balanceMonets
+     * method for download banknots to stock.
+     *@return cashBalance
      */
     public int putMoney(int quantity) {
         int temporraryBank = quantity;
@@ -131,15 +121,27 @@ public class Coins_1 implements ICoins {
         }
         info();
         return cashBalance;
+
     }
 
+    /**
+     * method for giving change.
+     *
+     */
+    public void giveChange() {
+        System.out.println(" Your change =" + " " + change);
+    }
+
+    /**
+     * method for hand change.
+     *
+     */
     public void giveChange(int quantity) {
         change = quantity;
         giveChange();
+             }
 
-    }
-
-    public void  info() {    System.out.print("Your balanceMonets is" + balanceMonets + "1 coins" + ", cashBalance" + cashBalance); }
+    public void  info() {    System.out.print("Your balance" + cashBalance + "Notes"); }
 
     public void setChange(int change) {
         this.change = change;
@@ -148,5 +150,3 @@ public class Coins_1 implements ICoins {
         this.cashBalance = cashBalance;
     }
 }
-
-
