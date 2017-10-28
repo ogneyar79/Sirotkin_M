@@ -1,48 +1,27 @@
 package ru.job4j.JChess;
 
 
-public abstract class Cell_1 {
+public  class Cell_1 {
 
-    final int cellCoordinate;
-
-    protected Cell_1(int cellCoordinate) {
-        this.cellCoordinate = cellCoordinate;
-    }
-    public abstract boolean isCellOccupied();
-    public abstract Figure getFigure();
+    final int cell_x, cell_y;
+    final int cell_oneCoordinate;
 
 
-
-    public static final class EmptyCell_1 extends Cell_1 {
-
-        public EmptyCell_1(final int cellCoordinate) {
-            super(cellCoordinate);
-        }
-        public boolean isCellOccupied() {
-            return false;
-        }
-        public Figure getFigure() {
-            return null;
-        }
+    public Cell_1(int cell_x, int cell_y, int cell_oneCoordinate) {
+        this.cell_x = cell_x;
+        this.cell_y = cell_y;
+        this.cell_oneCoordinate = cell_oneCoordinate;
     }
 
+    public int getCell_x() {
+        return cell_x;
+    }
 
-    public static final class OccuppedCell_1 extends Cell_1 {
-        private final Figure figureOnTheCell;
+    public int getCell_y() {
+        return cell_y;
+    }
 
-        public OccuppedCell_1(int cellCoordinate, Figure figureOnTheCell) {
-            super(cellCoordinate);
-            this.figureOnTheCell = figureOnTheCell;
-        }
-
-        @Override
-        public boolean isCellOccupied() {
-            return true;
-        }
-
-        @Override
-        public Figure getFigure() {
-            return figureOnTheCell;
-        }
+    public int getCell_oneCoordinate() {
+        return cell_oneCoordinate;
     }
 }
