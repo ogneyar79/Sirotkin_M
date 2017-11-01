@@ -1,6 +1,6 @@
 package ru.job4j.JChess;
 
-public class Move_1 {
+public class Move {
 
 
 }

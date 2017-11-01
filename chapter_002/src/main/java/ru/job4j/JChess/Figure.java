@@ -4,10 +4,10 @@ public abstract class Figure {
 
 
     final String name;
-      Cell_1 currentPosition;
-    final Cell_1 firstPosition;
+      Cell currentPosition;
+    final Cell firstPosition;
 
-    public Figure(final String name, Cell_1 currentPosition, final Cell_1 firstPosition) {
+    public Figure(final String name, Cell currentPosition, final Cell firstPosition) {
         this.name = name;
         this.currentPosition = currentPosition;
         this.firstPosition = firstPosition;
@@ -20,7 +20,8 @@ public abstract class Figure {
     Если фигура туда пойти не может. выбросить исключение ImposibleMoveException
     */
 
-   public abstract Cell_1[] way(Cell_1 dist);
+   public abstract Cell[] way(Cell dist);
+   public abstract Cell clone(Cell dist);
 
 
 }
