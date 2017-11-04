@@ -6,50 +6,32 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class Bishop extends Piece {
+public class Bishop extends Figure {
 
-    private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATE = {-9, -7, 7, 9};
-
-    public Bishop(Alliance pieceAlliance, int piecePosition) {
-        super(piecePosition, pieceAlliance);
+    public Bishop(final String name, Cell currentPosition, final Cell firstPosition) {
+        super(name, currentPosition, firstPosition);
     }
 
     @Override
-    public Collection<Move> calculateLegalMoves(Board board) {
+    public Cell[] way(Cell dist) throws ImposibleMoveException{
+        Cell[] cel1s = new Cell[63];
+       if (((dist.getCell_oneCoordinate() - currentPosition.getCell_oneCoordinate())%7 == 0||(dist.getCell_oneCoordinate() - currentPosition.getCell_oneCoordinate())%9 == 0) && (dist.getCell_oneCoordinate() - currentPosition.getCell_oneCoordinate() > 0 || dist.getCell_oneCoordinate() - currentPosition.getCell_oneCoordinate() < 64) && (dist.getColor() == currentPosition.getColor())) {
+              Cell[] cell1s = new Cell[dist.getCell_oneCoordinate() - currentPosition.getCell_oneCoordinate()];
+       } else {
 
-        final List<Move>legalMoves = new ArrayList<>();
-        for (final int candidateCoordinateOffset : CANDIDATE_MOVE_VECTOR_COORDINATE) {
-             int candidateDestinationCoordinate = this.piecePosition;
+       throw new ImposibleMoveException();}
 
-            while (BoardUtils.isValidCellCoordinate(candidateDestinationCoordinate)) {
-                if (isFirstColumnExclusion(candidateDestinationCoordinate, candidateCoordinateOffset)|| isEigthColumnExclusion(candidateDestinationCoordinate, candidateCoordinateOffset)){
-                    break;
-                }
-
-                candidateDestinationCoordinate = +candidateCoordinateOffset;
-
-                if (BoardUtils.isValidCellCoordinate(candidateDestinationCoordinate)) {
-                    final Cell candidateDestinationCell = board.getCell(candidateDestinationCoordinate);
-
-                    if (!candidateDestinationCell.isCellOccupied()) {
-                        legalMoves.add(new Move.MajorMove(board, this, candidateDestinationCoordinate));
-                    } else {
-                        final Piece pieceAtDestination = candidateDestinationCell.getPiece();
-                        final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
-                        if (this.pieceAlliance != pieceAlliance) {
-                            legalMoves.add(new Move.AttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-        return ImmutableList.copyOf(legalMoves);
+        return cel1s;
     }
-    private static boolean isFirstColumnExclusion(final int carrentPosition, final int candidateOffset) {
-        return BoardUtils.FIRST_COLUMN[carrentPosition] && (candidateOffset == -9 || candidateOffset == 7);
-            }
-    private static boolean isEigthColumnExclusion(final int carrentPosition, final int candidateOffset) {
-        return BoardUtils.EIGTH_COLUMN[carrentPosition] && (candidateOffset == -7 || candidateOffset == 9);
-}
+
+    public void makeWay() {
+        final Cell dist = null;
+        try {
+             way( dist);
+                    } catch (final ImposibleMoveException e) {
+                      e.printStackTrace();
+        }
+    }
+
+
 }
