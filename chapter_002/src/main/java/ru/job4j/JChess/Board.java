@@ -1,40 +1,73 @@
 package ru.job4j.JChess;
+/**
+ * Created by maksi on 03.11.2017.
+ */
 
-public class Board_1 {
-
+public class Board {
     Figure[] figures;
-    Cell_1[] cel1s;
+    Cell[] boardCel1s;
+    boolean checkMark;
 
-    public Board_1(Figure[] figures, Cell_1[] cel1s) {
+    public Board(Figure[] figures, Cell[] boardCel1s) {
         this.figures = figures;
-        this.cel1s = cel1s;
+        this.boardCel1s = boardCel1s;
     }
 
-    public Cell_1[] kreateBoard() {
-        Cell_1[] cells = new Cell_1[64];
-        cells[0] = new Cell_1(0, 0,0, 0);
-        for (int i = 0; i < cells.length; i++) {
-            cells[i] = new Cell_1(i, i, i, i);
+    public Cell[] kreateBoard() {
+        Cell[] boardCells = new Cell[64];
+        boardCel1s[0] = new Cell(0, 0, 0, 0);
+        for (int i = 0; i < boardCel1s.length; i++) {
+            boardCel1s[i] = new Cell(i, i, i, i);
         }
-           for ( int j = 0; j<=7 ; j++) {
-            if (j%2 ==0) {
-                cells[j].setColor(0);
+        for (int j = 0; j <= 7; j++) {
+            if (j % 2 == 0) {
+                boardCel1s[j].setColor(0);
+            } else {
+                boardCel1s[j].setColor(1);
             }
-            else {
-                cells[j].setColor(1);
-            }
-            for ( int l = 8; l <= 15; l++) {
-                if (l%2 == 0) {
-                    cells[l].setColor(1);
+            for (int l = 8; l <= 15; l++) {
+                if (l % 2 == 0) {
+                    boardCel1s[l].setColor(1);
                 } else {
-                    cells[l].setColor(0);
+                    boardCel1s[l].setColor(0);
                 }
             }
-           }
-        return cells;
+        }
+        return boardCel1s;
     }
-     Board_1 board_1 = new Board_1(figures, cel1s);
 
-    boolean move(Cell_1 sourse, Cell_1 dist)
-         
+    Board board1 = new Board(figures, boardCel1s);
+
+
+    boolean move(Cell currentPosition, Cell dist) throws ImposibleMoveException, OccupiedWayException, FigureNotFoundException {
+        checkMark = false;
+        Cell[] cells = new Cell[64];
+                for (int j = 0; j < boardCel1s.length; j++) {
+            boardCel1s[j].getCell_oneCoordinate();
+            if (boardCel1s[j].getCell_oneCoordinate() == currentPosition.getCell_oneCoordinate()) {
+                if (currentPosition.getCellOccupied() != 0) {
+                    checkMark = true;
+                } else {
+                    throw new FigureNotFoundException();
+                }
+                cells = figures.way(dist);     // если фигура есть, то проверте может ли она так двигаться, //
+                for (int i = 0; i < cells.length; i++) {   // Проверить что полученный путь не занят фигурами, кроме коня и пешки на первом ходу//
+                    cells[i].getCellOccupied();
+                    if (cells[i].getCellOccupied() == 0) {
+                        throw new OccupiedWayException();
+                        break;
+                    } else {
+                        checkMark = true;
+                    }
+                }
+                if (checkMark == true) {
+                }
+            } else {
+                checkMark = true;
+            }
+        }
+        return checkMark;
+    }
 }
+
+
