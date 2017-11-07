@@ -4,15 +4,39 @@ package ru.job4j.JChess;
  */
 
 public class Board {
+
+    /**
+     *@ param[] fields figures.
+     *
+     */
     Figure[] figures;
+
+    /**
+     *@ param[] field boardCells(cells at the board).
+     *
+     */
     Cell[] boardCel1s;
+
+    /**
+     *@ param boolean field checkMark(for selekting choises at method).
+     *
+     */
     boolean checkMark;
 
+    /**
+     * method for creating Board object.
+     *
+     */
     public Board(Figure[] figures, Cell[] boardCel1s) {
         this.figures = figures;
         this.boardCel1s = boardCel1s;
     }
 
+    /**
+     * method for kreating Chess board(by filing board with 64 cells).
+     *
+     * @return boardCells
+     */
     public Cell[] kreateBoard() {
         Cell[] boardCells = new Cell[64];
         boardCel1s[0] = new Cell(0, 0, 0, 0);
@@ -39,6 +63,12 @@ public class Board {
     Board board1 = new Board(figures, boardCel1s);
 
 
+    /**
+     * method for definition opportunity figure moving.
+     * @param  currentPosition Cell
+     * @param dist Cell
+     * @return this
+     */
     boolean move(Cell currentPosition, Cell dist) throws ImposibleMoveException, OccupiedWayException, FigureNotFoundException {
         checkMark = false;
         Cell[] cells = new Cell[64];
