@@ -1,6 +1,12 @@
 package ru.job4j.JChess;
 
-/**public class Bishop extends Piece {
+import com.google.common.collect.ImmutableList;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+public class Bishop extends Piece {
 
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATE = {-9, -7, 7, 9};
 
@@ -46,4 +52,4 @@ package ru.job4j.JChess;
     private static boolean isEigthColumnExclusion(final int carrentPosition, final int candidateOffset) {
         return BoardUtils.EIGTH_COLUMN[carrentPosition] && (candidateOffset == -7 || candidateOffset == 9);
 }
-}*/
+}

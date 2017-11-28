@@ -1,61 +1,40 @@
 package ru.job4j.JChess;
 
-/**public abstract class Cell {
 
-    final int cellCoordinate;
+public  class Cell {
 
-    private static final Map<Integer, EmptyCell>EMPTY_CELL_CACHE = createAllPosibleEmptyCell();
-    private static Map<Integer, EmptyCell>createAllPosibleEmptyCell() {
-        final Map<Integer, EmptyCell>emptyCellMap = new HashMap<>();
-        for (int i = 0; i < BoardUtils.NUM_CELL; i++) {
-            emptyCellMap.put(i, new EmptyCell(i));
-        }
-        return ImmutableMap.copyOf(emptyCellMap);
+    final int cell_x, cell_y;
+    final int cell_oneCoordinate;
+    private int color; // white
+
+    public Cell(int cell_x, int cell_y, int cell_oneCoordinate,  int color) {
+        this.cell_x = cell_x;
+        this.cell_y = cell_y;
+        this.cell_oneCoordinate = cell_oneCoordinate;
+        this.color = color;
     }
 
-    public static Cell createCell(final int cellCoordinate, final Piece piece) {
-        return piece != null ? new OccuppedCell(cellCoordinate, piece) : EMPTY_CELL_CACHE.get(cellCoordinate);
-    }
-   private Cell( final int cellCoordinate) {
-        this.cellCoordinate = cellCoordinate;
+    public int getCell_x() {
+        return cell_x;
     }
 
-    public abstract boolean isCellOccupied();
-    public abstract Piece getPiece();
-
-
-
-
-    public static final class EmptyCell extends Cell {
-
-       public EmptyCell(final int cellCoordinate) {
-            super(cellCoordinate);
-        }
-        public boolean isCellOccupied() {
-           return false;
-        }
-
-        @Override
-        public Piece getPiece() {
-            return null;
-        }
+    public int getCell_y() {
+        return cell_y;
     }
 
-    public static final class OccuppedCell extends Cell {
-        private final Piece pieceOnCell;
+    public int getCell_oneCoordinate() {
+        return cell_oneCoordinate;
+    }
 
-        private OccuppedCell(int cellCoordinate, final Piece pieceOnCell) {
-            super(cellCoordinate);
-            this.pieceOnCell = pieceOnCell;
-        }
+    public int getColor() {
+        return color;
+            }
 
-        public boolean isCellOccupied() {
-            return true;
-        }
+    public void setColor(final int color) {
 
-        @Override
-        public Piece getPiece() {
-            return pieceOnCell;
+        if (color ==0 || color == 1) {
+        this.color = color; }
+        else  { this.color = 0;
         }
     }
-}*/
+}
