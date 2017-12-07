@@ -1,103 +1,100 @@
 package ru.job4j.JChess;
-/**
- * Created by maksi on 03.11.2017.
- */
 
-public class Board {
+/**public class Board {
+    public Cell getCell(final int cellCoordinate) {
 
-    /**
-     *@ param[] fields figures.
-     *
-     */
-    Figure[] figures;
-
-    /**
-     *@ param[] field boardCells(cells at the board).
-     *
-     */
-    Cell[] boardCel1s;
-
-    /**
-     *@ param boolean field checkMark(for selekting choises at method).
-     *
-     */
-    boolean checkMark;
-
-    /**
-     * method for creating Board object.
-     *
-     */
-    public Board(Figure[] figures, Cell[] boardCel1s) {
-        this.figures = figures;
-        this.boardCel1s = boardCel1s;
+        return gameBoard.get(cellCoordinate);
     }
 
-    /**
-     * method for kreating Chess board(by filing board with 64 cells).
-     *
-     * @return boardCells
-     */
-    public Cell[] kreateBoard() {
-        Cell[] boardCells = new Cell[64];
-        boardCel1s[0] = new Cell(0, 0, 0, 0);
-        for (int i = 0; i < boardCel1s.length; i++) {
-            boardCel1s[i] = new Cell(i, i, i, i);
-        }
-        for (int j = 0; j <= 7; j++) {
-            if (j % 2 == 0) {
-                boardCel1s[j].setColor(0);
-            } else {
-                boardCel1s[j].setColor(1);
-            }
-            for (int l = 8; l <= 15; l++) {
-                if (l % 2 == 0) {
-                    boardCel1s[l].setColor(1);
-                } else {
-                    boardCel1s[l].setColor(0);
+    private final List<Cell> gameBoard;
+    private final Collection<Piece> whitePieces;
+    private final Collection<Piece>blackPieces;
+
+    private Board(Builder builder) {
+          this.gameBoard = createGameBoard(builder);
+          this.whitePieces = calculateActivePieces(this.gameBoard, Alliance.WHITE);
+          this.blackPieces = calculateActivePieces(this.gameBoard, Alliance.BLACK);
+    }
+
+    private Collection<Piece> calculateActivePieces(final List<Cell> gameBoard, final Alliance alliance) {
+        final List<Piece> activePieces = new ArrayList<>();
+        for (final Cell cell : gameBoard) {
+            if (cell.isCellOccupied()) {
+                final Piece piece = cell.getPiece();
+                if (piece.getPieceAlliance() == alliance) {
+                    activePieces.add(piece);
                 }
             }
         }
-        return boardCel1s;
+        return ImmutableList.copyOf(activePieces);
     }
 
-    Board board1 = new Board(figures, boardCel1s);
-
-
-    /**
-     * method for definition opportunity figure moving.
-     * @param  currentPosition Cell
-     * @param dist Cell
-     * @return this
-     */
-    boolean move(Cell currentPosition, Cell dist) throws ImposibleMoveException, OccupiedWayException, FigureNotFoundException {
-        checkMark = false;
-        Cell[] cells = new Cell[64];
-                for (int j = 0; j < boardCel1s.length; j++) {
-            boardCel1s[j].getCell_oneCoordinate();
-            if (boardCel1s[j].getCell_oneCoordinate() == currentPosition.getCell_oneCoordinate()) {
-                if (currentPosition.getCellOccupied() != 0) {
-                    checkMark = true;
-                } else {
-                    throw new FigureNotFoundException();
-                }
-                cells = figures.way(dist);     // если фигура есть, то проверте может ли она так двигаться, //
-                for (int i = 0; i < cells.length; i++) {   // Проверить что полученный путь не занят фигурами, кроме коня и пешки на первом ходу//
-                    cells[i].getCellOccupied();
-                    if (cells[i].getCellOccupied() == 0) {
-                        throw new OccupiedWayException();
-                        break;
-                    } else {
-                        checkMark = true;
-                    }
-                }
-                if (checkMark == true) {
-                }
-            } else {
-                checkMark = true;
-            }
+    private static List<Cell>createGameBoard(final Builder builder) {
+        final Cell[]cells = new Cell[BoardUtils.NUM_CELL];
+        for (int i = 0; i < BoardUtils.NUM_CELL; i++) {
+            cells[i] = Cell.createCell(i, builder.boardConfig.get(i));
         }
-        return checkMark;
+        return ImmutableList.copyOf(cells);
     }
-}
+    public static Board creatStandartBoard() {
+        final Builder builder = new Builder();
+        // Black Layout
+        builder.setPiece(new Rook(Alliance.BLACK,0));
+        builder.setPiece(new Knight(Alliance.BLACK,1));
+        builder.setPiece(new Bishop(Alliance.BLACK,2));
+        builder.setPiece(new Queen(Alliance.BLACK,3));
+        builder.setPiece(new King(Alliance.BLACK,4));
+        builder.setPiece(new Bishop(Alliance.BLACK,5));
+        builder.setPiece(new Knight(Alliance.BLACK,6));
+        builder.setPiece(new Rook(Alliance.BLACK,7));
+        builder.setPiece(new Pawn(Alliance.BLACK,8));
+        builder.setPiece(new Pawn (Alliance.BLACK,9));
+        builder.setPiece(new Pawn(Alliance.BLACK,10));
+        builder.setPiece(new Pawn(Alliance.BLACK,11));
+        builder.setPiece(new Pawn(Alliance.BLACK,12));
+        builder.setPiece(new Pawn(Alliance.BLACK,13));
+        builder.setPiece(new Pawn(Alliance.BLACK,14));
+        builder.setPiece(new Pawn(Alliance.BLACK,15));
 
+        // White Layout
+        builder.setPiece(new Pawn(Alliance.WHITE,48));
+        builder.setPiece(new Pawn(Alliance.WHITE,49));
+        builder.setPiece(new Pawn(Alliance.WHITE,50));
+        builder.setPiece(new Pawn(Alliance.WHITE,51));
+        builder.setPiece(new Pawn(Alliance.WHITE,52));
+        builder.setPiece(new Pawn(Alliance.WHITE,53));
+        builder.setPiece(new Pawn(Alliance.WHITE,54));
+        builder.setPiece(new Pawn(Alliance.WHITE,55));
+        builder.setPiece(new Rook(Alliance.WHITE,56));
+        builder.setPiece(new Knight(Alliance.WHITE,57));
+        builder.setPiece(new Bishop(Alliance.WHITE,58));
+        builder.setPiece(new Queen(Alliance.WHITE,59));
+        builder.setPiece(new King(Alliance.WHITE,60));
+        builder.setPiece(new Bishop(Alliance.WHITE,61));
+        builder.setPiece(new Knight(Alliance.WHITE,62));
+        builder.setPiece(new Rook(Alliance.WHITE,63));
+        // White to move
+        builder.setMoveMaker(Alliance.WHITE);
+        return builder.build();
+    }
 
+    public static class Builder {
+        Map<Integer, Piece> boardConfig;
+    Alliance nextMoveMaker;
+
+    public Builder() {
+    }
+
+    public Builder setPiece(final Piece piece) {
+        this.boardConfig.put(piece.getPiecePosition(), piece);
+          return this;
+    }
+    public Builder setMoveMaker(final Alliance nextMoveMaker) {
+        this.nextMoveMaker = nextMoveMaker;
+        return this;
+    }
+        public Board build() {
+            return new Board(this);
+        }
+    }
+}*/

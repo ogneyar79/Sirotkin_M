@@ -1,8 +1,8 @@
 package ru.job4j.JChess;
-
 /**
  * Created by maksi on 03.11.2017.
  */
+
 public class Bishop extends Figure {
 
       /**
@@ -15,14 +15,9 @@ public class Bishop extends Figure {
         super(name, currentPosition, firstPosition);
     }
 
-    /**
-     * method for finding out possible specific way our bishop on the board.
-     * @param dist Cell
-     * @return Cell[] way
-     */
     @Override
     public Cell[] way(Cell dist) throws ImposibleMoveException{
-        Cell[] cel1s = new Cell[64];
+        Cell[] cel1s = new Cell[63];
        if (((dist.getCell_oneCoordinate() - currentPosition.getCell_oneCoordinate())%7 == 0||(dist.getCell_oneCoordinate() - currentPosition.getCell_oneCoordinate())%9 == 0) && (dist.getCell_oneCoordinate() - currentPosition.getCell_oneCoordinate() > 0 || dist.getCell_oneCoordinate() - currentPosition.getCell_oneCoordinate() < 64) && (dist.getColor() == currentPosition.getColor())) {
 
            if (dist.getCell_oneCoordinate() > currentPosition.getCell_oneCoordinate()) {
@@ -38,16 +33,12 @@ public class Bishop extends Figure {
                }
            }
        } else {
-       throw new ImposibleMoveException();
-       }
+
+       throw new ImposibleMoveException();}
+
         return cel1s;
     }
 
-    /**
-     * method for changing place of figure on the board(rewrite currentPosition on dist).
-     * @param dist Cell
-     * @return currentPosition
-     */
     @Override
     public Cell clone(Cell dist) {
         this.currentPosition = dist;
