@@ -1,6 +1,4 @@
 package ru.job4j.collection;
-
-
 import java.util.*;
 
 public class SpeedCollection {
@@ -27,7 +25,7 @@ public class SpeedCollection {
     public long delete(Collection<String> collection) {
                      long timeStart = System.nanoTime();
                      collection.remove(0);
-                     long timeEnd = System.currentTimeMillis();
+                     long timeEnd = System.nanoTime();
                      long timeResult = timeEnd - timeStart;
                      System.out.println(timeResult);
                              return timeResult;
@@ -50,6 +48,7 @@ public class SpeedCollection {
         }
         long timeEnd = System.nanoTime();
         long timeResult = timeEnd - timeStart;
+        System.out.println(timeResult);
         return timeResult;
     }
     public static void main (String[] args) {
