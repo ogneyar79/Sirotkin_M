@@ -51,6 +51,22 @@ public class SpeedCollection {
         System.out.println(timeResult);
         return timeResult;
     }
+     public long deleteAmount (Collection<String> collection, int amount) {
+        long timeStart = System.nanoTime();
+        Iterator<String> iterator = collection.iterator();
+        int i = 0;
+        while (i < amount) {
+            if (iterator.hasNext()) {
+                iterator.next();
+                iterator.remove();
+                i++;
+            }
+        }
+         long timeEnd = System.nanoTime();
+         long timeResult = timeEnd - timeStart;
+         System.out.println(timeResult);
+         return timeResult;
+              }
     public static void main (String[] args) {
         SpeedCollection collection = new SpeedCollection();
         Collection<String>collectionA = new ArrayList<String>();
@@ -63,6 +79,8 @@ public class SpeedCollection {
         collection.delete(collectionL);
         collection.delete(collectionTreeS);
 
+        collection.deleteAmount(collectionA, 3);
+        collection.deleteAmount(collectionL, 3);
+        collection.deleteAmount(collectionTreeS, 3);
     }
-
 }
