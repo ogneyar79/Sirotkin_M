@@ -34,6 +34,7 @@ public class ConvertList {
                 System.out.println(array [i][j]);
             }
         }
+        array2 = array;
         return  array2;
     }
 
@@ -80,7 +81,6 @@ public class ConvertList {
                        array2 [rows][cells] =   loopForList[q++];
                 }
             }
-
         } else {
                  int q = 0;
             int partRows = cizeLoop / rows;
@@ -102,8 +102,8 @@ public class ConvertList {
         ConvertList forFiling = new ConvertList(4, 4);
                 forFiling.fill();
              forFiling.array2 = forFiling.toArray(forFiling.listLoop, 4);
-        for ( int i = 0; i < forFiling.array2[i].length; i++) {
-            for ( int j = 0; j < forFiling.array2.length; j++) {
+        for ( int i = 0; i < forFiling.array2.length; i++) {
+            for ( int j = 0; j < forFiling.array2[i].length; j++) {
                 System.out.println(forFiling.array2 [i][j]);
             }
         }
