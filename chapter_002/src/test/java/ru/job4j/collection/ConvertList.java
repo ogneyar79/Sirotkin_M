@@ -104,8 +104,10 @@ public class ConvertList {
              forFiling.array2 = forFiling.toArray(forFiling.listLoop, 4);
         for ( int i = 0; i < forFiling.array2.length; i++) {
             for ( int j = 0; j < forFiling.array2[i].length; j++) {
-                System.out.println(forFiling.array2 [i][j]);
+                System.out.print(forFiling.array2 [i][j]);
+
             }
+            System.out.println("");
         }
     }
 }
