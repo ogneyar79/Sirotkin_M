@@ -5,23 +5,56 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Created by maksi on 16.12.2017.
+ * pablic class for convert ArrayList to array and back
+ */
 public class ConvertList {
+
+    /**
+     * @ param int field for size array[][]
+     */
     private int cizeA;
+
+    /**
+     * @ param int field for size array [][]
+     */
     private int cizeB;
+
+    /**
+     * @ param int field for size array[][]
+     */
     public int rows;
+
+    /**
+     * @ param int field for size array[][]
+     */
     public int cells;
+
+    /**
+     * @ param List</Integer>field for ArrayList
+     */
     List<Integer> listLoop = new ArrayList<Integer>();
 
-
+    /**
+     * method for creaction ConvertList object.
+     * @param cizeA int
+     * @param  cizeB int
+     */
     public ConvertList(int cizeA, int cizeB) {
         this.cizeA = cizeA;
         this.cizeB = cizeB;
     }
+
+    /**
+     *@ param field int aaray2.
+     */
    public int array2 [][];
 
     /**
+     * method for fill int[][] array by meaning.
      *
-     * @return
+     * @return the  [][]
      */
         public int[][] fill () {
         int number = 0;
@@ -37,48 +70,40 @@ public class ConvertList {
         array2 = array;
         return  array2;
     }
-
-
-    public List<Integer> toList (int[][] array2) {
+    /**
+     * method for convert int[][] to ArrayList.
+     *@param array2 int[][]
+     * @return the listLoop List <Integer> Array
+     */
+        public List<Integer> toList (int[][] array2) {
         List<Integer> listLoop = new ArrayList<Integer>();
-        this.array2 = array2;
-        int counter = 0;
-        Integer []array1 = new Integer[cizeA * cizeB];
-        for (int i = 0; i < cizeA; i++) {
-            for ( int j = 0; j < cizeB; j++) {
-                       array1[counter] = array2[i][j];
-                       counter++;
+        for (int[] row : array2) {
+            for (int cell : row) {
+                listLoop.add(cell);
             }
         }
-
-        listLoop = Arrays.asList(array1);
-
         return listLoop;
     }
 
     /**
-     *
-     * @param list
-     * @param rows
-     * @return
+     * method for convert ArrayList to int[][] array.
+     * @param list<Integer>
+     * @param rows \
+     * @return the array2 int[][]
      */
     public int[][] toArray (List<Integer> list, int rows) {
 
     List<Integer> listForConvert = new ArrayList<>();
         listForConvert = list;
                   int cizeLoop = listForConvert.size();
-        int [] loopForList = new int [cizeLoop];
-        int i = 0;
-        for (Integer n : listForConvert) {
-            loopForList[i++] = n;
-        }
-        if (cizeLoop % rows == 0) {
+               if (cizeLoop % rows == 0) {
             int q = 0;
             int cells = cizeLoop/rows;
             int [][] array2 = new int[rows][cells];
-            for ( i = 0; i < rows; i++) {
+            for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < cells; j++) {
-                       array2 [rows][cells] =   loopForList[q++];
+                       array2 [rows][cells] =   listForConvert.get(q);
+                       q++;
                 }
             }
         } else {
@@ -87,16 +112,14 @@ public class ConvertList {
            int newCizeLoop = partRows * rows + rows;
             int cells = newCizeLoop / rows;
             array2 = new int[rows][cells];
-            for ( i = 0; i < rows; i++) {
+            for ( int i = 0; i < rows; i++) {
                 for (int j = 0; j < cells - (newCizeLoop - cizeLoop); j++) {
-                       array2 [rows] [cells] = loopForList [q++];
+                       array2 [rows] [cells] = listForConvert.get(q);
                 }
             }
         }
-
-            return  array2;
+        return  array2;
     }
-
 
     public static void main (String[] args) {
         ConvertList forFiling = new ConvertList(4, 4);
