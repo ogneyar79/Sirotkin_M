@@ -36,6 +36,8 @@ public class ConvertList {
      */
     List<Integer> listLoop = new ArrayList<Integer>();
 
+    List<int[]> list = new ArrayList<>();
+
     /**
      * method for creaction ConvertList object.
      * @param cizeA int
@@ -119,6 +121,21 @@ public class ConvertList {
             }
         }
         return  array2;
+    }
+
+    public List<Integer> convert(List<int[]> list) {
+        List<int[]> list1 = new ArrayList<>();
+        List<Integer> listLoop = new ArrayList<>();
+        int [] array;
+        list1 = list;
+        for (int i = 0; i < list1.size(); i++) {
+           array = list1.get(i);
+           for ( int q = 0; q < array.length; q++) {
+               listLoop.add(array[q]);
+           }
+        }
+        return listLoop;
+
     }
 
     public static void main (String[] args) {
