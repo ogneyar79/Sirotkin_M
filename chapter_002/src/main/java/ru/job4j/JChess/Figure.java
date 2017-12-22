@@ -1,5 +1,7 @@
 package ru.job4j.JChess;
-
+/**
+ * Created by maksi on 01.11.2017.
+ */
 public abstract class Figure {
 
 
@@ -20,7 +22,7 @@ public abstract class Figure {
     Если фигура туда пойти не может. выбросить исключение ImposibleMoveException
     */
 
-   public abstract Cell[] way(Cell dist);
+   public abstract Cell[] way(Cell dist) throws ImposibleMoveException;
    public abstract Cell clone(Cell dist);
 
 
