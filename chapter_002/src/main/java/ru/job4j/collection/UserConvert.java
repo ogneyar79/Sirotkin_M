@@ -11,9 +11,12 @@ public class UserConvert {
      */
     List<User> listUser = new ArrayList<>();
 
+
+
     /**
      * @ param Map</Integer, User>field for userList
      */
+
     HashMap<Integer, User> usersList;
 
     /**
@@ -56,3 +59,4 @@ public class UserConvert {
 
     }
 }
+
