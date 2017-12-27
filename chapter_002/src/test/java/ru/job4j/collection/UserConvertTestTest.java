@@ -3,6 +3,10 @@ package ru.job4j.collection;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -15,14 +19,17 @@ public class UserConvertTestTest {
     @Test
         public void whenConvertListUserToHashMap() {
         UserConvert forConvertUser = new UserConvert();
-        forConvertUser.listUser.add(new User(0, "Ivan", "Moscow"));
-        forConvertUser.listUser.add(new User(1, "Liza", "Moscow"));
-        forConvertUser.listUser.add(new User(2, "Robert", "Norilsk"));
-        forConvertUser.listUser.add(new User(3, "Yana", "Tula"));
-        forConvertUser.process(forConvertUser.listUser);
-        forConvertUser.usersList = forConvertUser.process(forConvertUser.listUser);
+        List<User> listUser = new ArrayList<>();
+        List<User> expected = new ArrayList<>();
+        listUser.add(new User(0, "Ivan", "Moscow"));
+        listUser.add(new User(1, "Liza", "Moscow"));
+        listUser.add(new User(2, "Robert", "Norilsk"));
+        listUser.add(new User(3, "Yana", "Tula"));
+        expected = listUser;
+        forConvertUser.process(listUser);
+        Map<Integer, User> result = forConvertUser.process(listUser);
         System.out.print(forConvertUser.usersList);
-        assertThat(forConvertUser.usersList.get(0), is( forConvertUser.listUser.get(0)));
+        assertThat(result.get(0), is( expected.get(0)));
     }
 
 
