@@ -1,10 +1,8 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-
-
- import  java.util.Arrays;
-
 
 /**
  * класс Tracker roll for array where we keep orders.
@@ -12,21 +10,17 @@ import java.util.Random;
  * @author Sirotkin.
  * @return s
  */
-
 public class Tracker {
 
-   /**
-    * method for getting items.
-    * @return items[]
-    */
-    public Item[] getItems() {
-        return items;
-    }
+    /**
+     *@ param value position, show quantity items and where items[position] we get new item.
+     */
+    private int position = 0;
 
     /**
      *@ param value Item [].
      */
-      private Item[] items = new Item[100];
+      private List<Item> items = new ArrayList<Item>();
 
     /**
      *@ param RN Random.
@@ -34,9 +28,20 @@ public class Tracker {
 private static final Random RN = new Random();
 
     /**
-     *@ param value position, show quantity items and where items[position] we get new item.
+     * method for getting items.
+     * @return items[]
      */
-private int position = 0;
+    public List<Item> getItems() {
+        return items;
+    }
+
+    /**
+     * method for creating Id.
+     * @return valueOf
+     */
+    String generateId() {
+        return String.valueOf(System.currentTimeMillis() + RN.nextInt(100));
+    }
 
     /**
      * method for add Item item at Item[] and here set Id.
@@ -46,7 +51,7 @@ private int position = 0;
     public Item add(Item item) {
 
      item.setId(String.valueOf(this.generateId()));
-    this.items[position] = item;
+    this.items.add(position, item);
     position++;
     return item;
 }
@@ -66,30 +71,18 @@ private int position = 0;
     }
     return result;
 }
-
-    /**
-     * method for creating Id.
-     * @return valueOf
-     */
-    String generateId() {
-    return String.valueOf(System.currentTimeMillis() + RN.nextInt(100));
-}
-
     /**
      * method for get copy array from items without [i] = Null.
      * @return result[]
      */
-    public Item[] getAll() {
-    int count = 0;
-    Item[] result = new Item[position];
+    public List<Item> getAll() {
+        List<Item> result = new ArrayList<>(position);
     for (int index = 0; index != position; index++) {
 
 
-        if (items[index] != null) {
-            result[index] = this.items[index];
-        }
-
-
+        if (items.get(position) != null) {
+            result.add(index, this.items.get(index));
+                    }
     }
     return result;
 }
@@ -102,8 +95,8 @@ private int position = 0;
     String id;
     id = item.getId();
         for (int index = 0; index != position; index++) {
-        if (this.items[index].getId().equals(id)) {
-             this.items[index] = item;
+        if (this.items.get(index).getId().equals(id)) {
+             this.items.set(index, item);
              break;
         }
         }
@@ -117,17 +110,17 @@ private int position = 0;
       String id;
       id = item.getId();
       for (int index = 0; index != position; index++) {
-          if (this.items[index].getId().equals(id)) {
-              this.items[index] = null;
+          if (this.items.get(index).getId().equals(id)) {
+              this.items.set(index, null);
               break;
           }
 
       }
 
       for (int i = 0; i != position; i++) {
-          if (this.items[i] == null) {
-              this.items[i] = this.items[position - 1];
-              this.items[position - 1] = null;
+          if (this.items.get(i) == null) {
+              this.items.set(i, this.items.get(position - 1));
+              this.items.set(position - 1, null);
               break;
           }
 
@@ -140,18 +133,21 @@ private int position = 0;
      * @param key String
      * @return result Arraays.copyOf
      */
-    Item[] findByName(String key) {
+    List<Item> findByName(String key) {
 
-        Item[] result = new Item[position];
+        List<Item> result = new ArrayList<>(position);
          int count = 0;
         for (int index = 0; index != position; index++) {
-            if (this.items[index].getName().equals(key)) {
-                result[count] = this.items[index];
+            if (this.items.get(index).getName().equals(key)) {
+                result.set(count, this.items.get(index));
                 count++;
 
             }
         }
-   result = Arrays.copyOf(result, count);
+        Tracker tracker = new Tracker();
+        tracker.items = new ArrayList<>(count);
+           items.set(0, result.get(0));
+           result = items;
         return result;
 
     }
