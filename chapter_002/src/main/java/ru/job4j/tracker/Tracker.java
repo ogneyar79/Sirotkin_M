@@ -77,10 +77,10 @@ private static final Random RN = new Random();
      */
     public List<Item> getAll() {
         List<Item> result = new ArrayList<>(position);
-    for (int index = 0; index != position; index++) {
+    for (int index = 0; index < position; index++) {
 
 
-        if (items.get(position) != null) {
+        if (items.get(index) != null) {
             result.add(index, this.items.get(index));
                     }
     }
@@ -134,21 +134,12 @@ private static final Random RN = new Random();
      * @return result Arraays.copyOf
      */
     List<Item> findByName(String key) {
-
-        List<Item> result = new ArrayList<>(position);
-         int count = 0;
-        for (int index = 0; index != position; index++) {
-            if (this.items.get(index).getName().equals(key)) {
-                result.set(count, this.items.get(index));
-                count++;
-
+        List<Item> result = new ArrayList<>();
+        for (Item item : items) {
+            if (item.getName().equals(key)) {
+                result.add(item);
             }
         }
-        Tracker tracker = new Tracker();
-        tracker.items = new ArrayList<>(count);
-           items.set(0, result.get(0));
-           result = items;
-        return result;
-
+                return result;
     }
 }
