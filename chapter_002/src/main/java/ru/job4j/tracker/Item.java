@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-
 /**
  * класс Item for kreating orders.
  *
@@ -26,7 +25,6 @@ public class Item {
      *
      */
     private String description;
-
 
     /**
      *@ param field create.
@@ -54,7 +52,6 @@ public class Item {
         this.create = create;
     }
 
-
     /**
      * method for getting name.
      * @return name
@@ -62,7 +59,6 @@ public class Item {
     public String getName() {
         return this.name;
     }
-
 
     /**
      * method for getting description.
@@ -72,7 +68,6 @@ public class Item {
         return this.description;
     }
 
-
     /**
      * method for getting create.
      *@return create
@@ -81,7 +76,6 @@ public class Item {
         return this.create;
     }
 
-
     /**
      * method for getting id.
      *@return id
@@ -89,7 +83,6 @@ public class Item {
     public String getId() {
         return this.id;
     }
-
 
     /**
      * method for setting id.

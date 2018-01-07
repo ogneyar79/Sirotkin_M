@@ -39,7 +39,6 @@ public class StubInputTest {
     public void whenUpdateThenTrackerHasUpdatedValue() {
 
         Tracker tracker = new Tracker();
-
         Item item = tracker.add(new Item("test NAME", "deskTest",123L));
         //создаём StubInput с последовательностью действий
         String userChoice = "2";
@@ -100,6 +99,5 @@ public class StubInputTest {
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(tracker.getAll().get(0).getName(), is ("test NAME"));
     }
-
     }
 

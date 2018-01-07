@@ -65,8 +65,6 @@ public class MenuTracker {
                this.aktions.get(key).execute(input,tracker);
             }
 
-
-
     public void show() {
                 for (int i = 0; i < aktions.size(); i++) {
                     if (aktions.get(i) != null) System.out.println(this.aktions.get(i).info());

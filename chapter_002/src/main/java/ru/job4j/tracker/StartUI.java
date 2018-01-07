@@ -23,28 +23,9 @@ private IInput input;
 private Tracker tracker;
 
     /**
-     *@ param field String userChoice.
-     * for comparing with constants
-     */
-  private String userChoice;
-
-
-    /**
      *@ param field String s.
      * for comparing with constants
      */
-     private String s;
-
-    /**
-     *for getting S.
-     * @return s
-     *
-     */
-    public String getS() {
-        return s;
-    }
-
-
 
     /**
      *@ param field Scanner scanner.
@@ -52,10 +33,7 @@ private Tracker tracker;
      */
  private Scanner scanner = new Scanner(System.in);
 
-
-    List<String> answers;
-
-    /**
+        /**
      *for getting scanner.
      * @return scanner
      */
@@ -122,12 +100,6 @@ private Tracker tracker;
     private static final String BREAKKK = "7";
 
     /**
-     *@ param field ConsoleInput consoleInput object.
-     * have list menu as array
-     */
-private ConsoleInput consoleInput = new ConsoleInput();
-
-    /**
      * method for creaction SrartUI object.
      * @param  input IInput
      *
@@ -142,24 +114,6 @@ public StartUI(IInput input, Tracker tracker) {
        this.input = input;
        this.tracker = tracker;
 }
-
-    /**
-     *for getting userChoice.
-     * @return userChoice
-     */
-    public String getUserChoice() {
-        return userChoice;
-    }
-
-    /**
-     *for getting consoleinput.
-     * @return consoleInput
-     */
-    public ConsoleInput getConsoleInput() {
-        return consoleInput;
-    }
-
-
 
     List<Integer> range;
 
@@ -196,9 +150,7 @@ public static void main(String[]args) {
 
           IInput input = new ValidateInput();
      new StartUI(input).init();
-
 }
-
 }
 
 

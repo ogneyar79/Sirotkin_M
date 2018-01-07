@@ -76,12 +76,11 @@ private static final Random RN = new Random();
      * @return result[]
      */
     public List<Item> getAll() {
-        List<Item> result = new ArrayList<>(position);
-    for (int index = 0; index < position; index++) {
+        List<Item> result = new ArrayList<>();
+    for (Item item : items) {
 
-
-        if (items.get(index) != null) {
-            result.add(index, this.items.get(index));
+        if (item != null) {
+            result.add(item);
                     }
     }
     return result;

@@ -12,9 +12,7 @@ import java.util.Scanner;
  */
 public class StubInput implements IInput {
 
-    private String userChoice;
-
-    /**
+        /**
      *@ param value String [] answers.
      */
     private List<String> answers;
@@ -44,11 +42,6 @@ public class StubInput implements IInput {
         this.answers = answers;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    private String name;
     /**
      *@ param field Scanner.
      * for realisation read entering text
@@ -68,8 +61,6 @@ public class StubInput implements IInput {
 
                return answers.get(position++);
     }
-
-
        public int ask(String question, List<Integer> range) {
            int key = Integer.valueOf(this.ask(question));
            boolean exist = false;
@@ -86,6 +77,7 @@ public class StubInput implements IInput {
                throw new MenuOutException("Out of menu range");
            }
        }
+
 /**
  * method for get scanner.
  *
