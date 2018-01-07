@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -18,8 +19,9 @@ public interface IInput {
      */
     String ask(String question);
 
+    Scanner getScanner();
 
-    int ask(String question, int[] range);
+    int ask(String question, List<Integer> range);
 
 
 }

@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -48,9 +50,10 @@ private Tracker tracker;
      *@ param field Scanner scanner.
      *
      */
- private Scanner scanner;
+ private Scanner scanner = new Scanner(System.in);
 
-    String[] answers;
+
+    List<String> answers;
 
     /**
      *for getting scanner.
@@ -122,8 +125,7 @@ private Tracker tracker;
      *@ param field ConsoleInput consoleInput object.
      * have list menu as array
      */
-private ConsoleInput consoleInput = new ConsoleInput(new String[] {"0. Add new Item", "1. Show all items", "2. Edit item ", "3.Delete item", "4. Find item by Id",
-        "5. Find items by name", "6. Exit Program", "Select"});
+private ConsoleInput consoleInput = new ConsoleInput();
 
     /**
      * method for creaction SrartUI object.
@@ -131,12 +133,12 @@ private ConsoleInput consoleInput = new ConsoleInput(new String[] {"0. Add new I
      *
      */
 public StartUI(IInput input) {
-      this.scanner = consoleInput.getScanner();
+      this.scanner = input.getScanner();
     this.input = input;
 }
 
 public StartUI(IInput input, Tracker tracker) {
-    this.scanner = consoleInput.getScanner();
+    this.scanner = input.getScanner();
        this.input = input;
        this.tracker = tracker;
 }
@@ -159,7 +161,7 @@ public StartUI(IInput input, Tracker tracker) {
 
 
 
-    int[] range;
+    List<Integer> range;
 
     /**
      * method for menu work and cooperation with orders.
@@ -169,18 +171,18 @@ public void init() {
     Tracker tracker = new Tracker();
 
       MenuTracker menu = new MenuTracker(this.input, tracker);
-       range = new int[menu.getAktions().length];
-      range[0] = 0;
-      range[1] = 1;
-      range[2] = 2;
-      range[3] = 3;
-      range[4] = 4;
-      range[5] = 5;
-      range[6] = 6;
+       range = new ArrayList<Integer>();
+      range.add(0);
+      range.add(1);
+      range.add(2);
+      range.add(3);
+      range.add(4);
+      range.add(5);
+      range.add(6);
 
       menu.fillActionInit();
         do {
-              System.out.println(range.length);
+              System.out.println(range.size());
              menu.show();
             menu.select(input.ask("Select:", range));
         } while (!"Y".equals(this.input.ask("Exit?, Y")));

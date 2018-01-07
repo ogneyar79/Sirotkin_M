@@ -1,8 +1,8 @@
 package ru.job4j.tracker;
 
 
+import java.util.List;
 import java.util.Scanner;
-
 
 /**
  * класс ConsoleInput for realisation methods for enter of dates.
@@ -15,21 +15,18 @@ public class ConsoleInput implements IInput {
     /**
      *@ param value String [] answers.
      */
-    private String[] answers;
+    private List<String> answers;
 
     /**
      *@ param value int position.
      * .Show i at arrays answers
      */
-    private int position;
 
     /**
      *@ param field Scanner.
      * for realisation read entering text
      */
     private Scanner scanner = new Scanner(System.in);
-
-
 
     /**
      *@ param field String question.
@@ -52,10 +49,10 @@ public class ConsoleInput implements IInput {
                  return s;
     }
 
-      public int ask(String question, int[] range) {
+      public int ask(String question, List<Integer> range) {
           int key = Integer.valueOf(this.ask(question));
           boolean exist = false;
-          for (int value : range) {
+          for (Integer value : range) {
               if (value == key) {
                   exist = true;
                   break;
@@ -67,7 +64,7 @@ public class ConsoleInput implements IInput {
           } else {
               throw new MenuOutException("Out of menu range");
           }
-      }
+                }
 
     public ConsoleInput() {}
 
@@ -76,7 +73,7 @@ public class ConsoleInput implements IInput {
      * @param  answers [] String
      *
      */
-    public ConsoleInput(String[] answers) {
+    public ConsoleInput(List<String> answers) {
 
         this.answers = answers;
     }

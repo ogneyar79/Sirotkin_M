@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -16,9 +17,9 @@ public class StubInput implements IInput {
     /**
      *@ param value String [] answers.
      */
-    private String[] answers;
+    private List<String> answers;
 
-    public String[] getAnswers() {
+    public List<String> getAnswers() {
         return answers;
     }
 
@@ -38,7 +39,7 @@ public class StubInput implements IInput {
      * @param  answers [] String
      *
      */
-    public StubInput(String[] answers) {
+    public StubInput(List<String> answers) {
 
         this.answers = answers;
     }
@@ -65,15 +66,25 @@ public class StubInput implements IInput {
 
         System.out.println(this.question);
 
-        System.out.println(" DDDD");
-
-       return answers[position++];
+               return answers.get(position++);
     }
 
 
-       public int ask(String question, int[] range) {
-        //throw new unsupportedOperationException("Unsupported Operation");
-           return -1;
+       public int ask(String question, List<Integer> range) {
+           int key = Integer.valueOf(this.ask(question));
+           boolean exist = false;
+           for (Integer value : range) {
+               if (value == key) {
+                   exist = true;
+                   break;
+               }
+
+           }
+           if (exist) {
+               return key;
+           } else {
+               throw new MenuOutException("Out of menu range");
+           }
        }
 /**
  * method for get scanner.

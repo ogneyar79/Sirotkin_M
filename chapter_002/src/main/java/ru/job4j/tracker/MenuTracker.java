@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import com.sun.org.apache.bcel.internal.generic.IUSHR;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -36,9 +38,9 @@ public class MenuTracker {
 
     private Tracker tracker;
 
-    private IUserAktion[] aktions = new IUserAktion[7];
+    private List<IUserAktion> aktions = new ArrayList<>(6);
 
-    public IUserAktion[] getAktions() {
+    public List<IUserAktion> getAktions() {
         return aktions;
     }
 
@@ -48,27 +50,26 @@ public class MenuTracker {
 
             }
 
-
             public void fillActionInit() {
 
-              this.aktions[0] = new AddItemIuAct();
-              this.aktions[1] = new MenuTracker.ShowItemsIuAct();
-              this.aktions[2] = new EditItemIuAct();
-              this.aktions[3] = new DeleteItemIuAct();
-              this.aktions[4] = new FindItemByIdIuAct();
-              this.aktions[5] = new FindItemsByNameIuAct();
-              this.aktions[6] = new ExitIuAct();
+              this.aktions.add(new AddItemIuAct());
+              this.aktions.add(new MenuTracker.ShowItemsIuAct());
+              this.aktions.add(new EditItemIuAct());
+              this.aktions.add(new DeleteItemIuAct());
+              this.aktions.add(new FindItemByIdIuAct());
+              this.aktions.add(new FindItemsByNameIuAct());
+              this.aktions.add(new ExitIuAct());
 
             }
             public void select (int key) {
-               this.aktions[key].execute(input,tracker);
+               this.aktions.get(key).execute(input,tracker);
             }
 
 
 
     public void show() {
-                for (int i = 0; i < aktions.length; i++) {
-                    if (aktions[i] != null) System.out.println(this.aktions[i].info());
+                for (int i = 0; i < aktions.size(); i++) {
+                    if (aktions.get(i) != null) System.out.println(this.aktions.get(i).info());
                 }
             }
 
@@ -144,7 +145,7 @@ public class MenuTracker {
                    public void execute(IInput input, Tracker tracker) {
                        String name = input.ask("Please enter The Item's name.");
                        tracker.findByName(name);
-                       Item[] result = tracker.findByName(name);
+                       List<Item> result = tracker.findByName(name);
                         for (Item resalt: result) {
                             System.out.println(String.format("%s. %s. %s. %s",resalt.getId(), resalt.getName(), resalt.getDescription(), resalt.getCreate()));
 
