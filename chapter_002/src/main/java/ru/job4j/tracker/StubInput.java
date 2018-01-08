@@ -8,12 +8,11 @@ import java.util.Scanner;
  * класс IInput for enter text.
  *
  * @author Sirotkin.
- *
  */
 public class StubInput implements IInput {
 
-        /**
-     *@ param value String [] answers.
+    /**
+     * @ param value String [] answers.
      */
     private List<String> answers;
 
@@ -22,20 +21,20 @@ public class StubInput implements IInput {
     }
 
     /**
-     *@ param value position int.
+     * @ param value position int.
      */
     private int position = 0;
 
     /**
-     *@ param field String question.
+     * @ param field String question.
      * for hand text to method
      */
     private String question;
 
     /**
      * method for creaction StubInput object.
-     * @param  answers [] String
      *
+     * @param answers [] String
      */
     public StubInput(List<String> answers) {
 
@@ -43,14 +42,15 @@ public class StubInput implements IInput {
     }
 
     /**
-     *@ param field Scanner.
+     * @ param field Scanner.
      * for realisation read entering text
      */
     private Scanner scanner = new Scanner(System.in);
 
     /**
      * method for input and ofput text.
-     * @param  question String
+     *
+     * @param question String
      * @return String s
      */
     public String ask(String question) {
@@ -59,31 +59,32 @@ public class StubInput implements IInput {
 
         System.out.println(this.question);
 
-               return answers.get(position++);
+        return answers.get(position++);
     }
-       public int ask(String question, List<Integer> range) {
-           int key = Integer.valueOf(this.ask(question));
-           boolean exist = false;
-           for (Integer value : range) {
-               if (value == key) {
-                   exist = true;
-                   break;
-               }
 
-           }
-           if (exist) {
-               return key;
-           } else {
-               throw new MenuOutException("Out of menu range");
-           }
-       }
+    public int ask(String question, List<Integer> range) {
+        int key = Integer.valueOf(this.ask(question));
+        boolean exist = false;
+        for (Integer value : range) {
+            if (value == key) {
+                exist = true;
+                break;
+            }
 
-/**
- * method for get scanner.
- *
- * @return scanner
- */
-public Scanner getScanner() {
+        }
+        if (exist) {
+            return key;
+        } else {
+            throw new MenuOutException("Out of menu range");
+        }
+    }
+
+    /**
+     * method for get scanner.
+     *
+     * @return scanner
+     */
+    public Scanner getScanner() {
         return scanner;
     }
 }
