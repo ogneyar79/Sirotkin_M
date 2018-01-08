@@ -17,28 +17,7 @@ public class StartUI {
      */
     private IInput input;
 
-
     private Tracker tracker;
-
-    /**
-     *@ param field String s.
-     * for comparing with constants
-     */
-
-    /**
-     * @ param field Scanner scanner.
-     */
-    private Scanner scanner = new Scanner(System.in);
-
-    /**
-     * for getting scanner.
-     *
-     * @return scanner
-     */
-    public Scanner getScanner() {
-        return scanner;
-    }
-
 
     /**
      * @ param field String ADITEM.
@@ -103,12 +82,10 @@ public class StartUI {
      * @param input IInput
      */
     public StartUI(IInput input) {
-        this.scanner = input.getScanner();
         this.input = input;
     }
 
     public StartUI(IInput input, Tracker tracker) {
-        this.scanner = input.getScanner();
         this.input = input;
         this.tracker = tracker;
     }
