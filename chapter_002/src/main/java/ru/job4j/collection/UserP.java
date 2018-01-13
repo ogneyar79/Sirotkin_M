@@ -1,9 +1,6 @@
 package ru.job4j.collection;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class UserP implements Comparable<UserP> {
 
@@ -16,7 +13,6 @@ public class UserP implements Comparable<UserP> {
         this.age = age;
         this.name = name;
     }
-
 
     public int getAge() {
         return age;
@@ -34,7 +30,7 @@ public class UserP implements Comparable<UserP> {
         this.name = name;
     }
 
-    @Override
+
     public int compareTo(UserP o) {
         int result;
         result = this.getAge() - o.getAge();
@@ -53,33 +49,24 @@ public class UserP implements Comparable<UserP> {
                 '}';
     }
 
-    public static class SortUser {
-        public Set<UserP> sort(List<UserP> userP) {
-            Set<UserP> setUser = new TreeSet<>();
-            for (UserP o : userP) {
-                setUser.add(o);
 
-            }
+        public static void main(String[] args) {
+            List<UserP> usersP = new ArrayList<>();
+            usersP.add(new UserP(54, "Maksim"));
+            usersP.add(new UserP(51, "Robert"));
+            usersP.add(new UserP(21, "Elena"));
+            usersP.add(new UserP(18, "Bill"));
+            Set<UserP> setForuserP = new TreeSet<>();
+            setForuserP.addAll(usersP);
+            System.out.println(setForuserP);
+            SortUser forSortUsersP = new SortUser();
 
-            return setUser;
+            setForuserP = forSortUsersP.sort1(usersP);
+            System.out.println(setForuserP);
+
+            usersP = forSortUsersP.sortNameLength(usersP);
+            System.out.println(usersP);
+
 
         }
     }
-
-    public static void main(String[] args) {
-        List<UserP> usersP = new ArrayList<>();
-        usersP.add(new UserP(54, "Maksim"));
-        usersP.add(new UserP(51, "Robert"));
-        usersP.add(new UserP(21, "Elena"));
-        usersP.add(new UserP(18, "Bill"));
-        Set<UserP> setForuserP = new TreeSet<>();
-        setForuserP.addAll(usersP);
-        System.out.println(setForuserP);
-        SortUser forSortUsersP = new SortUser();
-
-        setForuserP = forSortUsersP.sort(usersP);
-        System.out.println(setForuserP);
-
-
-    }
-}
