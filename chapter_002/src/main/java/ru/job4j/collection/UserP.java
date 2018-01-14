@@ -32,12 +32,8 @@ public class UserP implements Comparable<UserP> {
 
 
     public int compareTo(UserP o) {
-        int result;
-        result = this.getAge() - o.getAge();
-        if (result != 0) {
-            return result;
-        }
-        return 0;
+        int result = this.getAge() - o.getAge();
+        return result != 0 ? result : 0;
     }
 
     @Override
@@ -50,23 +46,23 @@ public class UserP implements Comparable<UserP> {
     }
 
 
-        public static void main(String[] args) {
-            List<UserP> usersP = new ArrayList<>();
-            usersP.add(new UserP(54, "Maksim"));
-            usersP.add(new UserP(51, "Robert"));
-            usersP.add(new UserP(21, "Elena"));
-            usersP.add(new UserP(18, "Bill"));
-            Set<UserP> setForuserP = new TreeSet<>();
-            setForuserP.addAll(usersP);
-            System.out.println(setForuserP);
-            SortUser forSortUsersP = new SortUser();
+    public static void main(String[] args) {
+        List<UserP> usersP = new ArrayList<>();
+        usersP.add(new UserP(54, "Maksim"));
+        usersP.add(new UserP(51, "Robert"));
+        usersP.add(new UserP(21, "Elena"));
+        usersP.add(new UserP(18, "Bill"));
+        Set<UserP> setForuserP = new TreeSet<>();
+        setForuserP.addAll(usersP);
+        System.out.println(setForuserP);
+        SortUser forSortUsersP = new SortUser();
 
-            setForuserP = forSortUsersP.sort1(usersP);
-            System.out.println(setForuserP);
+        setForuserP = forSortUsersP.sort1(usersP);
+        System.out.println(setForuserP);
 
-            usersP = forSortUsersP.sortNameLength(usersP);
-            System.out.println(usersP);
+        usersP = forSortUsersP.sortNameLength(usersP);
+        System.out.println(usersP);
 
 
-        }
     }
+}
