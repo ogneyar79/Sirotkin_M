@@ -11,8 +11,6 @@ public class UserConvert {
      */
     List<User> listUser = new ArrayList<>();
 
-
-
     /**
      * @ param Map</Integer, User>field for userList
      */
@@ -26,6 +24,7 @@ public class UserConvert {
 
     /**
      * method for convert List<User> to HashMap list.
+     *
      * @param list<User>
      * @return the userList
      */
@@ -40,14 +39,24 @@ public class UserConvert {
 
     @Override
     public String toString() {
-        return "UserConvert{" +
-                "listUser=" + listUser +
-                ", usersList=" + usersList +
-                ", user=" + user +
+        return "UserConvert{"
+                +
+                "listUser="
+                +
+                listUser
+                +
+                ", usersList="
+                +
+                usersList
+                +
+                ", user="
+                +
+                user
+                +
                 '}';
     }
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         UserConvert forConvertUser = new UserConvert();
         forConvertUser.listUser.add(new User(0, "Ivan", "Moscow"));
         forConvertUser.listUser.add(new User(1, "Liza", "Moscow"));

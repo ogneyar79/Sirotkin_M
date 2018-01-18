@@ -4,6 +4,7 @@ import java.util.*;
 
 public class SortUser {
     List<UserP> users;
+
     public Set<UserP> sort1(List<UserP> userP) {
         Set<UserP> setUser = new TreeSet<>();
         for (UserP o : userP) {
@@ -27,7 +28,8 @@ public class SortUser {
 
         return users;
     }
-    public List<UserP> sortByAllFields (List<UserP> users) {
+
+    public List<UserP> sortByAllFields(List<UserP> users) {
         Comparator<UserP> people = new UserNameComporator().thenComparing(new UserAgeComporator());
         users.sort(people);
         return users;

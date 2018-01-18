@@ -1,12 +1,11 @@
-package ru.job4j.CombainForSaleOfBuns;
+package ru.job4j.combainforsaleofbuns;
 
 /**
- * класс Coins_10 for and realisation geting and keeping coins.
+ * класс CoinsTen for and realisation geting and keeping coins.
  *
  * @author Sirotkin.
- *
  */
-public class Coins_10 implements ICoins {
+public abstract class CoinsTen implements ICoins {
 
     /**
      * @ param field for name string.
@@ -30,7 +29,7 @@ public class Coins_10 implements ICoins {
      */
     private int balanceMonets;
 
-     private int CashBalance = balanceMonets * 10;
+    private int cashBalance = balanceMonets * 10;
 
 
     /**
@@ -39,7 +38,7 @@ public class Coins_10 implements ICoins {
     private int difference = maxQuantity - balanceMonets;
 
 
-    public Coins_10(int balanceMonets) {
+    public CoinsTen(int balanceMonets) {
         this.balanceMonets = 250;
     }
 
@@ -64,14 +63,15 @@ public class Coins_10 implements ICoins {
         return difference;
     }
 
-    @Override
+
     public void giveChange() {
         System.out.println(" Your change =" + " " + change);
     }
 
     /**
      * method for download coins to stock.
-     *@return balanceMonets
+     *
+     * @return balanceMonets
      */
     public int putMoney(int quantity) {
         int temporraryBank = quantity;
@@ -87,15 +87,16 @@ public class Coins_10 implements ICoins {
         }
         return balanceMonets;
     }
+
     public void giveChange(int quantity) {
         change = quantity;
         giveChange();
 
     }
 
-    public void  info() {    System.out.print("You can load" + difference + "10 coins"); }
-
-
+    public void info() {
+        System.out.print("You can load" + difference + "10 coins");
+    }
 
 
 }

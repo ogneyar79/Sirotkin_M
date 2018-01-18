@@ -38,8 +38,9 @@ public class ConvertList {
 
     /**
      * method for creaction ConvertList object.
+     *
      * @param cizeA int
-     * @param  cizeB int
+     * @param cizeB int
      */
     public ConvertList(int cizeA, int cizeB) {
         this.cizeA = cizeA;
@@ -47,35 +48,37 @@ public class ConvertList {
     }
 
     /**
-     *@ param field int aaray2.
+     * @ param field int aaray2.
      */
-    public int array2 [][];
+    public int[][] array2;
 
     /**
      * method for fill int[][] array by meaning.
      *
      * @return the  [][]
      */
-    public int[][] fill () {
+    public int[][] fill() {
         int number = 0;
         int cizeA = this.cizeA;
         int cizeB = this.cizeB;
-        int [][] array = new int[cizeA][cizeB];
+        int[][] array = new int[cizeA][cizeB];
         for (int i = 0; i < cizeA; i++) {
-            for (int j = 0; j < cizeB; j++){
+            for (int j = 0; j < cizeB; j++) {
                 array[i][j] = number++;
-                System.out.println(array [i][j]);
+                System.out.println(array[i][j]);
             }
         }
         array2 = array;
-        return  array2;
+        return array2;
     }
+
     /**
      * method for convert int[][] to ArrayList.
-     *@param array2 int[][]
+     *
+     * @param array2 int[][]
      * @return the listLoop List <Integer> Array
      */
-    public List<Integer> toList (int[][] array2) {
+    public List<Integer> toList(int[][] array2) {
         List<Integer> listLoop = new ArrayList<Integer>();
         for (int[] row : array2) {
             for (int cell : row) {
@@ -87,22 +90,23 @@ public class ConvertList {
 
     /**
      * method for convert ArrayList to int[][] array.
+     *
      * @param list<Integer>
-     * @param rows \
+     * @param rows          \
      * @return the array2 int[][]
      */
-    public int[][] toArray (List<Integer> list, int rows) {
+    public int[][] toArray(List<Integer> list, int rows) {
 
         List<Integer> listForConvert = new ArrayList<>();
         listForConvert = list;
         int cizeLoop = listForConvert.size();
         if (cizeLoop % rows == 0) {
             int q = 0;
-            int cells = cizeLoop/rows;
-            int [][] array2 = new int[rows][cells];
+            int cells = cizeLoop / rows;
+            int[][] array2 = new int[rows][cells];
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < cells; j++) {
-                    array2 [rows][cells] =   listForConvert.get(q);
+                    array2[rows][cells] = listForConvert.get(q);
                     q++;
                 }
             }
@@ -112,35 +116,35 @@ public class ConvertList {
             int newCizeLoop = partRows * rows + rows;
             int cells = newCizeLoop / rows;
             array2 = new int[rows][cells];
-            for ( int i = 0; i < rows; i++) {
+            for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < cells - (newCizeLoop - cizeLoop); j++) {
-                    array2 [rows] [cells] = listForConvert.get(q);
+                    array2[rows][cells] = listForConvert.get(q);
                 }
             }
         }
-        return  array2;
+        return array2;
     }
 
     public List<Integer> convert(List<int[]> list) {
         List<int[]> list1 = new ArrayList<>();
         List<Integer> listLoop = new ArrayList<>();
-        int [] array;
+        int[] array;
         list1 = list;
-        for (int [] row : list) {
-            for ( int arrayIndex : row) {
+        for (int[] row : list) {
+            for (int arrayIndex : row) {
                 listLoop.add(arrayIndex);
             }
         }
-              return listLoop;
+        return listLoop;
     }
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         ConvertList forFiling = new ConvertList(4, 4);
         forFiling.fill();
         forFiling.array2 = forFiling.toArray(forFiling.listLoop, 4);
-        for ( int i = 0; i < forFiling.array2.length; i++) {
-            for ( int j = 0; j < forFiling.array2[i].length; j++) {
-                System.out.print(forFiling.array2 [i][j]);
+        for (int i = 0; i < forFiling.array2.length; i++) {
+            for (int j = 0; j < forFiling.array2[i].length; j++) {
+                System.out.print(forFiling.array2[i][j]);
 
             }
             System.out.println("");

@@ -38,10 +38,19 @@ public class UserP implements Comparable<UserP> {
 
     @Override
     public String toString() {
-        return "UserP{" +
-                "userP=" + userP +
-                ", age=" + age +
-                ", name='" + name + '\'' +
+        return "UserP{"
+                +
+                "userP="
+                +
+                userP
+                +
+                ", age="
+                + age
+                +
+                ", name='"
+                + name
+                + '\''
+                +
                 '}';
     }
 

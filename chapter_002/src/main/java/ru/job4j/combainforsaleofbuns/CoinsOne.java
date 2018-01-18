@@ -1,24 +1,15 @@
-package ru.job4j.CombainForSaleOfBuns;
+package ru.job4j.combainforsaleofbuns;
 
-/**
- * класс Coins_2 for and realisation geting and keeping coins.
- *
- * @author Sirotkin.
- *
- */
-public class Coins_2 implements ICoins {
+public class Coins_1 implements ICoins {
 
     /**
      * @ param field for name string.
      */
-    private final String name = "Coin_2";
+    private final String name = "Coin_1";
 
 
-    public int getNominal() {
-        return nominal;
-    }
+    private final int nominal = 1;
 
-    private final int nominal = 2;
     String yourChange;
 
     /**
@@ -31,12 +22,13 @@ public class Coins_2 implements ICoins {
     /**
      * @ param int field for max monets.
      */
-    private final int maxQuantity = 400;
+    private final int maxQuantity = 500;
 
     /**
      * @ param int for max sum coins.
      */
-    private final int maxCash = 800;
+    private final int maxCash = 500;
+
 
     /**
      * @ param int for quantity monets.
@@ -44,9 +36,9 @@ public class Coins_2 implements ICoins {
     private int balanceMonets;
 
     /**
-     * @ param int for cout cash 10 coins.
+     * @ param int for cout cash 1_coins.
      */
-    private int cashBalance = balanceMonets * 2;
+    private int cashBalance = balanceMonets * 1;
 
 
     /**
@@ -57,17 +49,14 @@ public class Coins_2 implements ICoins {
     private int differenceCashBalance = maxCash - cashBalance;
 
 
-
-    private int cashDifference = maxCash - cashBalance;
-
     /**
      * method for creaction Coinx_10 object.
-     * @param  balanceMonets int
      *
+     * @param balanceMonets int
      */
-    public Coins_2(int balanceMonets, int change) {
+    public Coins_1(int balanceMonets, int change) {
         this.balanceMonets = balanceMonets;
-        this.cashBalance = balanceMonets * 2;
+        this.cashBalance = balanceMonets * 1;
         this.change = change;
     }
 
@@ -80,16 +69,14 @@ public class Coins_2 implements ICoins {
         return quantity;
     }
 
+    @Override
+    public int getCashBalance() {
+        return cashBalance;
+    }
+
     public int getMaxQuantity() {
         return maxQuantity;
     }
-
-    @Override
-    public int getMaxCash() {
-        return maxCash;
-    }
-
-
 
     public int getBalanceMonets() {
         return balanceMonets;
@@ -99,13 +86,23 @@ public class Coins_2 implements ICoins {
         return difference;
     }
 
-    public int getChange() {
-        return change;
+    @Override
+    public int getMaxCash() {
+        return maxCash;
     }
 
     @Override
     public int getDifferenceCashBalance() {
         return differenceCashBalance;
+    }
+
+    @Override
+    public int getChange() {
+        return change;
+    }
+
+    public int getNominal() {
+        return nominal;
     }
 
     public void giveChange() {
@@ -114,7 +111,8 @@ public class Coins_2 implements ICoins {
 
     /**
      * method for download coins to stock.
-     *@return balanceMonets
+     *
+     * @return balanceMonets
      */
     public int putMoney(int quantity) {
         int temporraryBank = quantity;
@@ -137,20 +135,20 @@ public class Coins_2 implements ICoins {
     public void giveChange(int quantity) {
         change = quantity;
         giveChange();
+
     }
 
-    public void  info() {    System.out.print("Your balanceMonets is" + balanceMonets + "2 coins" + ", cashBalance" + cashBalance); }
-
-
-    @Override
-    public int getCashBalance() {
-        return cashBalance;
+    public void info() {
+        System.out.print("Your balanceMonets is" + balanceMonets + "1 coins" + ", cashBalance" + cashBalance);
     }
 
     public void setChange(int change) {
         this.change = change;
     }
+
     public void setCashBalance(int cashBalance) {
         this.cashBalance = cashBalance;
     }
 }
+
+

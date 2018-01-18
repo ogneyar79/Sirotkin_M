@@ -2,7 +2,7 @@ package ru.job4j.collection;
 
 import java.util.Comparator;
 
-public class UserNameComporator implements Comparator<UserP>{
+public class UserNameComporator implements Comparator<UserP> {
 
 
     @Override
