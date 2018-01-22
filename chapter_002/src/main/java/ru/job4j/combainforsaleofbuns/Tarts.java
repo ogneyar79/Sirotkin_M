@@ -1,4 +1,4 @@
-package ru.job4j.CombainForSaleOfBuns;
+package ru.job4j.combainforsaleofbuns;
 
 public abstract class Tarts {
 
@@ -18,6 +18,7 @@ public abstract class Tarts {
     public String getName;
 
     public abstract int getPrice();
+
     public abstract void setQuantityBuns(int quantityBuns);
 
 }

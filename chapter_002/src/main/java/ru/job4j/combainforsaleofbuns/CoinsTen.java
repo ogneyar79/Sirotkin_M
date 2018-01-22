@@ -42,6 +42,9 @@ public abstract class CoinsTen implements ICoins {
         this.balanceMonets = 250;
     }
 
+    public CoinsTen(int i, int i1) {
+    }
+
 
     public String getName() {
         return name;

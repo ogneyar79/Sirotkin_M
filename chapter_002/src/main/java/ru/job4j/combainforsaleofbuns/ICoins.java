@@ -1,4 +1,4 @@
-package ru.job4j.CombainForSaleOfBuns;
+package ru.job4j.combainforsaleofbuns;
 
 public interface ICoins {
 
@@ -7,20 +7,22 @@ public interface ICoins {
 
     int putMoney(int quantity);
 
-     void giveChange(int quantity);
+    void giveChange(int quantity);
 
-   int getMaxQuantity();
+    int getMaxQuantity();
 
-   int getCashBalance();
+    int getCashBalance();
 
     int getNominal();
 
-     int getDifferenceCashBalance();
+    int getDifferenceCashBalance();
 
     int getChange();
+
     void setChange(int change);
+
     public void setCashBalance(int cashBalance);
 
-     int getMaxCash();
+    int getMaxCash();
 
 }

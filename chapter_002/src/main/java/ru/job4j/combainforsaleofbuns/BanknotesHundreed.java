@@ -5,7 +5,7 @@ package ru.job4j.combainforsaleofbuns;
  *
  * @author Sirotkin.
  */
-public class B implemenants ICoins {
+public class BanknotesHundreed implements ICoins {
 
     /**
      * @ param field for name string.
@@ -53,7 +53,7 @@ public class B implemenants ICoins {
      *
      * @param balanceMonets int
      */
-    public B(int balanceMonets, int change) {
+    public BanknotesHundreed(int balanceMonets, int change) {
         this.balanceMonets = balanceMonets;
         this.cashBalance = balanceMonets * 50;
         this.change = change;

@@ -1,6 +1,6 @@
 package ru.job4j.combainforsaleofbuns;
 
-public class Coins_1 implements ICoins {
+public class CoinsOne implements ICoins {
 
     /**
      * @ param field for name string.
@@ -54,7 +54,7 @@ public class Coins_1 implements ICoins {
      *
      * @param balanceMonets int
      */
-    public Coins_1(int balanceMonets, int change) {
+    public CoinsOne(int balanceMonets, int change) {
         this.balanceMonets = balanceMonets;
         this.cashBalance = balanceMonets * 1;
         this.change = change;

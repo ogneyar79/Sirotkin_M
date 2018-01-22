@@ -1,4 +1,4 @@
-package ru.job4j.CombainForSaleOfBuns;
+package ru.job4j.combainforsaleofbuns;
 
 /**
  * класс Buns contieier for keepeing kind of tarts, Bans.
