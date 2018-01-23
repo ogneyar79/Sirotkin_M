@@ -1,4 +1,4 @@
-package ru.job4j.JChess;
+package ru.job4j.jchess;
 
 /**public class Board {
     public Cell getCell(final int cellCoordinate) {

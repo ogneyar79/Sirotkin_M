@@ -9,19 +9,19 @@ package ru.job4j.profession;
 public class Profession {
 
     /**
-      * name value of field for class Profession(The name that person has).
-      */
+     * name value of field for class Profession(The name that person has).
+     */
     String name;
 
     /**
-      * speciality value of field for class Profession.
-      */
+     * speciality value of field for class Profession.
+     */
     String speciality;
 
     /**
      * salary value of field for class Profession.
      */
-   int salary;
+    int salary;
 
     /**
      * baseSal value of field for class Profession(minimum salary).
@@ -35,19 +35,21 @@ public class Profession {
 
     /**
      * method for setting arguments.
-     *@param name  value for name
-     *@param speciality value for speciality
-     *@param  baseSal value for  baseSal
+     *
+     * @param name       value for name
+     * @param speciality value for speciality
+     * @param baseSal    value for  baseSal
      */
-public Profession (String name, String speciality, int baseSal){
+    public Profession(String name, String speciality, int baseSal) {
 
-    this.name = name;
-    this.speciality = speciality;
-    this.baseSal = baseSal;
-}
+        this.name = name;
+        this.speciality = speciality;
+        this.baseSal = baseSal;
+    }
 
     /**
      * method for setting and getting salary.
+     *
      * @return salary
      */
     public int paySal() {
@@ -57,14 +59,13 @@ public Profession (String name, String speciality, int baseSal){
 
     /**
      * method for getting name.
+     *
      * @return name
      */
     public String getName() {
 
         return this.name;
     }
-
-
 
 
 }

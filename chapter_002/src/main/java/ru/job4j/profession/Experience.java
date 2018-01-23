@@ -1,12 +1,13 @@
 package ru.job4j.profession;
+
 /**
  * Created by maksi on 03.09.2017.
  */
 public class Experience {
 
-  private int number;
-     private String nameEx;
-     private int stage;
+    private int number;
+    private String nameEx;
+    private int stage;
     private double levelExperience;
 
 
@@ -24,13 +25,16 @@ public class Experience {
     public String getNameEx() {
         return nameEx;
     }
-    public int getStage(){
+
+    public int getStage() {
         return this.stage;
     }
-    public double getLevelExperience(){
+
+    public double getLevelExperience() {
         return levelExperience;
     }
-    private double changeLevelExperience(){
+
+    private double changeLevelExperience() {
         levelExperience = this.stage * 0.5;
         return levelExperience;
     }

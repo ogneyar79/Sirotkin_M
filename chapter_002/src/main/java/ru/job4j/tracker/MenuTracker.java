@@ -1,13 +1,7 @@
 package ru.job4j.tracker;
 
-import com.sun.org.apache.bcel.internal.generic.IUSHR;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-
-import java.util.Arrays;
 
 class EditItemIuAct implements IUserAktion {
 
@@ -21,7 +15,7 @@ class EditItemIuAct implements IUserAktion {
         String id = input.ask("Please enter the item id.");
         String name = input.ask("Please enter the item name");
         String description = input.ask("Please enter the item description");
-        Long create = 123l;
+        Long create = 123L;
         Item item = new Item(name, description, create);
         item.setId(id);
         tracker.update(item);
@@ -70,7 +64,9 @@ public class MenuTracker {
 
     public void show() {
         for (int i = 0; i < aktions.size(); i++) {
-            if (aktions.get(i) != null) System.out.println(this.aktions.get(i).info());
+            if (aktions.get(i) != null) {
+                System.out.println(this.aktions.get(i).info());
+            }
         }
     }
 
@@ -83,7 +79,7 @@ public class MenuTracker {
         public void execute(IInput input, Tracker tracker) {
             String name = input.ask("Please enter the name:");
             String description = input.ask("Please enter the Description:");
-            Long create = 123l;
+            Long create = 123L;
             tracker.add(new Item(name, description, create));
 
         }

@@ -1,4 +1,4 @@
-package ru.job4j.JChess;
+package ru.job4j.jchess;
 
 public class FigureNotFoundException extends Exception {
 }

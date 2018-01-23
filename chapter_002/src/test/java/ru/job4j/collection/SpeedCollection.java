@@ -1,4 +1,5 @@
 package ru.job4j.collection;
+
 import java.util.*;
 
 public class SpeedCollection {
@@ -11,26 +12,28 @@ public class SpeedCollection {
     public long add(Collection<String> collection, int amount) {
         long timeOut = 0;
 
-        for (int index = 0 ;index != amount; index++) {
+        for (int index = 0; index != amount; index++) {
             long timeStart = System.nanoTime();
-            collection.add( String.valueOf(index));
+            collection.add(String.valueOf(index));
             long timeEnd = System.nanoTime();
             long timeResult = timeEnd - timeStart;
             System.out.println(timeResult);
-            timeOut = + timeResult;
+            timeOut = +timeResult;
             System.out.println(timeOut);
         }
-             return timeOut;
-           }
-    public long delete(Collection<String> collection) {
-                     long timeStart = System.nanoTime();
-                     collection.remove(0);
-                     long timeEnd = System.nanoTime();
-                     long timeResult = timeEnd - timeStart;
-                     System.out.println(timeResult);
-                             return timeResult;
+        return timeOut;
     }
-    public long delete(LinkedList<String> collection ) {
+
+    public long delete(Collection<String> collection) {
+        long timeStart = System.nanoTime();
+        collection.remove(0);
+        long timeEnd = System.nanoTime();
+        long timeResult = timeEnd - timeStart;
+        System.out.println(timeResult);
+        return timeResult;
+    }
+
+    public long delete(LinkedList<String> collection) {
         long timeStart = System.nanoTime();
         collection.removeFirst();
         long timeEnd = System.nanoTime();
@@ -38,6 +41,7 @@ public class SpeedCollection {
         System.out.println(timeResult);
         return timeResult;
     }
+
     public long delete(TreeSet<String> collection) {
         long timeStart = System.nanoTime();
         Iterator<String> stringIterator = collection.iterator();
@@ -51,7 +55,8 @@ public class SpeedCollection {
         System.out.println(timeResult);
         return timeResult;
     }
-     public long deleteAmount (Collection<String> collection, int amount) {
+
+    public long deleteAmount(Collection<String> collection, int amount) {
         long timeStart = System.nanoTime();
         Iterator<String> iterator = collection.iterator();
         int i = 0;
@@ -62,16 +67,17 @@ public class SpeedCollection {
                 i++;
             }
         }
-         long timeEnd = System.nanoTime();
-         long timeResult = timeEnd - timeStart;
-         System.out.println(timeResult);
-         return timeResult;
-              }
-    public static void main (String[] args) {
+        long timeEnd = System.nanoTime();
+        long timeResult = timeEnd - timeStart;
+        System.out.println(timeResult);
+        return timeResult;
+    }
+
+    public static void main(String[] args) {
         SpeedCollection collection = new SpeedCollection();
-        Collection<String>collectionA = new ArrayList<String>();
-             collection.add(collectionA, 10);
-        Collection<String>collectionL = new LinkedList<String>();
+        Collection<String> collectionA = new ArrayList<String>();
+        collection.add(collectionA, 10);
+        Collection<String> collectionL = new LinkedList<String>();
         collection.add(collectionL, 10);
         TreeSet<String> collectionTreeS = new TreeSet<String>();
         collection.add(collectionTreeS, 10);

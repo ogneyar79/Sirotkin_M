@@ -121,7 +121,7 @@ public class CombainConteinerUnion {
      */
     public ICoins[] putMoney() {
         for (int i = 0; i < coins.length; i++) {
-            this.coins[i].putMoney(quantity = this.coins[i].getMaxCash());
+            this.coins[i].putMoney(this.coins[i].getMaxCash());
         }
         return coins;
     }
@@ -206,19 +206,19 @@ public class CombainConteinerUnion {
      */
     public Tarts buyTarts(ICoins[] money, String nameTarts, int quantity) {
         Tarts tartsTemp = new Buns("buns", 0, 30);
-        Tarts tart_s = new Buns(" buns", quantity, 30);
+        Tarts tartS = new Buns(" buns", quantity, 30);
         boolean yes;
         yes = chekPriceQuantity(money, nameTarts, quantity);
-        if (yes == true) {
+        if (yes) {
             for (int i = 0; i < tarts.length; i++) {
                 if (tarts[i].getName.equals(nameTarts) && tarts[i].getQuantityBuns() >= quantity) {
                     giveTarts(nameTarts, quantity);
-                    tartsTemp = tart_s;
+                    tartsTemp = tartS;
 
 
                 } else {
                     System.out.println(" We don't have buns for you");
-                    tart_s.setQuantityBuns(0);
+                    tartS.setQuantityBuns(0);
                 }
             }
         }

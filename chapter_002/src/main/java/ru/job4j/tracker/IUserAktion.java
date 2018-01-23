@@ -1,7 +1,6 @@
 package ru.job4j.tracker;
 
-public interface IUserAktion
-{
+public interface IUserAktion {
 
     int key();
 

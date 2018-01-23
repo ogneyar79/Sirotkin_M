@@ -12,18 +12,18 @@ public class Project {
      */
     private String projectName;
 
-     /**
-      * method for getting arguments.
-      */
-    public String getProjectName(){
+    /**
+     * method for getting arguments.
+     */
+    public String getProjectName() {
         return this.projectName;
     }
 
 
-
-    public Project (String projectName){
+    public Project(String projectName) {
 
         this.projectName = projectName;
     }
-      Project bridge = new Project("bridge");
-    }
+
+    Project bridge = new Project("bridge");
+}

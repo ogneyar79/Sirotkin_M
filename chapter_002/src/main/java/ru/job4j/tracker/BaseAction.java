@@ -11,53 +11,58 @@ abstract class BaseAction implements IUserAktion {
     abstract void start();
 
     public class CopyBaseAction extends BaseAction {
-           String name;
-           int key;
+        String name;
+        int key;
+
         public CopyBaseAction(String name, int key) {
             super(name, key);
         }
 
-        public String info() { return String.format("%s. %s", this.key(), " "); }
+        public String info() {
+            return String.format("%s. %s", this.key(), " ");
+        }
 
-       public void start() {
+        public void start() {
 
-       }
+        }
+
         public void execute(IInput input, Tracker tracker) {
 
-       }
-       public int key() {
-           return key;
-       }
+        }
+
+        public int key() {
+            return key;
+        }
 
     }
 
-public static void main(String[] args) {
+    public static void main(String[] args) {
 
-    BaseAction b = new BaseAction("7", 7) {
-     @Override
-    public String info() {
+        BaseAction b = new BaseAction("7", 7) {
+            @Override
+            public String info() {
 
-             return String.format("%s. %s", this.key(), " ");
+                return String.format("%s. %s", this.key(), " ");
 
-     }
+            }
 
-        @Override
-        void start() {
+            @Override
+            void start() {
 
-        }
+            }
 
-        @Override
-        public int key() {
-            return 0;
-        }
+            @Override
+            public int key() {
+                return 0;
+            }
 
-        @Override
-        public void execute(IInput input, Tracker tracker) {
+            @Override
+            public void execute(IInput input, Tracker tracker) {
 
-        }
-    };
-    b.info();
+            }
+        };
+        b.info();
 
-}
+    }
 
 }

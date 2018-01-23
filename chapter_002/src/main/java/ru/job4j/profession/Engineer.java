@@ -7,27 +7,26 @@ public class Engineer extends Profession {
 
 
     /**
-     *expireence value of field for class Engineer.
+     * expireence value of field for class Engineer.
      */
-   private int experience;
+    private int experience;
 
 
-
-
-    public int getExperience () {
+    public int getExperience() {
         return experience;
     }
 
     /**
      * method for setting arguments.
-     *@param name  value for name
-     *@param speciality value for speciality
-     *@param  baseSal value for  baseSal
+     *
+     * @param name       value for name
+     * @param speciality value for speciality
+     * @param baseSal    value for  baseSal
      */
-    public  Engineer (String name, String speciality, int baseSal, int experience){
+    public Engineer(String name, String speciality, int baseSal, int experience) {
 
         super(name, speciality, baseSal);
-        this.experience=experience;
+        this.experience = experience;
     }
 
     Engineer pbPetrov = new Engineer("Пeтров Иван", "Инжинер по коммуникациям", 40000, 1);
@@ -47,9 +46,9 @@ public class Engineer extends Profession {
     /**
      * method that show what engineer to do now.
      */
-    public void engeenerWork (Engineer pbPetrov, Project bridge) {
+    public void engeenerWork(Engineer pbPetrov, Project bridge) {
 
-        System.out.println("Engineer" + " " +this.getName() + " " + "are making" + bridge.getProjectName());
+        System.out.println("Engineer" + " " + this.getName() + " " + "are making" + bridge.getProjectName());
 
     }
 }

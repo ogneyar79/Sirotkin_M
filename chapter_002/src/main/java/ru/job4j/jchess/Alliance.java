@@ -1,4 +1,4 @@
-package ru.job4j.JChess;
+package ru.job4j.jchess;
 /**
  * Created by maksi on 25.10.2017.
  */
