@@ -1,7 +1,5 @@
 package ru.job4j.strategy;
 
-import static java.lang.System.getProperty;
-
 public class Square implements IShape {
 
 
@@ -15,13 +13,13 @@ public class Square implements IShape {
         StringBuilder squareBuilder = new StringBuilder();
 
         squareBuilder.append("+++++");
-        squareBuilder.append(getProperty("line.separator"));
+        squareBuilder.append(System.lineSeparator());
         squareBuilder.append("+" + "   " + "+");
-        squareBuilder.append(getProperty("line.separator"));
+        squareBuilder.append(System.lineSeparator());
         squareBuilder.append("+++++");
-        squareBuilder.append(getProperty("line.separator"));
+        squareBuilder.append(System.lineSeparator());
         squareBuilder.append("+" + "   " + "+");
-        squareBuilder.append(getProperty("line.separator"));
+        squareBuilder.append(System.lineSeparator());
         squareBuilder.append("+++++");
         System.out.println(squareBuilder.toString());
         return squareBuilder.toString();

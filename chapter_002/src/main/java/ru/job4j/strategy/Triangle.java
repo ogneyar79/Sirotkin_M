@@ -1,7 +1,5 @@
 package ru.job4j.strategy;
 
-import static java.lang.System.getProperty;
-
 public class Triangle implements IShape {
 
 
@@ -22,15 +20,15 @@ public class Triangle implements IShape {
         StringBuilder triangleBuilder = new StringBuilder();
 
         triangleBuilder.append("+" + "    ");
-        triangleBuilder.append(getProperty("line.separator"));
+        triangleBuilder.append(System.lineSeparator());
         triangleBuilder.append("++" + "   ");
-        triangleBuilder.append(getProperty("line.separator"));
+        triangleBuilder.append(System.lineSeparator());
         triangleBuilder.append("+" + " " + "+" + "  ");
-        triangleBuilder.append(getProperty("line.separator"));
+        triangleBuilder.append(System.lineSeparator());
         triangleBuilder.append("+" + "  " + "+" + " ");
-        triangleBuilder.append(getProperty("line.separator"));
+        triangleBuilder.append(System.lineSeparator());
         triangleBuilder.append("+++++");
-        triangleBuilder.append(getProperty("line.separator"));
+        triangleBuilder.append(System.lineSeparator());
         result = triangleBuilder.toString();
         System.out.println(result);
         return result;
