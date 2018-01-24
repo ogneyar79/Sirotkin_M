@@ -5,7 +5,7 @@ sudo: false
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
-  notifications:
+notifications:
     email:
       recipients:
         - maksimus.s@mail.ru
