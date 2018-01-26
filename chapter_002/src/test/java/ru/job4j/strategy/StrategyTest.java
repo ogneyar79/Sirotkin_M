@@ -37,7 +37,7 @@ public class StrategyTest {
         second.setShape(new Square());
         second.draw();
 
-        String expected = String.format("+++++%n+   +%n+++++\r\n+   +%n+++++");
+        String expected = String.format("+++++%n+   +%n+++++%n+   +%n+++++");
         assertThat(second.getShape().pic(), is(expected));
 
     }
