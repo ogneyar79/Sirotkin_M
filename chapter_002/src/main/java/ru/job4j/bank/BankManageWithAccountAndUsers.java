@@ -101,7 +101,7 @@ public class BankManageWithAccountAndUsers {
                 result = false;
             }
         }
-        if (resultUser1 == true && resultUser2 == true) {
+        if (resultUser1 && resultUser2) {
             this.getUserAccount(srcRequisite, srcPassport).makeTransfer(this.getUserAccount(srcRequisite, srcPassport), (this.getUserAccount(dstRequisite, destPassport)), amount);
             result = true;
 
@@ -117,7 +117,9 @@ public class BankManageWithAccountAndUsers {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
+        if (this == o) {
+            return true;
+        }
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
