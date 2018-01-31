@@ -8,13 +8,21 @@ public class Pasport {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Pasport)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Pasport)) {
+            return false;
+        }
 
         Pasport pasport = (Pasport) o;
 
-        if (number != pasport.number) return false;
-        if (!firstName.equals(pasport.firstName)) return false;
+        if (number != pasport.number) {
+            return false;
+        }
+        if (!firstName.equals(pasport.firstName)) {
+            return false;
+        }
         return cecondName.equals(pasport.cecondName);
     }
 

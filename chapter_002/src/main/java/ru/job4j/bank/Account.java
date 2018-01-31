@@ -26,12 +26,12 @@ public class Account {
         return this.getValue() >= sum ? true : false;
     }
 
-    public void makeTransfer (Account strAccount, Account destAccount, double sum) {
+    public void makeTransfer(Account strAccount, Account destAccount, double sum) {
         boolean succes;
         succes = strAccount.chekSum(sum);
         if (succes) {
-          strAccount.value = strAccount.getValue() - sum;
-          destAccount.value = destAccount.getValue() + sum;
+            strAccount.value = strAccount.getValue() - sum;
+            destAccount.value = destAccount.getValue() + sum;
         }
     }
 
@@ -45,12 +45,18 @@ public class Account {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Account account = (Account) o;
 
-        if (Double.compare(account.value, value) != 0) return false;
+        if (Double.compare(account.value, value) != 0) {
+            return false;
+        }
         return requisites.equals(account.requisites);
     }
 
