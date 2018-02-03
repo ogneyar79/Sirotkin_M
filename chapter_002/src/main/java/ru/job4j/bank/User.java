@@ -9,7 +9,7 @@ public class User {
 
     private List<Account> userAccounts;
 
-    public User(String name, Pasport pasport, List<Account> userAccounts, int value, String requisites) {
+    public User(String name, Pasport pasport, int value, String requisites) {
         this.name = name;
         this.pasport = pasport;
         this.userAccounts = userAccounts;
