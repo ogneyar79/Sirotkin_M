@@ -6,6 +6,13 @@ public class Pasport {
     private String firstName;
     private String cecondName;
 
+
+    public Pasport(int number, String firstName, String cecondName) {
+        this.number = number;
+        this.firstName = firstName;
+        this.cecondName = cecondName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

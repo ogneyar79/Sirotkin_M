@@ -7,14 +7,6 @@ public class Account {
     private String requisites;
     boolean info;
 
-    public Account() {
-        info = false;
-        this.value = 0;
-        this.requisites = null;
-        System.out.print(" Your account was closed");
-
-    }
-
     public Account(double value, String requisites) {
         this.value = value;
         this.requisites = requisites;

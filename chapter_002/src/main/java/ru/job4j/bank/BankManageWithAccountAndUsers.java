@@ -7,8 +7,15 @@ import java.util.Map;
 
 public class BankManageWithAccountAndUsers {
 
-    Map<User, List<Account>> userListMap = new HashMap<>();
+  private Map<User, List<Account>> userListMap = new HashMap<>();
 
+    public BankManageWithAccountAndUsers() {
+        Map<User, List<Account>> userListMap = new HashMap<>();
+    }
+
+    public Map<User, List<Account>> getUserListMap() {
+        return userListMap;
+    }
 
     public void addUser(User user) {
 
