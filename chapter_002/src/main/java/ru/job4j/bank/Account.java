@@ -15,7 +15,7 @@ public class Account {
 
 
     public boolean chekSum(double sum) {
-        return this.getValue() >= sum ? true : false;
+        return this.getValue() >= sum && this.getValue() > 0 ? true : false;
     }
 
     public void makeTransfer(Account strAccount, Account destAccount, double sum) {

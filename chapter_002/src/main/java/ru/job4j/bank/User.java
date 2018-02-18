@@ -54,7 +54,6 @@ public class User {
     public int hashCode() {
         int result = name.hashCode();
         result = 31 * result + pasport.hashCode();
-        result = 31 * result + userAccounts.hashCode();
         return result;
     }
 }

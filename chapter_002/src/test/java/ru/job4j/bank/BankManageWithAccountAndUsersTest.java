@@ -23,7 +23,7 @@ public class BankManageWithAccountAndUsersTest {
         catalogUsersAtHashMap.getUserListMap().containsKey(expected);
         boolean expectedd = true;
 
-        boolean result =  catalogUsersAtHashMap.getUserListMap().containsKey(user);
+        boolean result = catalogUsersAtHashMap.getUserListMap().containsKey(user);
 
 
         assertThat(result, is(expectedd));
@@ -48,16 +48,16 @@ public class BankManageWithAccountAndUsersTest {
         User user2 = new User("Robert", pasport2, 1000, "1234567890");
         BankManageWithAccountAndUsers catalogUsersAtHashMap2 = new BankManageWithAccountAndUsers();
         catalogUsersAtHashMap2.addUser(user2);
-        catalogUsersAtHashMap2.addAccountToUser(pasport2, new Account(0,"1234567891"));
+        catalogUsersAtHashMap2.addAccountToUser(pasport2, new Account(0, "1234567891"));
         catalogUsersAtHashMap2.getUserListMap();
-        Map<User, List<Account>> userListMap =  catalogUsersAtHashMap2.getUserListMap();
+        Map<User, List<Account>> userListMap = catalogUsersAtHashMap2.getUserListMap();
         userListMap.get(user2);
         List<Account> accountListUser2 = userListMap.get(user2);
         accountListUser2.size();
-        int result =  accountListUser2.size();
+        int result = accountListUser2.size();
         int excpected = 2;
         assertThat(result, is(excpected));
     }
 
 
-    }
+}
