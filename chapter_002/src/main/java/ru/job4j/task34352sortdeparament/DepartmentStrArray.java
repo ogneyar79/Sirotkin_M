@@ -1,14 +1,11 @@
 package ru.job4j.task34352sortdeparament;
 
-
 import java.util.*;
 
 import static java.util.Arrays.asList;
 
-
 public class DepartmentStrArray {
 
-    Map<String, String[]> departmenstSort = new TreeMap<>();
     Map<String, List<String>> sortDepartmetns = new TreeMap<>();
 
     Map<String, List<String>> fillMapDepartments(String[] departments) {
@@ -26,36 +23,45 @@ public class DepartmentStrArray {
     public Map<String, List<String>> deleteGapAtdepartaments(String[] departments) {
         DepartmentStrArray departmentStrArray = new DepartmentStrArray();
 
-        Map<String, List<String>> mapTreeSortDepartmentsBeforeComporator = new TreeMap<>();
 
         Map<String, List<String>> tempDeportametnShouldAdd = new TreeMap<>();
 
-        mapTreeSortDepartmentsBeforeComporator = departmentStrArray.fillMapDepartments(departments);
+        sortDepartmetns = fillMapDepartments(departments);
 
-        for (List<String> oneDepartamentList : mapTreeSortDepartmentsBeforeComporator.values()) {
+        for (List<String> oneDepartamentList : sortDepartmetns.values()) {
             if (oneDepartamentList.size() <= 1) {
                 continue;
             } else {
                 List<String> subListFromDepartmentMinusLast = new ArrayList<>();
                 subListFromDepartmentMinusLast = oneDepartamentList.subList(0, oneDepartamentList.size() - 1);
-                for (List<String> TwoDepartamentList : mapTreeSortDepartmentsBeforeComporator.values()) {
-                    if (subListFromDepartmentMinusLast.equals(TwoDepartamentList)) {
-                        continue;
-                    } else {
+
+                for (List<String> oneListFromMapDepartments : sortDepartmetns.values()) {
+
+                    List<String> oneListFromDepartmentsGet = new ArrayList<>();
+                    int i = 0;
+                    oneListFromDepartmentsGet = oneListFromMapDepartments;
+                    i++;
+                    if (subListFromDepartmentMinusLast.equals(oneListFromDepartmentsGet)) {
+                        break;
+                    } else if (!subListFromDepartmentMinusLast.equals(oneListFromDepartmentsGet) && i == sortDepartmetns.size() - 1 && subListFromDepartmentMinusLast.size() == 1) {
                         String append = " ";
-                        for (String element : subListFromDepartmentMinusLast) {
-                            append += element + "\\";
-                        }
+                        append = subListFromDepartmentMinusLast.get(0);
                         tempDeportametnShouldAdd.put(append, subListFromDepartmentMinusLast);
+
+                    } else if (!subListFromDepartmentMinusLast.equals(oneListFromDepartmentsGet) && i == sortDepartmetns.size() - 1 && subListFromDepartmentMinusLast.size() > 1) {
+                        String appendd2 = " ";
+                        for (String element : subListFromDepartmentMinusLast) {
+                            appendd2 += element + "\\";
+                        }
+                        tempDeportametnShouldAdd.put(appendd2, subListFromDepartmentMinusLast);
+
                     }
                 }
             }
         }
+        sortDepartmetns.putAll(tempDeportametnShouldAdd);
 
-        mapTreeSortDepartmentsBeforeComporator.putAll(tempDeportametnShouldAdd);
-
-
-        return mapTreeSortDepartmentsBeforeComporator;
+        return sortDepartmetns;
     }
 
     public String[] returnOurDepartamentsArrayFromOurMap(Map<String, List<String>> mapTreDepartmentsAfterSortWithComporator) {

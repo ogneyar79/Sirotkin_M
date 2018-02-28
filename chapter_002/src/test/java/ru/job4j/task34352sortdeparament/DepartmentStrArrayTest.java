@@ -14,11 +14,16 @@ public class DepartmentStrArrayTest {
         String[] departments = {"K1\\SK1", "K1\\SK2", "K1\\SK1\\SSK1", "K1\\SK1\\SSK2", "K2", "K2\\SK1\\SSK1", "K2\\SK1\\SSK2"};
         DepartmentStrArray testDepartments = new DepartmentStrArray();
         Map<String, List<String>> expectedMapDepartment = new TreeMap<>();
+
+
         Map<String, List<String>> result = new TreeMap<>();
 
         result = testDepartments.deleteGapAtdepartaments(departments);
-
         System.out.println(result);
+
+        for (String key : result.keySet()) {
+            System.out.println(key);
+        }
     }
 
 }
