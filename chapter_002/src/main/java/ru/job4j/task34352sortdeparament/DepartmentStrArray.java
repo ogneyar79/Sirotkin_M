@@ -21,41 +21,29 @@ public class DepartmentStrArray {
     }
 
     public Map<String, List<String>> deleteGapAtdepartaments(String[] departments) {
-        DepartmentStrArray departmentStrArray = new DepartmentStrArray();
-
 
         Map<String, List<String>> tempDeportametnShouldAdd = new TreeMap<>();
 
         sortDepartmetns = fillMapDepartments(departments);
 
         for (List<String> oneDepartamentList : sortDepartmetns.values()) {
+
             if (oneDepartamentList.size() <= 1) {
                 continue;
             } else {
+
                 List<String> subListFromDepartmentMinusLast = new ArrayList<>();
+                String append = " ";
                 subListFromDepartmentMinusLast = oneDepartamentList.subList(0, oneDepartamentList.size() - 1);
 
-                for (List<String> oneListFromMapDepartments : sortDepartmetns.values()) {
-
-                    List<String> oneListFromDepartmentsGet = new ArrayList<>();
-                    int i = 0;
-                    oneListFromDepartmentsGet = oneListFromMapDepartments;
-                    i++;
-                    if (subListFromDepartmentMinusLast.equals(oneListFromDepartmentsGet)) {
-                        break;
-                    } else if (!subListFromDepartmentMinusLast.equals(oneListFromDepartmentsGet) && i == sortDepartmetns.size() - 1 && subListFromDepartmentMinusLast.size() == 1) {
-                        String append = " ";
-                        append = subListFromDepartmentMinusLast.get(0);
-                        tempDeportametnShouldAdd.put(append, subListFromDepartmentMinusLast);
-
-                    } else if (!subListFromDepartmentMinusLast.equals(oneListFromDepartmentsGet) && i == sortDepartmetns.size() - 1 && subListFromDepartmentMinusLast.size() > 1) {
-                        String appendd2 = " ";
-                        for (String element : subListFromDepartmentMinusLast) {
-                            appendd2 += element + "\\";
-                        }
-                        tempDeportametnShouldAdd.put(appendd2, subListFromDepartmentMinusLast);
-
+                if (!sortDepartmetns.containsValue(subListFromDepartmentMinusLast) && subListFromDepartmentMinusLast.size() == 1) {
+                    append = subListFromDepartmentMinusLast.get(0);
+                    tempDeportametnShouldAdd.put(append, subListFromDepartmentMinusLast);
+                } else if (!sortDepartmetns.containsValue(subListFromDepartmentMinusLast) && subListFromDepartmentMinusLast.size() > 1) {
+                    for (String element : subListFromDepartmentMinusLast) {
+                        append += element + " \\";
                     }
+                    tempDeportametnShouldAdd.put(append, subListFromDepartmentMinusLast);
                 }
             }
         }
