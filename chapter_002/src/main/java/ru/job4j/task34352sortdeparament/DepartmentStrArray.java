@@ -31,7 +31,6 @@ public class DepartmentStrArray {
             if (oneDepartamentList.size() <= 1) {
                 continue;
             } else {
-
                 List<String> subListFromDepartmentMinusLast = new ArrayList<>();
                 String append = " ";
                 subListFromDepartmentMinusLast = oneDepartamentList.subList(0, oneDepartamentList.size() - 1);
@@ -41,9 +40,11 @@ public class DepartmentStrArray {
                     tempDeportametnShouldAdd.put(append, subListFromDepartmentMinusLast);
                 } else if (!sortDepartmetns.containsValue(subListFromDepartmentMinusLast) && subListFromDepartmentMinusLast.size() > 1) {
                     for (String element : subListFromDepartmentMinusLast) {
-                        append += element + " \\";
+                        append += element + "\\";
                     }
-                    tempDeportametnShouldAdd.put(append, subListFromDepartmentMinusLast);
+                    String ap2;
+                   ap2 = append.substring(0, append.length() - 1);
+                    tempDeportametnShouldAdd.put(ap2, subListFromDepartmentMinusLast);
                 }
             }
         }
