@@ -1,4 +1,4 @@
-package ru.job4j.task34352sortdeparament;
+package ru.job4j.tasksortdeparament;
 
 import java.util.*;
 
@@ -68,7 +68,7 @@ public class DepartmentStrArray {
 
     public String[] deletAndSortArraysbyDescendingOrederLow(String[] departments) {
         sortDepartmetns = deleteGapAtdepartaments(departments);
-        Map<String, List<String>> ourTreMapDepartmentsForDescendingOr = new TreeMap<>(Collections.reverseOrder());
+        Map<String, List<String>> ourTreMapDepartmentsForDescendingOr = new TreeMap<>(Collections.reverseOrder().thenComparing(new DescendingComporatorLow()));
         ourTreMapDepartmentsForDescendingOr.putAll(sortDepartmetns);
 
         departments = returnDepartamentsArrayFromMap(ourTreMapDepartmentsForDescendingOr);
