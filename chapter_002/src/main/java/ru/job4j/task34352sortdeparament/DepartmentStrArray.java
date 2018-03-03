@@ -27,12 +27,11 @@ public class DepartmentStrArray {
         sortDepartmetns = fillMapDepartments(departments);
 
         for (List<String> oneDepartamentList : sortDepartmetns.values()) {
-
             if (oneDepartamentList.size() <= 1) {
                 continue;
             } else {
                 List<String> subListFromDepartmentMinusLast = new ArrayList<>();
-                String append = " ";
+                String append = "";
                 subListFromDepartmentMinusLast = oneDepartamentList.subList(0, oneDepartamentList.size() - 1);
 
                 if (!sortDepartmetns.containsValue(subListFromDepartmentMinusLast) && subListFromDepartmentMinusLast.size() == 1) {
@@ -42,8 +41,7 @@ public class DepartmentStrArray {
                     for (String element : subListFromDepartmentMinusLast) {
                         append += element + "\\";
                     }
-                    String ap2;
-                   ap2 = append.substring(0, append.length() - 1);
+                    String ap2 = append.substring(0, append.length() - 1);
                     tempDeportametnShouldAdd.put(ap2, subListFromDepartmentMinusLast);
                 }
             }
@@ -53,35 +51,27 @@ public class DepartmentStrArray {
         return sortDepartmetns;
     }
 
-    public String[] returnOurDepartamentsArrayFromOurMap(Map<String, List<String>> mapTreDepartmentsAfterSortWithComporator) {
-        Map<String, List<String>> mapDepartments;
-        mapDepartments = mapTreDepartmentsAfterSortWithComporator;
-        String[] departments = new String[mapDepartments.size()];
+    public String[] returnDepartamentsArrayFromMap(Map<String, List<String>> mapTreDepartments) {
 
-        for (String departmentMap : mapTreDepartmentsAfterSortWithComporator.keySet()) {
-            int i = 0;
-            departments[i] = departmentMap;
-            i++;
+        String[] departments = new String[mapTreDepartments.size()];
+        int i = 0;
+        for (String departmentMap : mapTreDepartments.keySet()) {
+            departments[i++] = departmentMap;
         }
         return departments;
     }
 
     public String[] deletAndSortArraysbyAscendingOrderHigh(String[] departments) {
-
-        DepartmentStrArray ourDepartments = new DepartmentStrArray();
-        ourDepartments.deleteGapAtdepartaments(departments);
-
-        departments = ourDepartments.returnOurDepartamentsArrayFromOurMap(ourDepartments.deleteGapAtdepartaments(departments));
-        return departments;
+        sortDepartmetns = deleteGapAtdepartaments(departments);
+        return returnDepartamentsArrayFromMap(sortDepartmetns);
     }
 
     public String[] deletAndSortArraysbyDescendingOrederLow(String[] departments) {
-        DepartmentStrArray ourDepartments = new DepartmentStrArray();
-        ourDepartments.deleteGapAtdepartaments(departments);
+        sortDepartmetns = deleteGapAtdepartaments(departments);
         Map<String, List<String>> ourTreMapDepartmentsForDescendingOr = new TreeMap<>(Collections.reverseOrder());
-        ourTreMapDepartmentsForDescendingOr.putAll(ourDepartments.deleteGapAtdepartaments(departments));
+        ourTreMapDepartmentsForDescendingOr.putAll(sortDepartmetns);
 
-        departments = ourDepartments.returnOurDepartamentsArrayFromOurMap(ourTreMapDepartmentsForDescendingOr);
+        departments = returnDepartamentsArrayFromMap(ourTreMapDepartmentsForDescendingOr);
         return departments;
     }
 
