@@ -51,7 +51,7 @@ public class DepartmentStrArray {
         return sortDepartmetns;
     }
 
-    public String[] returnDepartamentsArrayFromMap(Map<String, List<String>> mapTreDepartments) {
+    public String[] depsMapToArray(Map<String, List<String>> mapTreDepartments) {
 
         String[] departments = new String[mapTreDepartments.size()];
         int i = 0;
@@ -63,16 +63,33 @@ public class DepartmentStrArray {
 
     public String[] deletAndSortArraysbyAscendingOrderHigh(String[] departments) {
         sortDepartmetns = deleteGapAtdepartaments(departments);
-        return returnDepartamentsArrayFromMap(sortDepartmetns);
+        return depsMapToArray(sortDepartmetns);
     }
 
     public String[] deletAndSortArraysbyDescendingOrederLow(String[] departments) {
         sortDepartmetns = deleteGapAtdepartaments(departments);
-        Map<String, List<String>> ourTreMapDepartmentsForDescendingOr = new TreeMap<>(Collections.reverseOrder().thenComparing(new DescendingComporatorLow()));
-        ourTreMapDepartmentsForDescendingOr.putAll(sortDepartmetns);
-
-        departments = returnDepartamentsArrayFromMap(ourTreMapDepartmentsForDescendingOr);
-        return departments;
+        Map<String, List<String>> TreMapDepartmentsForDescendingOr = new TreeMap<>(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                List<String> a1 = sortDepartmetns.containsKey(o1) ? sortDepartmetns.get(o1) : null;
+                List<String> a2 = sortDepartmetns.containsKey(o2) ? sortDepartmetns.get(o2) : null;
+                int res = 0;
+                boolean isLengthsEqual = a1.size() - a2.size() == 0 ? true : false;
+                int min = Math.min(a1.size(), a2.size());
+                for (int i = 0; i < min; i++) {
+                    if (!a1.get(i).equals(a2.get(i))) {
+                        res = -1 * a1.get(i).compareTo(a2.get(i));
+                        break;
+                    }
+                    if (i == min - 1 && !isLengthsEqual) {
+                        res = a1.size() - a2.size();
+                        break;
+                    }
+                }
+                return res;
+            }
+        });
+        TreMapDepartmentsForDescendingOr.putAll(sortDepartmetns);
+        return depsMapToArray(TreMapDepartmentsForDescendingOr);
     }
-
 }
