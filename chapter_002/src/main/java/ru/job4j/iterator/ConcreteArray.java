@@ -2,21 +2,75 @@ package ru.job4j.iterator;
 
 public class ConcreteArray implements IArrayIteratorTask {
 
+
+
     int[][] value = {
             {1, 2},
             {3, 4}
     };
+
+
+    public ConcreteArray(int[][] value) {
+        this.value = value;
+    }
 
     @Override
     public IIterator getIterator() {
         return new IteratorArray();
     }
 
+
+
+
     public class IteratorArray implements IIterator {
+
         int index = 0;
         int innerIndex = 0;
         int meaning;
         int current = 0;
+
+
+        public int getIndex() {
+            return index;
+        }
+
+        public void setIndex(int index) {
+            this.index = index;
+        }
+
+        public int getInnerIndex() {
+            return innerIndex;
+        }
+
+        public void setInnerIndex(int innerIndex) {
+            this.innerIndex = innerIndex;
+        }
+
+        public int getMeaning() {
+            return meaning;
+        }
+
+        public void setMeaning(int meaning) {
+            this.meaning = meaning;
+        }
+
+        public int getCurrent() {
+            return current;
+        }
+
+        public void setCurrent(int current) {
+            this.current = current;
+        }
+
+        public int valuesCountArray(int[][] value) {
+            int count = 0;
+            for (int i = 0; i < value.length; i++) {
+                for (int j = 0; j < value[i].length; j++) {
+                    count++;
+                }
+            }
+            return count;
+        }
 
         @Override
         public int next() {
@@ -37,16 +91,6 @@ public class ConcreteArray implements IArrayIteratorTask {
                 break;
             }
             return meaning;
-        }
-
-        public int valuesCountArray(int[][] value) {
-            int count = 0;
-            for (int i = 0; i < value.length; i++) {
-                for (int j = 0; j < value[i].length; j++) {
-                    count++;
-                }
-            }
-            return count;
         }
 
         @Override
