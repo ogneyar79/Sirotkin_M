@@ -16,9 +16,6 @@ public class ConcreteArray implements IArrayIteratorTask {
         return new IteratorArray();
     }
 
-
-
-
     public class IteratorArray implements IIterator {
 
         int index = 0;
@@ -71,20 +68,19 @@ public class ConcreteArray implements IArrayIteratorTask {
 
         @Override
         public int next() {
-            for (int i = 0; i < value.length; i++) {
-
+            for (int i = index; i < value.length; i++) {
                 for (int j = innerIndex; j < value[i].length; ) {
                     meaning = value[i][j];
-                    if (j < value[i].length) {
+                    if (j < value[i].length - 1) {
                         current++;
                         innerIndex++;
                     } else {
                         current++;
                         innerIndex = 0;
+                        index++;
                     }
                     break;
                 }
-                index++;
                 break;
             }
             return meaning;
