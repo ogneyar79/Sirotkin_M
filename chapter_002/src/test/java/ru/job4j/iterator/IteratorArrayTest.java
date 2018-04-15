@@ -28,15 +28,15 @@ public class IteratorArrayTest {
 
         elSecond.hasNext();
         boolean resultSecond = elSecond.hasNext();
-        assertThat(resultSecond, is(false));
+        assertThat(resultSecond, is(true));
     }
 
     @Test
     public void WhenNextThatTwoCalLingMethodReternSecondElementArray() {
         ConcreteArray itThird = new ConcreteArray(new int[][]{{1, 2}, {3}});
         IIterator elThird = itThird.getIterator();
-       int resultThird = elThird.next();
-            resultThird = elThird.next();
+        int resultThird = elThird.next();
+        resultThird = elThird.next();
         assertThat(resultThird, is(2));
     }
 }

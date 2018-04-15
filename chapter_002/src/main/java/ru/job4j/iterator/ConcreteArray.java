@@ -1,9 +1,6 @@
 package ru.job4j.iterator;
 
 public class ConcreteArray implements IArrayIteratorTask {
-
-
-
     int[][] value = {
             {1, 2},
             {3, 4}
@@ -78,7 +75,7 @@ public class ConcreteArray implements IArrayIteratorTask {
 
                 for (int j = innerIndex; j < value[i].length; ) {
                     meaning = value[i][j];
-                    if (j < value[i].length - 1) {
+                    if (j < value[i].length) {
                         current++;
                         innerIndex++;
                     } else {
@@ -95,7 +92,7 @@ public class ConcreteArray implements IArrayIteratorTask {
 
         @Override
         public boolean hasNext() {
-            return current < valuesCountArray(value) - 1;
+            return current < valuesCountArray(value);
         }
     }
 }
