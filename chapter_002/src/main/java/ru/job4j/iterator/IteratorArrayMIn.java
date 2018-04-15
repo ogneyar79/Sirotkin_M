@@ -23,8 +23,6 @@ public class IteratorArrayMIn implements Iterator<Integer> {
 
     @Override
     public Integer next() {
-        int rob = values[index++];
-        Integer roB = new Integer(rob);
-        return roB;
+        return values[index++];
     }
 }
