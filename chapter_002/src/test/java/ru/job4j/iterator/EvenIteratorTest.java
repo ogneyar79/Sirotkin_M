@@ -33,6 +33,7 @@ public class EvenIteratorTest {
 
     @Test
     public void sequentialHasNextInvocationDoesntAffectRetrievalOrder () {
+        it = new EvenIeratorForArray(new int[]{1, 2, 3, 4, 5, 6, 7});
         assertThat(it.hasNext(), is(true));
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(2));
@@ -57,6 +58,12 @@ public class EvenIteratorTest {
         assertThat(it.next(), is(6));
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(8));
+    }
+
+    @Test
+    public void allTrening(){
+        it = new EvenIeratorForArray(new int[]{1,4,6,8});
+        assertThat(it.hasNext(), is(true));
     }
 }
 

@@ -1,5 +1,7 @@
 package ru.job4j.iterator;
 
+import java.util.NoSuchElementException;
+
 public class ConcreteArray implements IArrayIteratorTask {
     int[][] value = {
             {1, 2},
@@ -68,6 +70,9 @@ public class ConcreteArray implements IArrayIteratorTask {
 
         @Override
         public int next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
             for (int i = index; i < value.length; i++) {
                 for (int j = innerIndex; j < value[i].length; ) {
                     meaning = value[i][j];

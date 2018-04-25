@@ -1,6 +1,7 @@
 package ru.job4j.iterator;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class EvenIeratorForArray implements Iterator<Integer> {
 
@@ -11,35 +12,51 @@ public class EvenIeratorForArray implements Iterator<Integer> {
         this.value = value;
     }
 
-    public Integer next() {
-        System.out.println(indexEvenNumber);
-        int a = value[indexEvenNumber];
-        while (a % 2 != 0) {
-            System.out.println(indexEvenNumber);
-            indexEvenNumber++;
-        }
-        System.out.println(indexEvenNumber);
-        return value[indexEvenNumber++];
-
-    }
-
     @Override
     public void remove() {
     }
 
     public boolean hasNext() {
+        boolean result = false;
         int indexFindNextEven = indexEvenNumber;
         System.out.println(indexEvenNumber);
         System.out.println(indexFindNextEven);
-        int a = value[indexFindNextEven];
-        while (a % 2 != 0 && value[indexFindNextEven] < value.length) {
-            System.out.println(indexFindNextEven);
-            indexFindNextEven++;
-            if (a == value[value.length - 1] && a % 2 != 0) {
-                return false;
-            }
+        if (this.value.length == 0) {
+            result = false;
         }
-        System.out.println(indexFindNextEven);
-        return true;
+        for (int i = indexEvenNumber; i < value.length; i++) {
+            if (value[i] % 2 == 0) {
+                result = true;
+                System.out.println("Break");
+                System.out.println(i + "i");
+                break;
+            }
+            System.out.println(indexFindNextEven);
+            System.out.println(i + "I1");
+            indexFindNextEven++;
+            System.out.println(indexFindNextEven);
+        }
+        return result;
+    }
+
+    public Integer next() {
+        if (!EvenIeratorForArray.this.hasNext()) {
+            throw new NoSuchElementException();
+        }
+        System.out.println(indexEvenNumber);
+        while (value[indexEvenNumber] % 2 != 0) {
+            System.out.println(indexEvenNumber);
+            indexEvenNumber++;
+        }
+        System.out.println(indexEvenNumber);
+        return value[indexEvenNumber++];
+    }
+
+    public void makeNext() {
+        try {
+            next();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
