@@ -3,12 +3,12 @@ package ru.job4j.iterator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class EvenIeratorForArray implements Iterator<Integer> {
+public class EvenIteratorForArray implements Iterator<Integer> {
 
     int[] value;
     int indexEvenNumber;
 
-    public EvenIeratorForArray(int[] value) {
+    public EvenIteratorForArray(int[] value) {
         this.value = value;
     }
 
@@ -40,7 +40,7 @@ public class EvenIeratorForArray implements Iterator<Integer> {
     }
 
     public Integer next() {
-        if (!EvenIeratorForArray.this.hasNext()) {
+        if (!EvenIteratorForArray.this.hasNext()) {
             throw new NoSuchElementException();
         }
         System.out.println(indexEvenNumber);
