@@ -16,17 +16,18 @@ public class Converter {
         return new Iterator<Integer>() {
             @Override
             public boolean hasNext() {
-                boolean marker;
-                if (it.hasNext() && !it1.hasNext()) {
-
-                    marker = true;
-                }
-                else if (it1.hasNext()) {
-                    marker = true;
-                }
-                else {
-                    marker = false;
-                }
+                boolean marker = false;
+                 if (it1.hasNext() == true) {
+                     marker = true;
+                 }
+                 else {
+                     if (it.hasNext()) {
+                     it1 = it.next();
+                     if (it1.hasNext()) {
+                         marker = true;
+                     }
+                     }
+                 }
                 return marker;
             }
 
