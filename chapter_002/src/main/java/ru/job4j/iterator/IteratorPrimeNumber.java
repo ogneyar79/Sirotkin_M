@@ -11,36 +11,6 @@ public class IteratorPrimeNumber implements Iterator<Integer> {
         this.value = value;
     }
 
-    @Override
-    public boolean hasNext() {
-        boolean result = false;
-        boolean marker = false;
-
-        for (int i = indexPrimeNumber; i < value.length; i++) {
-            if (marker == true) {
-                result = true;
-                break;
-            } else if (value[i] == 0 || value[i] == 1 || (value[i] > 2 && value[i] % 2 == 0) || (value[i] > 5 && value[i] % 5 == 0)) {
-                result = false;
-            } else if (value[i] == 2) {
-                result = true;
-                marker = true;
-                break;
-            } else {
-                for (int j = 2; j < value[i]; j++) {
-                    if (value[i] % j == 0) {
-                        result = false;
-                        break;
-                    } else {
-                        result = true;
-                        marker = true;
-                    }
-                }
-            }
-        }
-        return result;
-    }
-
     public boolean checkPrimeNumberIs(int number) {
         boolean result = false;
         if (number == 2) {
@@ -61,8 +31,19 @@ public class IteratorPrimeNumber implements Iterator<Integer> {
     }
 
     @Override
-    public Integer next() {
+    public boolean hasNext() {
+        boolean result = false;
+        for (int i = indexPrimeNumber; i < value.length; i++) {
+            if (checkPrimeNumberIs(value[i])) {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
 
+    @Override
+    public Integer next() {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
@@ -82,8 +63,7 @@ public class IteratorPrimeNumber implements Iterator<Integer> {
         }
         if (indexFindPrimeNumber < value.length && (checkPrimeNumberIs(value[indexFindPrimeNumber]))) {
             resault = true;
-        }
-        else {
+        } else {
             resault = false;
         }
         return resault;
