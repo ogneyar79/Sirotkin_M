@@ -1,6 +1,7 @@
 package ru.job4j.collection.jeneric;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class SimpleArray<T> implements Iterable<T> {
 
@@ -20,6 +21,7 @@ public class SimpleArray<T> implements Iterable<T> {
     public void set(int position, T model) {
         this.objects[position] = model;
     }
+
     public void delete(int index) {
         this.objects[index--] = null;
 
@@ -37,10 +39,15 @@ public class SimpleArray<T> implements Iterable<T> {
 
             @Override
             public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
                 return (T) objects[indexI++];
             }
         };
     }
 
-
+    public int getIndex() {
+        return index;
+    }
 }
