@@ -1,6 +1,6 @@
 package ru.job4j.collection.jeneric;
 
-public class RoleStore<Role> extends AbstractStore {
+public class RoleStore extends AbstractStore<Role> {
 
 
     public RoleStore(SimpleArray userOrRoleArray) {

@@ -2,7 +2,7 @@ package ru.job4j.collection.jeneric;
 
 import java.util.Iterator;
 
-public abstract class AbstractStore<T extends Base> implements Store {
+public abstract class AbstractStore<T extends Base> implements Store<T> {
 
     SimpleArray userOrRoleArray = new SimpleArray<T>();
 
@@ -11,17 +11,17 @@ public abstract class AbstractStore<T extends Base> implements Store {
     }
 
     @Override
-    public void add(Base model) {
+    public void add(T model) {
         userOrRoleArray.add(model);
     }
 
     @Override
-    public boolean replace(String id, Base model) {
+    public boolean replace(String id, T model) {
         boolean doneReplacedIt = false;
         Iterator<T> simpleArrayIterator = userOrRoleArray.iterator();
         while (simpleArrayIterator.hasNext()) {
             int positionItBeforeNext = userOrRoleArray.getIndex();
-            Base wanted = simpleArrayIterator.next();
+            T wanted = simpleArrayIterator.next();
             if (wanted.getId().compareTo(id) == 0) {
                 userOrRoleArray.set(positionItBeforeNext, model);
                 doneReplacedIt = true;
@@ -40,7 +40,7 @@ public abstract class AbstractStore<T extends Base> implements Store {
         Iterator<T> simpleArrayIterator = userOrRoleArray.iterator();
         while (simpleArrayIterator.hasNext()) {
             int positionItBeforeNext = userOrRoleArray.getIndex();
-            Base wanted = simpleArrayIterator.next();
+            T wanted = simpleArrayIterator.next();
             if (wanted.getId().compareTo(id) == 0) {
                 userOrRoleArray.delete(positionItBeforeNext);
                 done = true;
@@ -52,12 +52,11 @@ public abstract class AbstractStore<T extends Base> implements Store {
         }
         return done;
     }
-
     @Override
-    public Base findById(String id) {
+    public T findById(String id) {
         Iterator<T> simpleArrayIterator = userOrRoleArray.iterator();
         while (simpleArrayIterator.hasNext()) {
-            Base wanted = simpleArrayIterator.next();
+            T wanted = simpleArrayIterator.next();
             if (wanted.getId().compareTo(id) == 0) {
                 return wanted;
             }

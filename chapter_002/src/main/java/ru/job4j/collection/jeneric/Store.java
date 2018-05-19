@@ -1,6 +1,6 @@
 package ru.job4j.collection.jeneric;
 
-public interface Store<T extends Base> {
+public interface Store<T> {
     void add(T model);
 
     boolean replace(String id, T model);
