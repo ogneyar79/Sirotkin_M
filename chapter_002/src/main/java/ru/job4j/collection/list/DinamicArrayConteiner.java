@@ -12,11 +12,11 @@ public class DinamicArrayConteiner<E> implements Iterable<E> {
     int indexFull = 2;
     int size = 0;
     int indexRiseArray = 2;
-    boolean modCount = false;
+    int modCount = 0;
 
     public void add(E value) {
         this.container[size++] = value;
-        indexFull++;
+        modCount++;
         if (container.length - size < indexFull) {
             this.container = Arrays.copyOf(container, lengthcIndex * indexRiseArray);
         }
@@ -32,7 +32,7 @@ public class DinamicArrayConteiner<E> implements Iterable<E> {
 
         return new Iterator<E>() {
             int indexI;
-            boolean expectedModcount = modCount;
+            int expectedModcount = modCount;
 
             @Override
             public boolean hasNext() {
@@ -41,7 +41,7 @@ public class DinamicArrayConteiner<E> implements Iterable<E> {
 
             @Override
             public E next() {
-                if (!expectedModcount) {
+                if (expectedModcount != modCount) {
                     throw new ConcurrentModificationException();
                 }
                 if (!hasNext()) {

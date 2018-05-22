@@ -1,22 +1,25 @@
 package ru.job4j.collection.list;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class LinkedContainer<E> implements Iterable<E> {
-
     private int size;
     private NodeP first;
+    int modCount = 0;
 
     public void add(E value) {
         NodeP<E> newLink = new NodeP<>(first, value);
         this.first = newLink;
         size++;
+        modCount++;
     }
 
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
+            int expectedModcount = modCount;
             NodeP<E> nodeP;
             int indexI;
 
@@ -28,6 +31,9 @@ public class LinkedContainer<E> implements Iterable<E> {
             @Override
             public E next() {
                 E result;
+                if (expectedModcount != modCount) {
+                    throw new ConcurrentModificationException();
+                }
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
@@ -46,11 +52,11 @@ public class LinkedContainer<E> implements Iterable<E> {
     }
 
     public E get(int index) {
-        E result;
+        E result = null;
         Iterator<E> iteratorFindEleventByIndex = this.iterator();
-        int indexForIterator = index + 1;
-
-        result = iteratorFindEleventByIndex.next();
+        for (int i = 0; i <= index; i++) {
+            result = iteratorFindEleventByIndex.next();
+        }
         return result;
     }
 
