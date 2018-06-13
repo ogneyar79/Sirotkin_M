@@ -10,18 +10,35 @@ public class SimpleArrayList<E> {
      */
     public void add(E date) {
         Node<E> newLink = new Node<>(date);
-                newLink.next = this.first;
-                this.first = newLink;
-                this.size++;
+        newLink.next = this.first;
+        this.first = newLink;
+        this.size++;
     }
 
     /**
      * Реализовать метод удаления первого элемент в списке.
      */
     public E delete() {
+        Node<E> copyFirsElement = this.first;
         this.first = this.first.next;
-          this.size--;
-        return null;
+        this.size--;
+        return copyFirsElement.date;
+    }
+
+    /**
+     * Реализовать метод удаления  элементa в списке по индексу.
+     */
+    public E delete(int index) {
+        Node<E> result = this.first;
+        Node<E> elementNodeForDeleted = this.first;
+        for (int j = 0; j < index - 1; j++) {
+            elementNodeForDeleted = elementNodeForDeleted.next;
+            result = elementNodeForDeleted.next;
+        }
+        elementNodeForDeleted.next = elementNodeForDeleted.next.next;
+        this.size--;
+
+        return result.date;
     }
 
     /**
@@ -50,8 +67,10 @@ public class SimpleArrayList<E> {
     private static class Node<E> {
         E date;
         Node<E> next;
+
         Node(E date) {
             this.date = date;
         }
     }
+
 }
