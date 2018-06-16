@@ -5,15 +5,48 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * Динамический список на базе массива.
+ *
+ * @param <E> Тип элементов динамического массива.
+ */
 public class DinamicArrayConteiner<E> implements Iterable<E> {
 
-    int lengthcIndex = 20;
-    Object[] container = new Object[lengthcIndex];
-    int indexFull = 2;
-    int size = 0;
-    int indexRiseArray = 2;
-    int modCount = 0;
+    /**
+     * Начальное значение размера массива container.
+     */
+    private int lengthcIndex = 20;
 
+    /**
+     * Контейнер объектов.
+     */
+    private Object[] container = new Object[lengthcIndex];
+
+    /**
+     * переменная показывающая, когда надо увеличить размер conteiner.
+     */
+    private int indexFull = 2;
+
+    /**
+     * счетчик элементов в контейнере.
+     */
+    private int size = 0;
+
+    /**
+     * индекс, показывающий на сколько увеличить контейнер.
+     */
+    private int indexRiseArray = 2;
+
+    /**
+     * Количество изменений в контейнере объектов.
+     */
+    private int modCount = 0;
+
+    /**
+     * Добавление элемента в список.
+     *
+     * @param value добавляемый объект.
+     */
     public void add(E value) {
         this.container[size++] = value;
         modCount++;
@@ -22,6 +55,12 @@ public class DinamicArrayConteiner<E> implements Iterable<E> {
         }
     }
 
+    /**
+     * Получение объекта из списка.
+     *
+     * @param index индекс массива, по которому можно найти искомый объект.
+     * @return возвращаемый по индексу объект.
+     */
     public E get(int index) {
         E value = (E) this.container[index];
         return value;
@@ -50,5 +89,39 @@ public class DinamicArrayConteiner<E> implements Iterable<E> {
                 return (E) container[indexI++];
             }
         };
+    }
+
+    /**
+     * Получение размера контейнера.
+     *
+     * @return Размер контейнера.
+     */
+    public int getLengthcIndex() {
+        return lengthcIndex;
+    }
+
+    public Object[] getContainer() {
+        return container;
+    }
+
+    public int getIndexFull() {
+        return indexFull;
+    }
+
+    /**
+     * Получение количества элементов в контейнере.
+     *
+     * @return количество элементов контейнера.
+     */
+    public int getSize() {
+        return size;
+    }
+
+    public int getIndexRiseArray() {
+        return indexRiseArray;
+    }
+
+    public int getModCount() {
+        return modCount;
     }
 }
