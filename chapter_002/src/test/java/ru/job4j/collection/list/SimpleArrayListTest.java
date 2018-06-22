@@ -33,4 +33,9 @@ public class SimpleArrayListTest {
         list.delete();
         assertThat(list.get(0), is(1));
     }
+    @Test
+    public void whenDeletedElement() {
+        list.delete(1);
+        assertThat(list.get(1), is(1));
+    }
 }

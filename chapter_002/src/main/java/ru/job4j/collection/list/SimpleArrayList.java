@@ -1,27 +1,75 @@
 package ru.job4j.collection.list;
 
+import java.util.NoSuchElementException;
+
 public class SimpleArrayList<E> {
 
-    private int size;
-    private Node<E> first;
+    private int size = 0;
+    private Node<E> first = null;
 
     /**
      * Метод вставляет в начало списка данные.
      */
     public void add(E date) {
+        if (date == null) {
+            throw new NullPointerException("The first argument for add() is null.");
+        }
         Node<E> newLink = new Node<>(date);
-                newLink.next = this.first;
-                this.first = newLink;
-                this.size++;
+        newLink.next = this.first;
+        this.first = newLink;
+        this.size++;
     }
 
     /**
      * Реализовать метод удаления первого элемент в списке.
      */
     public E delete() {
+        if (first == null) {
+            throw new NoSuchElementException();
+        }
+        Node<E> copyFirsElement = this.first;
         this.first = this.first.next;
-          this.size--;
-        return null;
+        this.size--;
+        return copyFirsElement.date;
+    }
+
+    /**
+     * Реализовать метод удаления  элементa в списке по индексу.
+     */
+    public E delete(int index) {
+        Node<E> result = this.first;
+        Node<E> elementNodeForDeleted = this.first;
+
+        if (index == 0) {
+            delete();
+        } else if (index < 1 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index +
+                    ", Size: " + size);
+        } else if (index == size - 1) {
+            for (int j = 0; j < index; j++) {
+                result = result.next;
+                if (j == index - 1) {
+                    Node<E> temp = elementNodeForDeleted.next;
+                    elementNodeForDeleted.next = null;
+                    temp = null;
+                    break;
+                }
+                elementNodeForDeleted = elementNodeForDeleted.next;
+            }
+        } else {
+            for (int j = 0; j < index; j++) {
+                result = result.next;
+                if (j == index - 1) {
+                    Node<E> temp = elementNodeForDeleted.next;
+                    elementNodeForDeleted.next = elementNodeForDeleted.next.next;
+                    temp = null;
+                    break;
+                }
+                elementNodeForDeleted = elementNodeForDeleted.next;
+            }
+            this.size--;
+        }
+        return result.date;
     }
 
     /**
@@ -30,9 +78,7 @@ public class SimpleArrayList<E> {
     public E get(int index) {
         Node<E> result = this.first;
         for (int i = 0; i < index; i++) {
-
             result = result.next;
-
         }
         return result.date;
     }
@@ -50,8 +96,15 @@ public class SimpleArrayList<E> {
     private static class Node<E> {
         E date;
         Node<E> next;
+
         Node(E date) {
             this.date = date;
         }
+
+        @Override
+        public String toString() {
+            return date.toString();
+        }
     }
+
 }
