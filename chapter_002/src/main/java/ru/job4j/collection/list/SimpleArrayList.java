@@ -77,6 +77,9 @@ public class SimpleArrayList<E> {
      */
     public E get(int index) {
         Node<E> result = this.first;
+        if (index == 0) {
+            return result.date;
+        }
         for (int i = 0; i < index; i++) {
             result = result.next;
         }
