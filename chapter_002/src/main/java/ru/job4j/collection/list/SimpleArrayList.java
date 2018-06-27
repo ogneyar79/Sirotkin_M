@@ -15,8 +15,16 @@ public class SimpleArrayList<E> {
             throw new NullPointerException("The first argument for add() is null.");
         }
         Node<E> newLink = new Node<>(date);
-        newLink.next = this.first;
-        this.first = newLink;
+        if (first == null) {
+            this.first = newLink;
+            this.first.next = null;
+
+        } else {
+            Node<E> temp = first;
+            this.first = newLink;
+            this.first.next = temp;
+            temp.next = null;
+        }
         this.size++;
     }
 
