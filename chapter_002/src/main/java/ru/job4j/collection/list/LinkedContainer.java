@@ -81,6 +81,9 @@ public class LinkedContainer<E> implements Iterable<E> {
      */
     public E get(int index) {
         E result = null;
+        if (index == 0) {
+            result = (E)this.getFirst().getDate();
+        }
         Iterator<E> iteratorFindEleventByIndex = this.iterator();
         for (int i = 0; i <= index; i++) {
             result = iteratorFindEleventByIndex.next();
