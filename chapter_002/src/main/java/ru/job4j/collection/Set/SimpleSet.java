@@ -4,8 +4,17 @@ import ru.job4j.collection.list.DinamicArrayConteiner;
 
 import java.util.Iterator;
 
+/**
+ * Set на базе динамичесого массива DinamicArrayConteiner.
+ * <p>
+ * "param <E> Тип элемента в Set
+ */
 public class SimpleSet<E> implements Iterable<E> {
 
+
+    /**
+     * Наш котнтэйнер для хранения на базе DinamicArrayConteiner<E>.
+     */
     DinamicArrayConteiner<E> arrayConteiner = new DinamicArrayConteiner<E>();
 
     boolean checkEauals(E e) {
@@ -21,13 +30,17 @@ public class SimpleSet<E> implements Iterable<E> {
         return result;
     }
 
+    /**
+     * Добавление элемнтов в Set.
+     *
+     * @param e добавляемый объект
+     */
     public void add(E e) {
 
         if (!this.checkEauals(e)) {
             arrayConteiner.add(e);
         }
     }
-
 
     @Override
     public Iterator<E> iterator() {
