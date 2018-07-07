@@ -10,7 +10,10 @@ import ru.job4j.collection.list.SimpleArrayList;
  */
 public class SimpleStack<T> {
 
-    T value;
+    /**
+     * переменная, которая храниться в списке.
+     */
+   private T value;
 
     // Описание Stack - стек. Описывается LIFO - last input first output.
     /**
@@ -20,7 +23,7 @@ public class SimpleStack<T> {
 
 
     /**
-     * удаляет и возвращает первое значение.
+     * удаляет и возвращает значение, которое добавили последним, в нашем контейнере оно первое по индексу.
      *
      * @return Значение для удаления.
      */
@@ -30,13 +33,17 @@ public class SimpleStack<T> {
     }
 
     /**
-     * Добовляет значение в наш Stack.
+     * Добовляет значение в наш Stack, в элемент first.
      */
     public void push(T value) {
         ourStackContainer.add(value);
     }
 
-    ;
+    public T getValue() {
+        return value;
+    }
 
-
+    public SimpleArrayList<T> getOurStackContainer() {
+        return ourStackContainer;
+    }
 }

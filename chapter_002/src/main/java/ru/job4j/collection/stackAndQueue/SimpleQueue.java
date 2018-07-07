@@ -13,24 +13,31 @@ public class SimpleQueue<T> {
     /**
      * Наш котнтэйнер со связанным списоком type of Queue.
      */
-private SimpleArrayList<T> ourQueueContainer = new SimpleArrayList<>();
+    private SimpleArrayList simpleArrayListContainerQuue = new SimpleArrayList();
 
     /**
      * Добовляет значение в наш Queue.
      */
     public void push(T value) {
-        ourQueueContainer.add(value);
+        simpleArrayListContainerQuue.add(value);
     }
 
     /**
-     * удаляет и возвращает последнее значение.
+     * удаляет и возвращает перовое значение что добавили, в нашем контейнере, оно последнее по индексу.
      *
      * @return Значение для удаления.
      */
     public T poll() {
-       int index = ourQueueContainer.getSize() - 1;
-       T value = ourQueueContainer.delete(index) ;
+        int index = simpleArrayListContainerQuue.getSize() - 1;
+        System.out.println("index" + index);
+        T value = (T) simpleArrayListContainerQuue.delete(index);
 
         return value;
     }
+
+    public SimpleArrayList getSimpleArrayListContainerQuue() {
+        return simpleArrayListContainerQuue;
+    }
 }
+
+

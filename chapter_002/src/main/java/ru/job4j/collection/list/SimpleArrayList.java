@@ -8,7 +8,7 @@ public class SimpleArrayList<E> {
     private Node<E> first = null;
 
     /**
-     * Метод вставляет в начало списка данные.
+     * Метод вставляет в начало списка данные, в first element.
      */
     public void add(E date) {
         if (date == null) {
@@ -23,7 +23,6 @@ public class SimpleArrayList<E> {
             Node<E> temp = first;
             this.first = newLink;
             this.first.next = temp;
-            temp.next = null;
         }
         this.size++;
     }
@@ -37,6 +36,7 @@ public class SimpleArrayList<E> {
         }
         Node<E> copyFirsElement = this.first;
         this.first = this.first.next;
+        copyFirsElement.next = null;
         this.size--;
         return copyFirsElement.date;
     }
@@ -118,4 +118,7 @@ public class SimpleArrayList<E> {
         }
     }
 
+    public Node<E> getFirst() {
+        return first;
+    }
 }
