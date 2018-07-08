@@ -47,7 +47,6 @@ public class SimpleArrayList<E> {
     public E delete(int index) {
         Node<E> result = this.first;
         Node<E> elementNodeForDeleted = this.first;
-
         if (index == 0) {
             delete();
         } else if (index < 1 || index >= size) {
@@ -57,9 +56,7 @@ public class SimpleArrayList<E> {
             for (int j = 0; j < index; j++) {
                 result = result.next;
                 if (j == index - 1) {
-                    Node<E> temp = elementNodeForDeleted.next;
                     elementNodeForDeleted.next = null;
-                    temp = null;
                     break;
                 }
                 elementNodeForDeleted = elementNodeForDeleted.next;
@@ -70,7 +67,7 @@ public class SimpleArrayList<E> {
                 if (j == index - 1) {
                     Node<E> temp = elementNodeForDeleted.next;
                     elementNodeForDeleted.next = elementNodeForDeleted.next.next;
-                    temp = null;
+                    temp.next = null;
                     break;
                 }
                 elementNodeForDeleted = elementNodeForDeleted.next;
