@@ -1,5 +1,4 @@
 package ru.job4j.collection.Map;
-
 import java.util.*;
 
 public class User {
@@ -22,6 +21,13 @@ public class User {
 
         if (!name.equals(user.name)) return false;
         return birthday.equals(user.birthday);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + birthday.hashCode();
+        return result;
     }
 
     public static void main(String[] args) {
