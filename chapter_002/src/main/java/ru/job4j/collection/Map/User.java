@@ -14,11 +14,16 @@ public class User {
     }
 
     @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (!name.equals(user.name)) return false;
+        return birthday.equals(user.birthday);
     }
+
     public static void main(String[] args) {
         Calendar birthday = new GregorianCalendar(21, 02, 1990);
         User userOne = new User("Ivan", 2, birthday);
