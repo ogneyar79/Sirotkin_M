@@ -1,8 +1,11 @@
 package ru.job4j.collection.Map;
 
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class DinamicArraycontainerForHashMap<E> {
+public class DinamicArraycontainerForHashMap<E> implements Iterable<E> {
 
     /**
      * Начальное значение массива container.
@@ -40,7 +43,6 @@ public class DinamicArraycontainerForHashMap<E> {
      * @param model    добавляемый объект
      * @param position index at array, where insert our object.
      */
-
     public void set(int position, E model) {
         this.container[position] = model;
         size++;
@@ -99,6 +101,8 @@ public class DinamicArraycontainerForHashMap<E> {
 
     public void setContainer(Object[] container) {
         this.container = container;
+        this.lengthcIndex = container.length;
+
     }
 
     public int getSize() {
@@ -107,6 +111,32 @@ public class DinamicArraycontainerForHashMap<E> {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+
+    @Override
+    public Iterator<E> iterator() {
+
+        return new Iterator<E>() {
+            int indexI;
+            int expectedModcount = modCount;
+
+            @Override
+            public boolean hasNext() {
+                return indexI < size;
+            }
+
+            @Override
+            public E next() {
+                if (expectedModcount != modCount) {
+                    throw new ConcurrentModificationException();
+                }
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return (E) container[indexI++];
+            }
+        };
     }
 }
 
