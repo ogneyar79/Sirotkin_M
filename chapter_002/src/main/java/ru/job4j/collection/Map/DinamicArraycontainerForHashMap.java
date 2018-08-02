@@ -94,7 +94,6 @@ public class DinamicArraycontainerForHashMap<E> implements Iterable<E> {
         }
     }
 
-
     public Object[] getContainer() {
         return container;
     }
@@ -102,7 +101,6 @@ public class DinamicArraycontainerForHashMap<E> implements Iterable<E> {
     public void setContainer(Object[] container) {
         this.container = container;
         this.lengthcIndex = container.length;
-
     }
 
     public int getSize() {
@@ -112,7 +110,6 @@ public class DinamicArraycontainerForHashMap<E> implements Iterable<E> {
     public void setSize(int size) {
         this.size = size;
     }
-
 
     @Override
     public Iterator<E> iterator() {

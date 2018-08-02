@@ -5,6 +5,7 @@ public class NodeP<E> {
     private NodeP<E> next;
 
     private E date;
+
     public NodeP(NodeP<E> next, E date) {
         this.next = next;
         this.date = date;
@@ -12,10 +13,7 @@ public class NodeP<E> {
 
     public NodeP<E> getNext() {
         return next;
-
-
     }
-
 
     public E getDate() {
         return date;
