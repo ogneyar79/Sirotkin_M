@@ -120,7 +120,17 @@ public class DinamicArraycontainerForHashMap<E> implements Iterable<E> {
 
             @Override
             public boolean hasNext() {
-                return indexI < size;
+                boolean result = false;
+                for (int i = indexI; i < container.length; i++) {
+                    if (container[indexI] == null) {
+                        result = false;
+                        indexI++;
+                    } else if (container[indexI] != null) {
+                        result = true;
+                        break;
+                    }
+                }
+                return result;
             }
 
             @Override
@@ -133,7 +143,9 @@ public class DinamicArraycontainerForHashMap<E> implements Iterable<E> {
                 }
                 return (E) container[indexI++];
             }
-        };
+        }
+
+                ;
     }
 }
 

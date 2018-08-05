@@ -41,8 +41,11 @@ public class MyHashMap<L, O> implements Iterable<MyEntry> {
         DinamicArraycontainerForHashMap<MyEntry> containerMap2 = new DinamicArraycontainerForHashMap();
         int indexHash;
         Object[] container = new Object[containerMap.getContainer().length];
+        System.out.println(container.length);
         containerMap2.setContainer(container);
-        for (Iterator<MyEntry> it = containerMap.iterator(); it.hasNext(); ) {
+        System.out.println(this.containerMap.getSize());
+        System.out.println(this.containerMap.getContainer().length);
+        for (Iterator<MyEntry> it = this.containerMap.iterator(); it.hasNext(); ) {
             MyEntry<L, O> myEntry = it.next();
             indexHash = hash(myEntry.getKey());
             containerMap2.set(indexHash, myEntry);
