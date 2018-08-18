@@ -3,7 +3,7 @@ package ru.job4j.collection.tree;
 import java.util.Iterator;
 import java.util.Optional;
 
-public interface SimpleTree<E extends Iterable<E> & Comparable<E>> {
+public interface SimpleTree<E extends Comparable<E>> extends Iterable<E> {
 
     /**
      * Добавить элемент child в parent.

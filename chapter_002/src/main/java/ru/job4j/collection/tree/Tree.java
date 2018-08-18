@@ -2,22 +2,28 @@ package ru.job4j.collection.tree;
 
 import java.util.*;
 
-public class Tree<E extends Comparable<E> & Iterable<E>> implements SimpleTree<E> {
+public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     private Node<E> root;
     int size = 0;
 
+    public Tree(Node<E> root) {
+        this.root = root;
+        this.size = size;
+        size++;
+    }
+
     @Override
-    public boolean add(E parent, E child) {
+    public boolean add(E parentValue, E childValue) {
         boolean rezult = false;
-        E valueOfChild = child;
+        E valueOfChild = childValue;
         Queue<Node<E>> data = new LinkedList<>();
         Node<E> nodeOfChild = new Node<>(valueOfChild);
         data.offer(this.root);
         while (!data.isEmpty()) {
             Node<E> el = data.poll();
-            if (el.eqValue(parent)) {
+            if (el.eqValue(parentValue)) {
                 for (Node<E> ch : el.leaves()) {
-                    if (ch.eqValue((E) child)) {
+                    if (ch.eqValue(childValue)) {
                         rezult = false;
                         System.out.println(" We have the same value at " + el);
                         return rezult;
@@ -57,8 +63,12 @@ public class Tree<E extends Comparable<E> & Iterable<E>> implements SimpleTree<E
     public Iterator<E> iterator() {
 
         return new Iterator<E>() {
-            int indexI = 0;
             Queue<Node<E>> data = new LinkedList<>();
+            int indexI = 0;
+
+            {
+                data.offer(root);
+            }
 
             @Override
             public boolean hasNext() {
@@ -67,9 +77,12 @@ public class Tree<E extends Comparable<E> & Iterable<E>> implements SimpleTree<E
 
             @Override
             public E next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
                 E result = null;
+
                 while (!this.data.isEmpty()) {
-                    data.offer(root);
                     Node<E> el = data.poll();
                     result = el.getValue();
                     indexI++;
