@@ -37,19 +37,17 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     public boolean add(E parentValue, E childValue) {
         boolean rezult = false;
         E valueOfChild = childValue;
+        if (this.findDoublicutBy(valueOfChild)) {
+            rezult = false;
+            System.out.println(" We have The Same Meaning childValue = " + childValue + " at our Tree");
+            return rezult;
+        }
         Queue<Node<E>> data = new LinkedList<>();
         Node<E> nodeOfChild = new Node<>(valueOfChild);
         data.offer(this.root);
         while (!data.isEmpty()) {
             Node<E> el = data.poll();
             if (el.eqValue(parentValue)) {
-                for (Node<E> ch : el.leaves()) {
-                    if (ch.eqValue(childValue)) {
-                        rezult = false;
-                        System.out.println(" We have the same value at " + el);
-                        return rezult;
-                    }
-                }
                 el.leaves().add(nodeOfChild);
                 size++;
                 rezult = true;

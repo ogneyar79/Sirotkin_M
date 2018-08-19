@@ -33,6 +33,11 @@ public class TreeTest {
     }
 
     @Test
+    public void addWithDoublicate() throws Exception {
+        assertThat(treeObgect.add(0, 0), is(false));
+    }
+
+    @Test
     public void findBy() throws Exception {
         Optional<Node<Integer>> rsl = treeObgect.findBy(2);
         Node<Integer> result = rsl.get();
@@ -41,7 +46,14 @@ public class TreeTest {
     }
 
     @Test
-    public void iterator() throws Exception {
+    public void when6ElFindLastThen6() {
+        Node<Integer> nodeRootR = new Node<>(1);
+        Tree<Integer> tree = new Tree<Integer>(nodeRootR);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        tree.add(1, 4);
+        tree.add(4, 5);
+        tree.add(5, 6);
+        assertThat(tree.findBy(6).isPresent(), is(true));
     }
-
 }
