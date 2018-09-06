@@ -12,8 +12,17 @@ public class RectangleMove implements Runnable {
 
     @Override
     public void run() {
+        int stepX = 1;
+        int stepY = 1;
         while (true) {
-            this.rect.setX(this.rect.getX() + 1);   // это не понятно
+            if (rect.getX() >= 300 || rect.getX() <= 0) {
+                stepX *= -1.7;
+            }
+            if (rect.getY() >= 300 || rect.getY() <= 0) {
+                stepY *= -1.5;
+            }
+            this.rect.setX(this.rect.getX() + stepX);// это не понятно
+            this.rect.setY(this.rect.getY() + stepY);
             try {
                 Thread.sleep(50);
             } catch (InterruptedException e) {
@@ -21,7 +30,6 @@ public class RectangleMove implements Runnable {
             }
         }
     }
-
 
 
 }
