@@ -9,14 +9,15 @@ import java.util.List;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class StoreTest {
+public class InfoWithHashMapTest {
+    InfoWithHashMap infoObject;
     List<Store.User> previoues;
     List<Store.User> current;
-    Store store;
-    List<List<String>> infoObject;
+    java.util.List<String> listInfo;
 
     @Before
     public void setUp() throws Exception {
+        infoObject = new InfoWithHashMap();
         previoues = new ArrayList<>();
         current = new ArrayList<>();
         previoues.add(new Store.User(0001, "Vasilio"));
@@ -27,18 +28,30 @@ public class StoreTest {
         current.add(new Store.User(0002, "Maksimus"));
         current.add(new Store.User(0003, " Olga"));
         current.add(new Store.User(0005, " Matvey"));
-        store = new Store();
+        listInfo = new ArrayList<>();
     }
 
     @Test
-    public void diffCheckListStringWithInformationAboutChangesAtcollection() throws Exception {
-       infoObject = store.diff(previoues, current);
-        for (List<String> list : infoObject) {
+    public void changedAndDeletedElments() throws Exception {
+        listInfo = infoObject.changedAndDeletedElments(previoues, current);
+        assertThat(listInfo.size(), is(4));
+        for (String listInfo : listInfo) {
+            System.out.println(listInfo);
+        }
+
+        assertThat(infoObject.getTheCompareMap().size(), is(1));
+    }
+
+    @Test
+    public void infoChangeOfcollectiont() throws Exception {
+        infoObject.infoChangeOfcollectiont(previoues, current);
+        infoObject.getListsInfo();
+        for (List<String> list : infoObject.getListsInfo()) {
             for (String s : list) {
                 System.out.println(s);
             }
         }
-        assertThat(infoObject.size(), is(2));
+        assertThat(infoObject.getTheCompareMap().size(), is(1));
     }
 
 }
