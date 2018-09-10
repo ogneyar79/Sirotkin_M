@@ -18,13 +18,16 @@ public class PingPong extends Application {
         Group group = new Group(); // что такое групп,?
         Rectangle rect = new Rectangle(1, 40, 10, 10); // определяет размер, пяямоугольника что двигатеся и откуда стартует
         group.getChildren().add(rect);
-        new Thread(new RectangleMove(rect)).start();
+       Thread myPingTread = new Thread(new RectangleMove(rect));
+       myPingTread.start();
         stage.setScene(new Scene(group, limitX, limitY));
         stage.setTitle(JOB4J);
         stage.setResizable(false);
+        stage.setOnCloseRequest(
+                event -> myPingTread.interrupt());
         stage.show();
-
     }
+
     public static void main(String[] args) {
         launch(args);
     }  // что это за метод? какой старт запскается
