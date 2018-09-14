@@ -15,7 +15,7 @@ public class RectangleMove implements Runnable {
         int stepX = 1;
         int stepY = 1;
         int k = 0;
-        while (true) {
+        while (!Thread.interrupted()) {
             if (rect.getX() >= 300 || rect.getX() <= 0) {
                 stepX *= -1.7;
             }
