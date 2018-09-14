@@ -44,9 +44,7 @@ public class InfoWithHashMapTest {
 
     @Test
     public void infoChangeOfcollectiont() throws Exception {
-        infoObject.infoChangeOfcollectiont(previoues, current);
-        infoObject.getListsInfo();
-        for (List<String> list : infoObject.getListsInfo()) {
+        for (List<String> list : infoObject.infoChangeOfcollectiont(previoues, current)) {
             for (String s : list) {
                 System.out.println(s);
             }

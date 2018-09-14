@@ -14,9 +14,8 @@ public class Store {
      */
     List<java.util.List<String>> diff(List<User> previoues, List<User> current) {
         InfoWithHashMap infoObject = new InfoWithHashMap();
-        infoObject.infoChangeOfcollectiont(previoues, current);
 
-        return infoObject.getListsInfo();
+        return infoObject.infoChangeOfcollectiont(previoues, current);
     }
 
     static class User {
