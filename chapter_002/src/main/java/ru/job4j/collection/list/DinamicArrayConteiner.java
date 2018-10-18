@@ -132,4 +132,8 @@ public class DinamicArrayConteiner<E> implements Iterable<E> {
     public void setSize(int size) {
         this.size = size;
     }
+
+    public void setContainer(Object[] container) {
+        this.container = container;
+    }
 }
