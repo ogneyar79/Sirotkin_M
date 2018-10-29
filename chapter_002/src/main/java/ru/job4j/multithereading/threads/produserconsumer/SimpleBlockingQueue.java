@@ -13,18 +13,28 @@ import java.util.Queue;
 @ThreadSafe
 public class SimpleBlockingQueue<T> {
 
+    public SimpleBlockingQueue(Queue<T> queue, int limetedSize) {
+        this.queue = queue;
+        this.limetedSize = limetedSize;
+    }
+
     /**
      * Очередью
      * <p>
      * "param <T> Тип элемента очереди
      */
     @GuardedBy("this")
-    private Queue<T> queue = new LinkedList<>();
+     Queue<T> queue = new LinkedList<>();
 
     /**
      * переменная которая показывает количество элементов в очереди.
      */
-    private int size = queue.size();
+    private volatile int size = queue.size();
+
+    /**
+     * переменная которая показывает предельное количество элементов.
+     */
+    private volatile int limetedSize = 100;
 
     /**
      * Добавление элемнтов в очередь.
@@ -32,8 +42,23 @@ public class SimpleBlockingQueue<T> {
      * @param value добавляемый объект
      */
     public synchronized void offer(T value) {
-
-        queue.offer(value);
+        try {
+            while (size < limetedSize) {
+                queue.offer(value);
+                wait(10);
+                System.out.println("We send it");
+                if (size == limetedSize / 2) {
+                    notify();
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            wait();
+        } catch (InterruptedException e) {
+            System.out.println(" We caught InteruptedExeption");
+        }
     }
 
     /**
@@ -42,6 +67,28 @@ public class SimpleBlockingQueue<T> {
      * @return возвращаемый элемент.
      */
     public synchronized T poll() {
+        while (size < 0) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                System.out.println(" We caught InteruptedExeption");
+            }
+        }
+        try {
+            if (size < 25) {
+                notify();
+                wait(10);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Getting");
+
+        try {
+            wait(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return queue.poll();
     }
 

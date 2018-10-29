@@ -11,20 +11,10 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
-        while (myQueue.getSize() > 0) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            myQueue.poll();
+        while (true) {
+            int i;
+            i = myQueue.poll();
+            System.out.println(myQueue.getSize() + " " + "Consumer" + i);
         }
-        notify();
-        try {
-            wait();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
     }
 }
