@@ -26,10 +26,17 @@ public class SimpleBlockingQueueTest {
 
     @Test
     public void offerAndPoll() throws Exception {
+
+
         producerTread.start();
+        producerTread.join(002);
 
         consumerTread.start();
 
-        Thread.sleep(100);
+
+
+
+        System.out.println( consumerTread.getState());
+        System.out.println(producerTread.getState());
     }
 }

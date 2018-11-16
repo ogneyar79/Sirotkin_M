@@ -14,10 +14,16 @@ public class Produser implements Runnable {
     public void run() {
         Random random = new Random();
         while (true) {
+            int i = 0;
+            i++;
+            try {
 
-            myQueue.offer(random.nextInt());
-            myQueue.getQueue().element();
-            System.out.println(myQueue.getSize() + " " +" Producer");
+                myQueue.offer(random.nextInt());
+                System.out.println(i);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

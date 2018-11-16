@@ -24,7 +24,7 @@ public class SimpleBlockingQueue<T> {
      * "param <T> Тип элемента очереди
      */
     @GuardedBy("this")
-     Queue<T> queue = new LinkedList<>();
+    Queue<T> queue = new LinkedList<>();
 
     /**
      * переменная которая показывает количество элементов в очереди.
@@ -41,24 +41,19 @@ public class SimpleBlockingQueue<T> {
      *
      * @param value добавляемый объект
      */
-    public synchronized void offer(T value) {
-        try {
-            while (size < limetedSize) {
-                queue.offer(value);
-                wait(10);
-                System.out.println("We send it");
-                if (size == limetedSize / 2) {
-                    notify();
-                }
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        try {
+    public synchronized void offer(T value) throws InterruptedException {
+
+        while (this.queue.size() == limetedSize) {
+
+            System.out.println(" I try to inform to It's full I offer (add limit) and I get sleep ");
             wait();
-        } catch (InterruptedException e) {
-            System.out.println(" We caught InteruptedExeption");
         }
+        if (this.queue.size() == 0) {
+            System.out.println("It's time wake up We want You begin to work when will be " + limetedSize + " And I ll be to sleep");
+            notify();
+        }
+        System.out.println(" I work offer" );
+        queue.offer(value);
     }
 
     /**
@@ -66,29 +61,16 @@ public class SimpleBlockingQueue<T> {
      *
      * @return возвращаемый элемент.
      */
-    public synchronized T poll() {
-        while (size < 0) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                System.out.println(" We caught InteruptedExeption");
-            }
+    public synchronized T poll() throws InterruptedException {
+        while (this.queue.size() == 0) {
+            System.out.println("size == 0 and I want to sleep No items to poll(bring)");
+            wait();
         }
-        try {
-            if (size < 25) {
-                notify();
-                wait(10);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (this.queue.size() == limetedSize) {
+            System.out.println(" I give comand wake up When I finish work for poll all and get sleep");
+            notify();
         }
-        System.out.println("Getting");
-
-        try {
-            wait(50);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        System.out.println(" I work poll bring. bring...");
         return queue.poll();
     }
 

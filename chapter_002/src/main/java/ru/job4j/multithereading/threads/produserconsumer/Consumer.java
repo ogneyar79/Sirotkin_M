@@ -12,9 +12,14 @@ public class Consumer implements Runnable {
     @Override
     public void run() {
         while (true) {
-            int i;
-            i = myQueue.poll();
-            System.out.println(myQueue.getSize() + " " + "Consumer" + i);
+            int i = 0;
+            try {
+                System.out.println(myQueue.poll());
+                System.out.println(i);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println();
         }
     }
 }
