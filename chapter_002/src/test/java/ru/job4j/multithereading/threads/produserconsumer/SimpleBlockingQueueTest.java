@@ -1,42 +1,41 @@
 package ru.job4j.multithereading.threads.produserconsumer;
 
-import org.junit.Before;
 import org.junit.Test;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Random;
 
 public class SimpleBlockingQueueTest {
-    Queue<Integer> queue;
-    SimpleBlockingQueue<Integer> myQueue;
-    Produser produser;
-    Consumer consumer;
-    Thread producerTread;
-    Thread consumerTread;
-
-    @Before
-    public void setUp() throws Exception {
-        queue = new LinkedList<>();
-        myQueue = new SimpleBlockingQueue<Integer>(queue, 1000);
-        produser = new Produser(myQueue);
-        consumer = new Consumer(myQueue);
-        producerTread = new Thread(produser);
-        consumerTread = new Thread(consumer);
-    }
 
     @Test
-    public void offerAndPoll() throws Exception {
+    public void whenUseBlockingQueue1() {
+        SimpleBlockingQueue<Integer> queue = new SimpleBlockingQueue<>(20);
+        Random random = new Random();
+        Thread producer = new Thread(() -> {
+            for (int i = 0; i < queue.getMaxLine(); i++) {
+                queue.offer(i);
+                System.out.println(String.format("%s вставляет %s", Thread.currentThread().getName(), i));
+            }
+        });
 
+        Thread consumer = new Thread(() -> {
+            while (true) {
+                try {
+                    System.out.println(String.format("%s вытаскивает %s", Thread.currentThread().getName(), queue.poll()));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
-        producerTread.start();
-        producerTread.join(002);
+        consumer.start();
+        producer.start();
 
-        consumerTread.start();
-
-
-
-
-        System.out.println( consumerTread.getState());
-        System.out.println(producerTread.getState());
+        try {
+            consumer.join(03);
+            producer.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("exit");
     }
 }

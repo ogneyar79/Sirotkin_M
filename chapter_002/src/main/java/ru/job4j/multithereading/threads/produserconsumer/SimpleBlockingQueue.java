@@ -12,78 +12,52 @@ import java.util.Queue;
  */
 @ThreadSafe
 public class SimpleBlockingQueue<T> {
-
-    public SimpleBlockingQueue(Queue<T> queue, int limetedSize) {
-        this.queue = queue;
-        this.limetedSize = limetedSize;
-    }
-
-    /**
-     * Очередью
-     * <p>
-     * "param <T> Тип элемента очереди
-     */
     @GuardedBy("this")
-    Queue<T> queue = new LinkedList<>();
+    private Queue<T> queue = new LinkedList<>();
 
-    /**
-     * переменная которая показывает количество элементов в очереди.
-     */
-    private volatile int size = queue.size();
+    private int maxLine;
 
-    /**
-     * переменная которая показывает предельное количество элементов.
-     */
-    private volatile int limetedSize = 100;
-
-    /**
-     * Добавление элемнтов в очередь.
-     *
-     * @param value добавляемый объект
-     */
-    public synchronized void offer(T value) throws InterruptedException {
-
-        while (this.queue.size() == limetedSize) {
-
-            System.out.println(" I try to inform to It's full I offer (add limit) and I get sleep ");
-            wait();
-        }
-        if (this.queue.size() == 0) {
-            System.out.println("It's time wake up We want You begin to work when will be " + limetedSize + " And I ll be to sleep");
-            notify();
-        }
-        System.out.println(" I work offer" );
-        queue.offer(value);
+    public SimpleBlockingQueue(int maxLine) {
+        this.maxLine = maxLine;
     }
 
-    /**
-     * Получение элемента из очереди.
-     *
-     * @return возвращаемый элемент.
-     */
-    public synchronized T poll() throws InterruptedException {
-        while (this.queue.size() == 0) {
-            System.out.println("size == 0 and I want to sleep No items to poll(bring)");
-            wait();
+    public void offer(T value) {
+        synchronized (this) {
+            while (queue.size() >= maxLine) {
+                try {
+                    this.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            this.queue.offer(value);
+            this.notify();
+            System.out.println("Wake up");
         }
-        if (this.queue.size() == limetedSize) {
-            System.out.println(" I give comand wake up When I finish work for poll all and get sleep");
-            notify();
-        }
-        System.out.println(" I work poll bring. bring...");
-        return queue.poll();
     }
 
-    public SimpleBlockingQueue(Queue<T> queue) {
-        this.queue = queue;
+
+    public T poll() throws InterruptedException {
+        synchronized (this) {
+            while (queue.isEmpty()) {
+                this.wait();
+            }
+            this.notify();
+            System.out.println(" Get up");
+            return this.queue.poll();
+        }
+    }
+
+    public boolean isEmpty() {
+        return this.queue.isEmpty();
     }
 
     public Queue<T> getQueue() {
         return queue;
     }
 
-    public int getSize() {
-        return size;
+    public int getMaxLine() {
+        return maxLine;
     }
 }
 
