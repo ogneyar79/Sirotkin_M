@@ -1,7 +1,8 @@
 package ru.job4j.multithereading.threads.produserconsumer;
 
-import javax.annotation.concurrent.GuardedBy;
-import javax.annotation.concurrent.ThreadSafe;
+import net.jcip.annotations.GuardedBy;
+import net.jcip.annotations.ThreadSafe;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -16,6 +17,8 @@ public class SimpleBlockingQueue<T> {
     private Queue<T> queue = new LinkedList<>();
 
     private int maxLine;
+
+
 
     public SimpleBlockingQueue(int maxLine) {
         this.maxLine = maxLine;
