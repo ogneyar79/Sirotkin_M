@@ -5,10 +5,20 @@ package ru.job4j.multithereading.threads.bomberman.bombermanmodel;
  */
 public class BombeManGamePlayerTread implements Runnable {
 
-    Board board;
+    /**
+     * объект для создания модели игрового поля.
+     */
+    final Board board;
 
-    Movment movment;
+    /**
+     * объект для выбора случайности базисного шага.
+     */
+    final Movment movment;
 
+    public BombeManGamePlayerTread(Board board, Movment movment) {
+        this.board = board;
+        this.movment = movment;
+    }
 
     @Override
     public void run() {
@@ -18,11 +28,12 @@ public class BombeManGamePlayerTread implements Runnable {
         board.getBoardRlForGame()[source.getKoordinateLineX()][source.getKoordinateLinecolumneY()].lock();
         while (!Thread.currentThread().isInterrupted()) {
             try {
-                board.move(source, dest);
+                if (board.move(source, dest)) {
+                    Thread.currentThread().interrupt();
+                }
             } catch (InterruptedException e) {
                 System.out.println("BomberMan game over");
                 Thread.currentThread().interrupt();
-
             }
         }
     }

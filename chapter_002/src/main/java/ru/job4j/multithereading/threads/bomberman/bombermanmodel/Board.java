@@ -22,18 +22,17 @@ public class Board {
     /**
      * движущая модель на доске.
      */
-    Figure figure;
+
 
     /**
      * фигура игрока бомбермана.
      */
-    PlayerUno playerUno;
-
+    final PlayerUno playerUno;
 
     /**
      * поле-одномерный массив, где храняться наши клетки, связанные с блокирующими клетками.
      */
-    Cell[] cells = new Cell[sizeLine * sizeColumn];
+    final Cell[] cells;
 
     /**
      * Игровое поле.
@@ -41,32 +40,30 @@ public class Board {
     final ReentrantLock[][] boardRlForGame;
 
     /**
-     * объект для реализации движения.
-     */
-    Movment movment;
-
-    /**
      * Конструктор размерности игрового поля.
      *
      * @param sizeLine   Размер по оси X.
      * @param sizeColumn Размер по оси Y.
      */
-    public Board(int sizeLine, int sizeColumn) {
+    public Board(final int sizeLine, final int sizeColumn) {
         this.sizeLine = sizeLine;
         this.sizeColumn = sizeColumn;
+        cells = new Cell[sizeLine * sizeColumn];
         this.boardRlForGame = new ReentrantLock[sizeLine][sizeColumn];
         int z = 0;
         for (int i = 0; i < sizeLine; i++) {
             for (int j = 0; j < sizeColumn; j++) {
                 boardRlForGame[i][j] = new ReentrantLock();
                 final Cell cellOnBoard = new Cell(this.boardRlForGame, i, j);
+                cellOnBoard.setCellLock(boardRlForGame[i][j]);
                 cellOnBoard.setNumKoord(z);
                 this.cells[z] = cellOnBoard;
+                System.out.println(z);
                 z++;
             }
         }
-        Cell myPlace = new Cell(this.boardRlForGame, sizeLine / 2, sizeColumn / 2);
-        playerUno = new PlayerUno("TEROR", "RED", myPlace);
+        playerUno = new PlayerUno("TEROR", "RED", cells[36]);
+        playerUno.getInformationFigure();
     }
 
     /**
@@ -78,7 +75,8 @@ public class Board {
      * @throws InterruptedException Выбрасывается при прерывании потока.
      */
     Boolean move(Cell source, Cell dist) throws InterruptedException {
-        Movment movment = new Movment(figure, this);
+        System.out.println(String.format("BomberMan пытается сделать ход из %s в %s", source, dist));
+
         boolean resultMovment;
 
         if (this.boardRlForGame[dist.getKoordinateLineX()][dist.koordinateLinecolumneY].tryLock(500, TimeUnit.MILLISECONDS)) {
@@ -86,13 +84,15 @@ public class Board {
 
             this.playerUno.setMyPlace(dist);
             resultMovment = true;
+            System.out.println(" Bomberman has steped into");
         } else {
             System.out.println(" Esta occupada)) Позиция ЗАНЯТА");
             resultMovment = false;
+            System.out.println(" The Cell is occupied");
         }
+        System.out.println(resultMovment);
         return resultMovment;
     }
-
 
     public PlayerUno getPlayerUno() {
         return playerUno;

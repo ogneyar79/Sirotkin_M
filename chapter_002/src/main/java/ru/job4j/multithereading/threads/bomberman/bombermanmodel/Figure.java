@@ -6,20 +6,23 @@ package ru.job4j.multithereading.threads.bomberman.bombermanmodel;
 public class Figure {
 
 
+    final String name;
 
-    String name;
-
-    String color;
+    final String color;
 
     Cell myPlace;
-
-    int numKoord;
 
     public Figure(String name, String color, Cell myPlace) {
         this.name = name;
         this.color = color;
         this.myPlace = myPlace;
-        numKoord = 0;
+
+    }
+
+    public void getInformationFigure() {
+        Figure figure = this;
+        System.out.println(String.format(" Имя Нашей модели %s, его цвет %s, номер его клетки %s, его координата Х равна %s, его координта Y равна %s", figure.getName(), figure.getColor(), figure.getMyPlace().getNumKoord(), figure.getMyPlace().getKoordinateLineX(), figure.getMyPlace().getKoordinateLinecolumneY()));
+
     }
 
     public String getName() {
@@ -33,16 +36,11 @@ public class Figure {
     public Cell getMyPlace() {
         return myPlace;
     }
-    public void setNumKoord(int numKoord) {
-        this.numKoord = numKoord;
-    }
 
 
     public void setMyPlace(Cell myPlace) {
         this.myPlace = myPlace;
     }
 
-    public int getNumKoord() {
-        return numKoord;
-    }
+
 }

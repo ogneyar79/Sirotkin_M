@@ -4,18 +4,17 @@ import java.util.Random;
 
 public class Movment {
 
-    Random random = new Random();
+    final Random random = new Random();
 
     /**
      * движущая модель на доске.
      */
-    Figure figure;
-
+    final Figure figure;
 
     /**
      * объект для создания модели игрового поля.
      */
-    Board board;
+    final Board board;
 
     /**
      * поле обозначающее, откуда начинаеся движение, бертеся namKoord клетки, где стоит фигура.
@@ -30,7 +29,7 @@ public class Movment {
     /**
      * массив выбора вариантов хода.
      */
-    int[] selectionStep;
+    final int[] selectionStep;
 
     /**
      * поле для обозначающее ячейку массива с вариантами ходов.
@@ -41,13 +40,14 @@ public class Movment {
      * Конструктор базисного хода.
      *
      * @param figure Фигура, которая ходит.
-     * @param board  Поле по которому ходит фигура.
+     * @param board1
+     * @param board1 Поле по которому ходит фигура.
      */
-    public Movment(Figure figure, Board board) {
+    public Movment(Figure figure, Board board1) {
 
         this.figure = figure;
-
-        basisMovment = figure.getNumKoord();
+        basisMovment = figure.getMyPlace().getNumKoord();
+        this.board = board1;
         this.bigRangeMovment = board.sizeLine;
 
         this.selectionStep = new int[]{basisMovment + 1, basisMovment - 1, basisMovment + bigRangeMovment, basisMovment - bigRangeMovment};
@@ -63,9 +63,9 @@ public class Movment {
         choosingStepRandom = random.nextInt(selectionStep.length);
         result = selectionStep[choosingStepRandom];
         if (!checkStep(result)) {
-            result = stepNext();
+            stepNext();
         }
-
+        System.out.println(String.format("The Step into %s", result));
         return result;
     }
 

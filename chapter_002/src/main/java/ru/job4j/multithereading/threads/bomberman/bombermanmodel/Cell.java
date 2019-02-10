@@ -10,13 +10,16 @@ public class Cell {
     /**
      * массив ReentrantLock
      */
-    ReentrantLock[][] board;
+    final ReentrantLock[][] board;
+
+    public void setCellLock(ReentrantLock cellLock) {
+        this.cellLock = cellLock;
+    }
 
     /**
      * поле Reentrantlock, связанное с Cell общими координатами
      */
     ReentrantLock cellLock;
-
 
     /**
      * Внутренние поля класса, координаты
@@ -33,7 +36,6 @@ public class Cell {
      * поле показывающее, занята ли ячейка.
      */
     boolean freeCell;
-
 
     /**
      * Конструктор игровой клетки.
@@ -103,4 +105,6 @@ public class Cell {
     public void setKoordinateLinecolumneY(int koordinateLinecolumneY) {
         this.koordinateLinecolumneY = koordinateLinecolumneY;
     }
+
+
 }
