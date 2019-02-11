@@ -28,9 +28,7 @@ public class BombeManGamePlayerTread implements Runnable {
         board.getBoardRlForGame()[source.getKoordinateLineX()][source.getKoordinateLinecolumneY()].lock();
         while (!Thread.currentThread().isInterrupted()) {
             try {
-                if (board.move(source, dest)) {
-                    Thread.currentThread().interrupt();
-                }
+                board.move(source, dest);
             } catch (InterruptedException e) {
                 System.out.println("BomberMan game over");
                 Thread.currentThread().interrupt();
