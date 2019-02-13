@@ -27,7 +27,7 @@ public class Board {
     /**
      * фигура игрока бомбермана.
      */
-    final PlayerUno playerUno;
+    final  PlayerUno playerUno;
 
     /**
      * поле-одномерный массив, где храняться наши клетки, связанные с блокирующими клетками.
@@ -55,10 +55,8 @@ public class Board {
             for (int j = 0; j < sizeColumn; j++) {
                 boardRlForGame[i][j] = new ReentrantLock();
                 final Cell cellOnBoard = new Cell(this.boardRlForGame, i, j);
-                cellOnBoard.setCellLock(boardRlForGame[i][j]);
                 cellOnBoard.setNumKoord(z);
                 this.cells[z] = cellOnBoard;
-                System.out.println(z);
                 z++;
             }
         }

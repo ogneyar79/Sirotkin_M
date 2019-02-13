@@ -23,11 +23,15 @@ public class BombeManGamePlayerTread implements Runnable {
     @Override
     public void run() {
 
-        Cell source = board.getPlayerUno().getMyPlace();
-        Cell dest = board.getCells()[movment.stepNext()];
+        Cell source = board.getPlayerUno().getMyPlace();;
+        Cell dest;
         board.getBoardRlForGame()[source.getKoordinateLineX()][source.getKoordinateLinecolumneY()].lock();
         while (!Thread.currentThread().isInterrupted()) {
             try {
+                source = board.getPlayerUno().getMyPlace();
+                dest = board.getCells()[movment.stepNext()];
+                source.cellInfo();
+                dest.cellInfo();
                 board.move(source, dest);
             } catch (InterruptedException e) {
                 System.out.println("BomberMan game over");

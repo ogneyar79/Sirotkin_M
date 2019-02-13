@@ -49,6 +49,7 @@ public class Cell {
         this.cellLock = board[koordinateLineX][koordinateLinecolumneY];
         this.koordinateLineX = koordinateLineX;
         this.koordinateLinecolumneY = koordinateLinecolumneY;
+        this.cellLock = board[koordinateLineX][koordinateLinecolumneY];
     }
 
     public void setNumKoord(int numKoord) {
@@ -106,5 +107,9 @@ public class Cell {
         this.koordinateLinecolumneY = koordinateLinecolumneY;
     }
 
-
+    public void cellInfo() {
+        System.out.println(getNumKoord());
+        System.out.println(getKoordinateLineX());
+        System.out.println(getKoordinateLinecolumneY());
+    }
 }
