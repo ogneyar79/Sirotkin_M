@@ -12,6 +12,11 @@ public class Cell {
      */
     final ReentrantLock[][] board;
 
+    /**
+     * поле которое показывает, что герой здесь
+     */
+   volatile Boolean BomberHere;
+
     public void setCellLock(ReentrantLock cellLock) {
         this.cellLock = cellLock;
     }
@@ -35,7 +40,7 @@ public class Cell {
     /**
      * поле показывающее, занята ли ячейка.
      */
-    boolean freeCell;
+   volatile boolean freeCell;
 
     /**
      * Конструктор игровой клетки.
@@ -105,6 +110,27 @@ public class Cell {
      */
     public void setKoordinateLinecolumneY(int koordinateLinecolumneY) {
         this.koordinateLinecolumneY = koordinateLinecolumneY;
+    }
+
+    public ReentrantLock[][] getBoard() {
+        return board;
+    }
+
+
+    public Boolean getBomberHere() {
+        return BomberHere;
+    }
+
+    public void setBomberHere(Boolean bomberHere) {
+        BomberHere = bomberHere;
+    }
+
+    public void setFreeCell(boolean freeCell) {
+        this.freeCell = freeCell;
+    }
+
+    public ReentrantLock getCellLock() {
+        return cellLock;
     }
 
     public void cellInfo() {
