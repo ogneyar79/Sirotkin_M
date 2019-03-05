@@ -11,12 +11,12 @@ public class MonsterMoveThrread implements Runnable {
     @Override
     public void run() {
         while (!Thread.currentThread().isInterrupted()) {
-        }
-        try {
-            System.out.println(" Run begin");
-            monster.moveMonster();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            try {
+                System.out.println(" Run begin");
+                monster.moveMonster();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
