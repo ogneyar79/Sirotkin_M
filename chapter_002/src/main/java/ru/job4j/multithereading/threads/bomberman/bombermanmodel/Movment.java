@@ -63,7 +63,7 @@ public class Movment {
         choosingStepRandom = random.nextInt(selectionStep.length);
         result = selectionStep[choosingStepRandom];
         if (!checkStep(result)) {
-            stepNext();
+            result = stepNext();
         }
         System.out.println(String.format("The Step into %s", result));
         return result;

@@ -134,8 +134,19 @@ public class Cell {
     }
 
     public void cellInfo() {
-        System.out.println(getNumKoord());
-        System.out.println(getKoordinateLineX());
-        System.out.println(getKoordinateLinecolumneY());
+        System.out.println( " N клетки" + getNumKoord() + " X : " + getKoordinateLineX() + " Y :" + getKoordinateLinecolumneY());
+    }
+
+    public void cellInfoTwo(){
+        toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Cell{" +
+                "koordinateLineX=" + koordinateLineX +
+                ", koordinateLinecolumneY=" + koordinateLinecolumneY +
+                ", numKoord=" + numKoord +
+                '}';
     }
 }

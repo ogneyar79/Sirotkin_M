@@ -6,23 +6,25 @@ public class Monster extends Figure {
 
     Movment movment;
 
-    Board boardFirst;
+    final Board board;
 
-    public Monster(String name, String color, Cell myPlace, Board boardFirst) {
+    public Monster(String name, String color, Cell myPlace, Board board) {
         super(name, color, myPlace);
-        movment = new Movment(this, boardFirst);
+        movment = new Movment(this, board);
+        this.board = board;
     }
 
     Boolean moveMonster() throws InterruptedException {
         boolean result = false;
         Cell myPlace = this.getMyPlace();
-        Cell dest = boardFirst.getCells()[movment.stepNext()];
+        final int i = movment.stepNext();
+        Cell dest = board.getCells()[i];
         myPlace.cellInfo();
         dest.cellInfo();
         System.out.println(String.format("Monster пытается сделать ход из %s в %s", myPlace, dest));
 
-        if (boardFirst.getBoardRlForGame()[dest.getKoordinateLineX()][dest.koordinateLinecolumneY].tryLock(500, TimeUnit.MILLISECONDS)) {
-            boardFirst.getBoardRlForGame()[myPlace.getKoordinateLineX()][myPlace.getKoordinateLinecolumneY()].unlock();
+        if (board.getBoardRlForGame()[dest.getKoordinateLineX()][dest.koordinateLinecolumneY].tryLock(500, TimeUnit.MILLISECONDS)) {
+            board.getBoardRlForGame()[myPlace.getKoordinateLineX()][myPlace.getKoordinateLinecolumneY()].unlock();
             this.setMyPlace(dest);
             result = true;
             System.out.println(" Monster has steped into");
@@ -36,6 +38,6 @@ public class Monster extends Figure {
     }
 
     public Board getBoard() {
-        return boardFirst;
+        return board;
     }
 }
