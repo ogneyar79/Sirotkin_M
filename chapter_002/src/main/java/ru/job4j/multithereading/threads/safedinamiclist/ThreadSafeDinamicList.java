@@ -2,8 +2,8 @@ package ru.job4j.multithereading.threads.safedinamiclist;
 
 import ru.job4j.collection.list.DinamicArrayConteiner;
 
-import javax.annotation.concurrent.GuardedBy;
-import javax.annotation.concurrent.ThreadSafe;
+import net.jcip.annotations.GuardedBy;
+import net.jcip.annotations.ThreadSafe;
 import java.util.Iterator;
 
 @ThreadSafe
