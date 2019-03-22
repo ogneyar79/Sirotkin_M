@@ -15,7 +15,7 @@ public class Cell {
     /**
      * поле которое показывает, что герой здесь
      */
-   volatile Boolean BomberHere;
+    volatile Boolean bomberHere;
 
     public void setCellLock(ReentrantLock cellLock) {
         this.cellLock = cellLock;
@@ -40,7 +40,7 @@ public class Cell {
     /**
      * поле показывающее, занята ли ячейка.
      */
-   volatile boolean freeCell;
+    volatile boolean freeCell;
 
     /**
      * Конструктор игровой клетки.
@@ -118,11 +118,11 @@ public class Cell {
 
 
     public Boolean getBomberHere() {
-        return BomberHere;
+        return bomberHere;
     }
 
     public void setBomberHere(Boolean bomberHere) {
-        BomberHere = bomberHere;
+        this.bomberHere = bomberHere;
     }
 
     public void setFreeCell(boolean freeCell) {
@@ -134,19 +134,19 @@ public class Cell {
     }
 
     public void cellInfo() {
-        System.out.println( " N клетки" + getNumKoord() + " X : " + getKoordinateLineX() + " Y :" + getKoordinateLinecolumneY());
+        System.out.println(" N клетки" + getNumKoord() + " X : " + getKoordinateLineX() + " Y :" + getKoordinateLinecolumneY());
     }
 
-    public void cellInfoTwo(){
+    public void cellInfoTwo() {
         toString();
     }
 
     @Override
     public String toString() {
-        return "Cell{" +
-                "koordinateLineX=" + koordinateLineX +
-                ", koordinateLinecolumneY=" + koordinateLinecolumneY +
-                ", numKoord=" + numKoord +
-                '}';
+        return "Cell{"
+                + "koordinateLineX=" + koordinateLineX
+                + ", koordinateLinecolumneY=" + koordinateLinecolumneY
+                + ", numKoord=" + numKoord
+                + '}';
     }
 }

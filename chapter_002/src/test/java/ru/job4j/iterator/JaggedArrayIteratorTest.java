@@ -12,13 +12,13 @@ public class JaggedArrayIteratorTest {
     IIterator el;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         itSecond = new ConcreteArray(new int[][]{{1}, {3, 4}, {7}});
         el = itSecond.getIterator();
     }
 
     @Test
-    public void testsThatNextMethodDoesntDependsOnPriorHasNextInvocation () {
+    public void testsThatNextMethodDoesntDependsOnPriorHasNextInvocation() {
         System.out.println(el.getInnerIndex());
         assertThat(el.next(), is(1));
         System.out.println(el.getInnerIndex());
@@ -29,7 +29,7 @@ public class JaggedArrayIteratorTest {
     }
 
     @Test
-    public void sequentialHasNextInvocationDoesntAffectRetrievalOrder () {
+    public void sequentialHasNextInvocationDoesntAffectRetrievalOrder() {
         assertThat(el.hasNext(), is(true));
         assertThat(el.hasNext(), is(true));
         assertThat(el.next(), is(1));
@@ -39,7 +39,7 @@ public class JaggedArrayIteratorTest {
     }
 
     @Test
-    public void hasNextNextSequentialInvocation () {
+    public void hasNextNextSequentialInvocation() {
         assertThat(el.hasNext(), is(true));
         assertThat(el.next(), is(1));
         assertThat(el.hasNext(), is(true));

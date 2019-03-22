@@ -55,7 +55,7 @@ public class UserStorage {
      */
     public synchronized boolean update(User user) {
         boolean result = false;
-        for (ListIterator<User> it = users.listIterator(); it.hasNext(); ) {
+        for (ListIterator<User> it = users.listIterator(); it.hasNext();) {
             User user1 = it.next();
             if (user1.getId() == user.getId()) {
                 it.set(user);

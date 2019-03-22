@@ -17,28 +17,27 @@ public class Converter {
             @Override
             public boolean hasNext() {
                 boolean marker = false;
-                 if (it1.hasNext() == true) {
-                     marker = true;
-                 }
-                 else {
-                     if (it.hasNext()) {
-                     it1 = it.next();
-                     if (it1.hasNext()) {
-                         marker = true;
-                     }
-                     }
-                 }
+                if (it1.hasNext()) {
+                    marker = true;
+                } else {
+                    if (it.hasNext()) {
+                        it1 = it.next();
+                        if (it1.hasNext()) {
+                            marker = true;
+                        }
+                    }
+                }
                 return marker;
             }
 
             @Override
             public Integer next() {
 
-                if (it1.hasNext() == true) {
+                if (it1.hasNext()) {
                     meaning = it1.next();
                 } else {
                     it1 = it.next();
-                    while (it1.hasNext() == true) {
+                    while (it1.hasNext()) {
                         meaning = it1.next();
                         break;
                     }

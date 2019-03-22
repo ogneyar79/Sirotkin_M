@@ -2,7 +2,7 @@ package ru.job4j.multithereading.threads.bomberman.bombermanmodel;
 
 public class PlayerUno extends Figure {
 
-    boolean Bomb;
+    boolean bomb;
 
     /**
      * конструктор фигуры игрока
@@ -13,7 +13,7 @@ public class PlayerUno extends Figure {
      */
     public PlayerUno(final String name, String color, Cell myPlace) {
         super(name, color, myPlace);
-        Bomb = true;
+        bomb = true;
     }
 
     public String getName() {
@@ -29,7 +29,7 @@ public class PlayerUno extends Figure {
     }
 
     public boolean isBomb() {
-        return Bomb;
+        return bomb;
     }
 
     public void setMyPlace(Cell myPlace) {

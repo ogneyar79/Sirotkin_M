@@ -1,6 +1,6 @@
 package ru.job4j.heroes;
 
-public class ArbalesterMan extends People{
+public class ArbalesterMan extends People {
 
     public ArbalesterMan() {
         super();

@@ -1,4 +1,4 @@
-package ru.job4j.collection.Map;
+package ru.job4j.collection.map;
 
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
@@ -143,9 +143,7 @@ public class DinamicArraycontainerForHashMap<E> implements Iterable<E> {
                 }
                 return (E) container[indexI++];
             }
-        }
-
-                ;
+        };
     }
 }
 

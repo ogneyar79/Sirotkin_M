@@ -74,7 +74,7 @@ public class ConcreteArray implements IArrayIteratorTask {
                 throw new NoSuchElementException();
             }
             for (int i = index; i < value.length; i++) {
-                for (int j = innerIndex; j < value[i].length; ) {
+                for (int j = innerIndex; j < value[i].length;) {
                     meaning = value[i][j];
                     if (j < value[i].length - 1) {
                         current++;

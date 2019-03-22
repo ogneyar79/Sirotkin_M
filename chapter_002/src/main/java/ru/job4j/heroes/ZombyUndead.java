@@ -1,6 +1,6 @@
 package ru.job4j.heroes;
 
-public class ZombyUndead extends Undead{
+public class ZombyUndead extends Undead {
     public ZombyUndead() {
         super();
         setDemage(18);

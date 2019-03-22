@@ -68,7 +68,7 @@ public class DepartmentStrArray {
 
     public String[] deletAndSortArraysbyDescendingOrederLow(String[] departments) {
         sortDepartmetns = deleteGapAtdepartaments(departments);
-        Map<String, List<String>> TreMapDepartmentsForDescendingOr = new TreeMap<>(new Comparator<String>() {
+        Map<String, List<String>> treMapDepartmentsForDescendingOr = new TreeMap<>(new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
                 List<String> a1 = sortDepartmetns.containsKey(o1) ? sortDepartmetns.get(o1) : null;
@@ -89,7 +89,7 @@ public class DepartmentStrArray {
                 return res;
             }
         });
-        TreMapDepartmentsForDescendingOr.putAll(sortDepartmetns);
-        return depsMapToArray(TreMapDepartmentsForDescendingOr);
+        treMapDepartmentsForDescendingOr.putAll(sortDepartmetns);
+        return depsMapToArray(treMapDepartmentsForDescendingOr);
     }
 }

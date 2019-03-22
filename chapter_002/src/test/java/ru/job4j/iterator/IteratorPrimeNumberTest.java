@@ -60,7 +60,7 @@ public class IteratorPrimeNumberTest {
 
 
     @Test
-    public void ChecjNextWithInerMetodForRealisation() {
+    public void checjNextWithInerMetodForRealisation() {
 
 
         IteratorPrimeNumber itSecond = new IteratorPrimeNumber(new int[]{1, 2, 3, 4, 5, 6, 7, 3571});
@@ -79,7 +79,7 @@ public class IteratorPrimeNumberTest {
     }
 
     @Test
-    public void CheckbooleanPrimeNumberIs() {
+    public void checkbooleanPrimeNumberIs() {
         IteratorPrimeNumber itSecond = new IteratorPrimeNumber(new int[]{1, 2, 3, 4, 5, 6, 7, 3571});
         assertThat(itSecond.checkPrimeNumberIs(2), is(true));
         assertThat(itSecond.checkPrimeNumberIs(5), is(true));

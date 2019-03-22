@@ -56,7 +56,7 @@ public class Info {
                 }
             }
         }
-        info = " " + changedElement +" " + " Elements was changed";
+        info = " " + changedElement + " " + " Elements was changed";
         listInfo.add(info);
     }
 

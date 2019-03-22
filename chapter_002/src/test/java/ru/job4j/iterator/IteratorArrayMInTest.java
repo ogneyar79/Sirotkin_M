@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.is;
 public class IteratorArrayMInTest {
 
 
-    IteratorArrayMIn  it;
+    IteratorArrayMIn it;
 
     @Before
     public void setUp() throws Exception {
@@ -25,8 +25,9 @@ public class IteratorArrayMInTest {
         assertThat(it.next(), is(3));
         assertThat(it.next(), is(4));
     }
+
     @Test
-    public void sequentialHasNextInvocationDoesntAffectRetrievalOrder () {
+    public void sequentialHasNextInvocationDoesntAffectRetrievalOrder() {
         assertThat(it.hasNext(), is(true));
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(0));
@@ -35,8 +36,9 @@ public class IteratorArrayMInTest {
         assertThat(it.next(), is(3));
         assertThat(it.next(), is(4));
     }
+
     @Test
-    public void hasNextNextSequentialInvocation () {
+    public void hasNextNextSequentialInvocation() {
         assertThat(it.hasNext(), is(true));
         System.out.println(it.getIndex()); //0
         assertThat(it.next(), is(0));

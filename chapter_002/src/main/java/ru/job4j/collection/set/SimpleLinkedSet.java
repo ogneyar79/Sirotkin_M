@@ -5,9 +5,9 @@
 //import java.util.Iterator;
 //
 ///**
-// * Set на базе связанного списка SimpleArrayList.
+// * set на базе связанного списка SimpleArrayList.
 // * <p>
-// * "param <E> Тип элемента в Set
+// * "param <E> Тип элемента в set
 // */
 //public class SimpleLinkedSet<E> implements Iterable<E> {
 //
@@ -35,7 +35,7 @@
 //    }
 //
 //    /**
-//     * Добавление элемнтов в Set.
+//     * Добавление элемнтов в set.
 //     *
 //     * @param element добавляемый объект
 //     */

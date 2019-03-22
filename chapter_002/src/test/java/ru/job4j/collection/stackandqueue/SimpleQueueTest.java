@@ -1,4 +1,4 @@
-package ru.job4j.collection.stackAndQueue;
+package ru.job4j.collection.stackandqueue;
 
 import org.junit.Before;
 import org.junit.Test;

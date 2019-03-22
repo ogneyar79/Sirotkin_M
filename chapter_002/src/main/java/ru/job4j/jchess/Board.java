@@ -79,7 +79,7 @@ package ru.job4j.jchess;
     }
 
     public static class Builder {
-        Map<Integer, Piece> boardConfig;
+        map<Integer, Piece> boardConfig;
     Alliance nextMoveMaker;
 
     public Builder() {

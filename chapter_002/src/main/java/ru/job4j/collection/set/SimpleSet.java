@@ -1,13 +1,13 @@
-package ru.job4j.collection.Set;
+package ru.job4j.collection.set;
 
 import ru.job4j.collection.list.DinamicArrayConteiner;
 
 import java.util.Iterator;
 
 /**
- * Set на базе динамичесого массива DinamicArrayConteiner.
+ * set на базе динамичесого массива DinamicArrayConteiner.
  * <p>
- * "param <E> Тип элемента в Set
+ * "param <E> Тип элемента в set
  */
 public class SimpleSet<E> implements Iterable<E> {
 
@@ -31,7 +31,7 @@ public class SimpleSet<E> implements Iterable<E> {
     }
 
     /**
-     * Добавление элемнтов в Set.
+     * Добавление элемнтов в set.
      *
      * @param e добавляемый объект
      */

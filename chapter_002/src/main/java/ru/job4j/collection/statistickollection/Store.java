@@ -9,7 +9,6 @@ public class Store {
      *
      * @param previoues предыдущая коллекция.
      * @param current   текущая коллекция
-     *
      * @return infoObject возвращаемый List объект.
      */
     List<java.util.List<String>> diff(List<User> previoues, List<User> current) {
@@ -33,12 +32,18 @@ public class Store {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
 
             User user = (User) o;
 
-            if (id != user.id) return false;
+            if (id != user.id) {
+                return false;
+            }
             return name != null ? name.equals(user.name) : user.name == null;
         }
 

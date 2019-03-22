@@ -1,4 +1,4 @@
-package ru.job4j.collection.Map;
+package ru.job4j.collection.map;
 
 public class MyEntry<L, O> {
     private L key;

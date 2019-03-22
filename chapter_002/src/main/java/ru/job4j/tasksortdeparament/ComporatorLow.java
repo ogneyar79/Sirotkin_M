@@ -2,7 +2,7 @@ package ru.job4j.tasksortdeparament;
 
 //public class ComporatorLow implements Comparator<String> {
 
-//Map<String, List<String>> forComparing = this.
+//map<String, List<String>> forComparing = this.
 
 
   //  @Override

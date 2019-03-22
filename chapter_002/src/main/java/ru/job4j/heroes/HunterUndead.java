@@ -1,6 +1,6 @@
 package ru.job4j.heroes;
 
-public class HunterUndead extends Undead{
+public class HunterUndead extends Undead {
     public HunterUndead() {
         super();
         setDemage(4);

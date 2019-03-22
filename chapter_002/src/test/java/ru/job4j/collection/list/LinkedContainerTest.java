@@ -18,14 +18,16 @@ public class LinkedContainerTest {
         linkedContainer.add(2);
         linkedContainer.add(3);
     }
+
     @Test
     public void whenAddThreeElementsThenUseGetOneResultTwo() {
         assertThat(linkedContainer.get(2), is(1));
         assertThat(linkedContainer.get(1), is(2));
     }
+
     @Test
     public void whenGetFirstElement() {
-        assertThat(linkedContainer.getFirst().getDate() , is(3));
+        assertThat(linkedContainer.getFirst().getDate(), is(3));
 
     }
 

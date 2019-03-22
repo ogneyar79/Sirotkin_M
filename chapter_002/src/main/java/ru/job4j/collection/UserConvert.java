@@ -12,7 +12,7 @@ public class UserConvert {
     List<User> listUser = new ArrayList<>();
 
     /**
-     * @ param Map</Integer, User>field for userList
+     * @ param map</Integer, User>field for userList
      */
 
     HashMap<Integer, User> usersList;

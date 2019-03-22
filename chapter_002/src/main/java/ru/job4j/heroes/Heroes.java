@@ -62,20 +62,18 @@ public class Heroes implements IHeroes {
     }
 
     public void atack(Heroes hero) {
-           if (this.isPrivelege()== false) {
-               hero.setLife(hero.getLife() - this.getDemage());
-           }
-           else {
-               hero.setLife(hero.getLife() - this.getDemage() * 1.5);
-               this.setPrivelege(false);
-           }
+        if (!this.isPrivelege()) {
+            hero.setLife(hero.getLife() - this.getDemage());
+        } else {
+            hero.setLife(hero.getLife() - this.getDemage() * 1.5);
+            this.setPrivelege(false);
+        }
     }
 
     public void secondAtack(Heroes hero) {
-        if (this.isPrivelege()== false) {
+        if (!this.isPrivelege()) {
             hero.setLife(hero.getLife() - this.getDemageSecond());
-        }
-        else {
+        } else {
             hero.setLife(hero.getLife() - this.getDemageSecond() * 1.5);
             this.setPrivelege(false);
         }

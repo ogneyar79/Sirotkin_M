@@ -44,7 +44,7 @@ public class DepartmentTask {
                         res = -1;
                         break;
                     } else {
-                        if (i == s - 1 && left.names.get(i).compareTo(right.names.get(i)) == 0 ) {
+                        if (i == s - 1 && left.names.get(i).compareTo(right.names.get(i)) == 0) {
                             return left.names.size() > right.names.size() ? 1 : -1;
                         }
                         i++;

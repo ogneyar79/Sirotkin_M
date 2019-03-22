@@ -1,4 +1,4 @@
-package ru.job4j.collection.Map;
+package ru.job4j.collection.map;
 
 import java.util.Iterator;
 
@@ -45,7 +45,7 @@ public class MyHashMap<L, O> implements Iterable<MyEntry> {
         containerMap2.setContainer(container);
         System.out.println(this.containerMap.getSize());
         System.out.println(this.containerMap.getContainer().length);
-        for (Iterator<MyEntry> it = this.containerMap.iterator(); it.hasNext(); ) {
+        for (Iterator<MyEntry> it = this.containerMap.iterator(); it.hasNext();) {
             MyEntry<L, O> myEntry = it.next();
             indexHash = hash(myEntry.getKey());
             containerMap2.set(indexHash, myEntry);

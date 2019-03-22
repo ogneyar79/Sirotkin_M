@@ -22,7 +22,7 @@ public class RectangleMove implements Runnable {
             if (rect.getY() >= 300 || rect.getY() <= 0) {
                 stepY *= -1.5;
             }
-            this.rect.setX(this.rect.getX() + stepX);// это не понятно
+            this.rect.setX(this.rect.getX() + stepX);
             this.rect.setY(this.rect.getY() + stepY);
             k++;
 

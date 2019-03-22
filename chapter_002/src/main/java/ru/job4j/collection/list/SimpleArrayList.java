@@ -50,8 +50,8 @@ public class SimpleArrayList<E> {
         if (index == 0) {
             delete();
         } else if (index < 1 || index >= size) {
-            throw new IndexOutOfBoundsException("Index: " + index +
-                    ", Size: " + size);
+            throw new IndexOutOfBoundsException("Index: " + index
+                    + ", Size: " + size);
         } else if (index == size - 1) {
             for (int j = 0; j < index; j++) {
                 result = result.next;
